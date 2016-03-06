@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>追梦翩跹</title>
+  <subtitle>wangjiajing&#39;s blog</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://wangjiajing.com/"/>
+  <updated>2016-03-06T06:28:00.767Z</updated>
+  <id>http://wangjiajing.com/</id>
+  
+  <author>
+    <name>wangjiajing</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo</title>
+    <link href="http://wangjiajing.com/2016/03/05/hexo/"/>
+    <id>http://wangjiajing.com/2016/03/05/hexo/</id>
+    <published>2016-03-04T17:32:57.000Z</published>
+    <updated>2016-03-06T06:28:00.767Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;hexo&lt;/code&gt; &lt;code&gt;deploy&lt;/code&gt; &lt;code&gt;ssh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;hexo这种博客神器，不用简直对不起我强烈的&lt;strong&gt;装逼&lt;/strong&gt;欲望=。=&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;已经有前辈的blog将hexo的安装配置过程写得很详细了,我也是站在巨人的肩膀上享受着他人辛勤劳动的成果，十分&lt;strong&gt;感谢&lt;/strong&gt;^_^&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://augustus.wang/2016/02/28/hexo-experience/#more&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://augustus.wang/2016/02/28/hexo-experience/#more&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.isetsuna.com/categories/Hexo/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.isetsuna.com/categories/Hexo/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://ibruce.info/2013/11/22/hexo-your-blog/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://ibruce.info/2013/11/22/hexo-your-blog/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果以上资料还不能解决问题的话，请移步&lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo官方文档&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;部署&quot;&gt;&lt;a href=&quot;#部署&quot; class=&quot;headerlink&quot; title=&quot;部署&quot;&gt;&lt;/a&gt;部署&lt;/h2&gt;&lt;p&gt;之前的安装一路都是顺风顺水,可是部署到GitHub上时出bug了= =&lt;br&gt;我输完&lt;code&gt;hexo d&lt;/code&gt;后，弹出了一个错误框：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/RT3I7(14V8T5(4I%24L%7DS_YIR.png&quot; alt=&quot;错误框&quot;&gt;&lt;/p&gt;
+&lt;p&gt;看上面的提示信息我以为是公钥出了问题，用&lt;code&gt;ssh -T git@github.com&lt;/code&gt;命令测试提示：&lt;br&gt;&lt;strong&gt;&lt;em&gt;Hi username! You’ve successfully authenticated, but GitHub does not provide shell access Connection to github.com closed.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;到github上看，发现公钥是使用过的（钥匙图标左边有一个小绿点，如下图~）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/N98%40504Y8%25%7D~S~KQ6~\&quot; alt=&quot;公钥&quot;&gt;)M6T.png)&lt;/p&gt;
+&lt;p&gt;查找资料后，万能的网友说可能是ssh密钥的问题，解决方法是：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;鼠标右键 &amp;gt; Set TortoiseGit &amp;gt; Settings &amp;gt; Network &amp;gt; SSH Client 改为 C:\Program Files (x86)\Git\bin\ssh.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;或(主要看你的git装在哪个目录下)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;鼠标右键 &amp;gt; Set TortoiseGit &amp;gt; Settings &amp;gt; Network &amp;gt; SSH Client 改为 C:\Program Files\Git\usr\bin\ssh.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;即：将&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/%7BHL7492S5VNK9%60%24L%60Z97%40LJ.png&quot; alt=&quot;修改前&quot;&gt;&lt;/p&gt;
+&lt;p&gt;修改成：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/%60NR7BBJ32%24XS1RM30%7DKVWLF.png&quot; alt=&quot;修改后&quot;&gt;&lt;/p&gt;
+&lt;p&gt;但是修改后依旧报错= =&lt;/p&gt;
+&lt;p&gt;这时候万能的网友又说啦：可能是环境变量&lt;code&gt;GIT_SSH&lt;/code&gt;的问题，可以通过设置环境变量&lt;code&gt;GIT_SSH&lt;/code&gt;使得git找到你的ssh client，具体做法为：&lt;br&gt;在根目录&lt;code&gt;C:\Users\[user]&lt;/code&gt;下创建一个文件&lt;code&gt;.profile&lt;/code&gt;（有人的是&lt;code&gt;.bash_profile&lt;/code&gt;，因机器而异= =），里面写一句话：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;GIT_SSH=&amp;quot;/usr/bin/ssh.exe&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;保存后重新执行&lt;code&gt;hexo d&lt;/code&gt;命令部署，好，下面就是见证奇迹的时刻，你会发现不报错啦~=。=~&lt;/p&gt;
+&lt;p&gt;欢迎您的指导！&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://stackoverflow.com/questions/3431314/github-no-supported-authentication-methods-available&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github: No supported authentication methods available&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;hexo&lt;/code&gt; &lt;code&gt;deploy&lt;/code&gt; &lt;code&gt;ssh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;hexo这种博客神器，不用简直对不起我强烈的&lt;strong&gt;装逼&lt;/strong&gt;欲望=。=&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://wangjiajing.com/categories/hexo/"/>
+    
+    
+      <category term="hexo deploy ssh" scheme="http://wangjiajing.com/tags/hexo-deploy-ssh/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://wangjiajing.com/2016/03/02/hello-world/"/>
+    <id>http://wangjiajing.com/2016/03/02/hello-world/</id>
+    <published>2016-03-02T09:11:49.976Z</published>
+    <updated>2016-03-06T05:39:32.518Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;h2 id=&quot;title-Hello-World&quot;&gt;&lt;a href=&quot;#title-Hello-World&quot; class=&quot;headerlink&quot; title=&quot;title: Hello World&quot;&gt;&lt;/a&gt;title: Hello World&lt;/h2&gt;&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;title-Hello-World&quot;&gt;&lt;a href=&quot;#title-Hello-World&quot; class=&quot;headerlink&quot; title=&quot;title: Hello World&quot;&gt;&lt;/a&gt;title: Hello World&lt;/h2&gt;&lt;p&gt;Wel
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
