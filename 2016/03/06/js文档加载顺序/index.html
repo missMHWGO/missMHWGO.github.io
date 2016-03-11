@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
+
+<title>js文档加载顺序</title>
+<meta name="author" content="wangjiajing">
+
+<meta name="keywords" content="undefined">
+
+<meta name="description " content="null">
+
+<link rel="icon" href="/images/favicon.png">
+
+<link rel="stylesheet" href="/css/style.css">
+
+  </head>
+  <body>
+    <aside id="sidebar">
+  <nav id="tags">
+    <a href="http://wangjiajing.com" id="avatar" style="background-image:url(/images/favicon.png)"></a>
+    <ul id="tags__ul">
+      <li id="pl__all" class="tags__li tags-btn active">All</li>
+      
+      <li id="hexo" class="tags__li tags-btn">hexo</li>
+      
+      <li id="html" class="tags__li tags-btn">html</li>
+      
+      <li id="javaScript" class="tags__li tags-btn">javaScript</li>
+      
+      <li id="Web" class="tags__li tags-btn">Web</li>
+      
+    </ul>
+    <div id="tags__bottom">
+      <a href="http://github.com/missMHWGO" rel="nofollow" id="icon-github" target="_blank" class="tags-btn fontello"></a>
+      <a href="http://shang.qq.com/wpa/qunwpa?idkey=6dc2741479cd031cc533fe5080081df44d0f9d95bc5083e8e1244c92f4aae218" rel="nofollow" id="icon-qq" target="_blank" class="tags-btn fontello"></a>
+    </div>
+  </nav> <!-- end #tags -->
+  <div id="posts-list">
+    <form action="#" id="search-form" target="_blank">
+      <a href="/" id="mobile-avatar" style="background-image:url(/images/favicon.png)"></a>
+      <input id="search-input" type="text" placeholder="上要撒得了娇，卖得了萌；下要码得了代码，装得了逼~" />
+    </form>
+    <nav id="pl__container">
+      
+            
+                <a class="hexo pl__all" href="/2016/03/05/hexo/" title="hexo">
+                  <span class="pl__circle"></span><span class="pl__title">hexo</span><span class="pl__date">2016-03-05</span>
+                </a>
+            
+      
+            
+                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
+                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
+                </a>
+            
+      
+            
+                <a class="javaScript pl__all" href="/2016/03/06/js文档加载顺序/" title="js文档加载顺序">
+                  <span class="pl__circle"></span><span class="pl__title">js文档加载顺序</span><span class="pl__date">2016-03-06</span>
+                </a>
+            
+      
+            
+                <a class="Web pl__all" href="/2016/03/08/web性能优化/" title="Web性能优化">
+                  <span class="pl__circle"></span><span class="pl__title">Web性能优化</span><span class="pl__date">2016-03-08</span>
+                </a>
+            
+                <a class="Web pl__all" href="/2016/03/10/判断PC端和网页端的方法/" title="判断PC端和网页端的方法">
+                  <span class="pl__circle"></span><span class="pl__title">判断PC端和网页端的方法</span><span class="pl__date">2016-03-10</span>
+                </a>
+            
+                <a class="Web pl__all" href="/2016/03/09/启用Apache服务器的Gzip压缩/" title="启用Apache服务器的Gzip压缩">
+                  <span class="pl__circle"></span><span class="pl__title">启用Apache服务器的Gzip压缩</span><span class="pl__date">2016-03-09</span>
+                </a>
+            
+                <a class="Web pl__all" href="/2016/03/11/响应式设计学习（一）/" title="响应式设计学习（一）">
+                  <span class="pl__circle"></span><span class="pl__title">响应式设计学习（一）</span><span class="pl__date">2016-03-11</span>
+                </a>
+            
+      
+    </nav>
+  </div> <!-- end #posts-list -->
+</aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        <article id="post__content">
+  <h1 id="post__title" data-identifier="2016-03-06">js文档加载顺序</h1>
+  <p><code>js</code> <code>加载顺序</code></p>
+<p>写东西的时候时常得不到想要的效果，debug的时候经常发现某些本应该赋了值的变量显示undefined，于是就去查找资料，顺便记录下来，真心感谢万能的网友^_^</p>
+<h2 id="常见的-lt-head-gt-和-lt-body-gt-标签中的js"><a href="#常见的-lt-head-gt-和-lt-body-gt-标签中的js" class="headerlink" title="常见的&lt;head&gt;和&lt;body&gt;标签中的js"></a>常见的<code>&lt;head&gt;</code>和<code>&lt;body&gt;</code>标签中的js</h2><p>概括来说：</p>
+<blockquote>
+<ul>
+<li>同一个js代码段的执行顺序是从上向下</li>
+<li><code>&lt;head&gt;</code>优先级要高于<code>&lt;body&gt;</code></li>
+<li>用$(function(){});封装的部分优先级低于直接写的</li>
+</ul>
+</blockquote>
+<p>上个例子就都明白了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.js&quot;&gt;&lt;/script&gt;　　// 最先加载</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;js/first.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;js/second.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var app = &#123;&#125;;　　// 紧跟着外联js运行</span><br><span class="line">    $(function()&#123;　　　　// 将会在document文件加载完毕后运行，一般写在这个js片段的尾部</span><br><span class="line">        function a1()&#123;</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        b();　　　　　　// 调用文档底部的b()函数成功</span><br><span class="line">    &#125;);</span><br><span class="line">    var dpp = &#123;&#125;;　　// 紧跟app执行</span><br><span class="line">    a1();　　　　　　　// 调用失败，a1()函数未定义</span><br><span class="line">    b();　　　　　　　 // 调用失败，b() 函数未定义，因为不是出在同一js代码段，b()函数在这里还没有定义。</span><br><span class="line">　　 a2();　　　　　　　　// 调用成功，同一个js代码段的函数无先后顺序</span><br><span class="line">    function a2()&#123;</span><br><span class="line">　　&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;js/body.js&quot;&gt;&lt;/script&gt;　　　　// 程序执行到这里将会加载外联js</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;　　　　　　　　　　　　　　　　　　　　 </span><br><span class="line">    a1();　　　　// 将会调用失败，函数未定义</span><br><span class="line">    a2();　　　　// 能调用成功，函数已经在前面的js片段中定义了</span><br><span class="line"></span><br><span class="line">　　 b();　　　　// 成功调用本js代码片段的函数</span><br><span class="line"></span><br><span class="line">function b()&#123; </span><br><span class="line"></span><br><span class="line">&#125; </span><br><span class="line">　　</span><br><span class="line">　　$(function()&#123;　　　// 这里面的代码将在前面的$(function()&#123;&#125;) 执行后再执行</span><br><span class="line">　　　　　// 代码</span><br><span class="line">　　&#125;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="js文件下载过程中页面的显示"><a href="#js文件下载过程中页面的显示" class="headerlink" title="js文件下载过程中页面的显示"></a>js文件下载过程中页面的显示</h2><h4 id="如果用的是内嵌js，当前-HTML-页面无从获知-js-是否会向-lt-p-gt-标签添加内容，或引入其他元素，或甚至移除该标签，所以会停止处理页面，先执行js，再继续解析和渲染页面，页面渲染完全被阻塞了。"><a href="#如果用的是内嵌js，当前-HTML-页面无从获知-js-是否会向-lt-p-gt-标签添加内容，或引入其他元素，或甚至移除该标签，所以会停止处理页面，先执行js，再继续解析和渲染页面，页面渲染完全被阻塞了。" class="headerlink" title="如果用的是内嵌js，当前 HTML 页面无从获知 js 是否会向&lt;p&gt; 标签添加内容，或引入其他元素，或甚至移除该标签，所以会停止处理页面，先执行js，再继续解析和渲染页面，页面渲染完全被阻塞了。"></a>如果用的是内嵌js，当前 HTML 页面无从获知 js 是否会向<code>&lt;p&gt;</code> 标签添加内容，或引入其他元素，或甚至移除该标签，所以会停止处理页面，先执行js，再继续解析和渲染页面，页面渲染完全被阻塞了。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Source Example&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">        document.write(&quot;Today is &quot; + (new Date()).toDateString());</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="如果将js放在-lt-head-gt-里，当浏览器解析到-lt-script-gt-标签（第-4-行）时，浏览器会停止解析其后的内容，而优先下载脚本文件，并执行其中的代码，这意味着，其后的-styles-css-样式文件和标签都无法被加载，由于-lt-body-gt-标签无法被加载，那么页面自然就无法渲染了。因此在该-JavaScript-代码完全执行完之前，页面都是一片空白。"><a href="#如果将js放在-lt-head-gt-里，当浏览器解析到-lt-script-gt-标签（第-4-行）时，浏览器会停止解析其后的内容，而优先下载脚本文件，并执行其中的代码，这意味着，其后的-styles-css-样式文件和标签都无法被加载，由于-lt-body-gt-标签无法被加载，那么页面自然就无法渲染了。因此在该-JavaScript-代码完全执行完之前，页面都是一片空白。" class="headerlink" title="如果将js放在&lt;head&gt;里，当浏览器解析到 &lt;script&gt; 标签（第 4 行）时，浏览器会停止解析其后的内容，而优先下载脚本文件，并执行其中的代码，这意味着，其后的 styles.css 样式文件和标签都无法被加载，由于&lt;body&gt;标签无法被加载，那么页面自然就无法渲染了。因此在该 JavaScript 代码完全执行完之前，页面都是一片空白。"></a>如果将js放在<code>&lt;head&gt;</code>里，当浏览器解析到 <code>&lt;script&gt;</code> 标签（第 4 行）时，浏览器会停止解析其后的内容，而优先下载脚本文件，并执行其中的代码，这意味着，其后的 styles.css 样式文件和<body>标签都无法被加载，由于<code>&lt;body&gt;</code>标签无法被加载，那么页面自然就无法渲染了。因此在该 JavaScript 代码完全执行完之前，页面都是一片空白。</body></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Source Example&lt;/title&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;script1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;script2.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;script3.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p&gt;Hello world!&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="如果将代码放在-lt-body-gt-的最后面，尽管脚本下载会阻塞另一个脚本，但是页面的大部分内容都已经下载完成并显示给了用户，因此页面下载不会显得太慢。这是优化-JavaScript-的首要规则：将脚本放在底部。"><a href="#如果将代码放在-lt-body-gt-的最后面，尽管脚本下载会阻塞另一个脚本，但是页面的大部分内容都已经下载完成并显示给了用户，因此页面下载不会显得太慢。这是优化-JavaScript-的首要规则：将脚本放在底部。" class="headerlink" title="如果将代码放在&lt;body&gt;的最后面，尽管脚本下载会阻塞另一个脚本，但是页面的大部分内容都已经下载完成并显示给了用户，因此页面下载不会显得太慢。这是优化 JavaScript 的首要规则：将脚本放在底部。"></a>如果将代码放在<code>&lt;body&gt;</code>的最后面，尽管脚本下载会阻塞另一个脚本，但是页面的大部分内容都已经下载完成并显示给了用户，因此页面下载不会显得太慢。这是优化 JavaScript 的首要规则：将脚本放在底部。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Source Example&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p&gt;Hello world!&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- Example of efficient script positioning --&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;script1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;script2.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;script3.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>欢迎您的指导！</p>
+<p>参考资料：<br><a href="http://www.cnblogs.com/zjfazc/archive/2012/08/17/2643611.html" target="_blank" rel="external">http://www.cnblogs.com/zjfazc/archive/2012/08/17/2643611.html</a><br><a href="https://www.ibm.com/developerworks/cn/web/1308_caiys_jsload/" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/web/1308_caiys_jsload/</a></p>
+
+</article>
+<button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+<script src="/js/js-lib.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/codeStyle/xcode.css" />
+  <script src="/js/highlight.pack.js" type="text/javascript"></script>
+
+
+  <div id="post__action">
+      <a id="icon-heart" class="fontello" href="javascript:donate();"></a>
+  </div>
+  <script src="/layer/layer.js" type="text/javascript"></script>
+  <script src="/layer/extend/layer.ext.js" type="text/javascript"></script>
+
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="null" data-title="js文档加载顺序" data-url="http://wangjiajing.com/2016/03/06/js文档加载顺序/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shuoit"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+        <p id="copyright">Copyright © 2016 WangJiajing</p>
+<!-- 百度统计 -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?a01595b492af7e4a793230e3d49ae638";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+      </div>
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">目录</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
+
+<title>启用Apache服务器的Gzip压缩</title>
+<meta name="author" content="wangjiajing">
+
+<meta name="keywords" content="undefined">
+
+<meta name="description " content="null">
+
+<link rel="icon" href="/images/favicon.png">
+
+<link rel="stylesheet" href="/css/style.css">
+
+  </head>
+  <body>
+    <aside id="sidebar">
+  <nav id="tags">
+    <a href="http://wangjiajing.com" id="avatar" style="background-image:url(/images/favicon.png)"></a>
+    <ul id="tags__ul">
+      <li id="pl__all" class="tags__li tags-btn active">All</li>
+      
+      <li id="hexo" class="tags__li tags-btn">hexo</li>
+      
+      <li id="html" class="tags__li tags-btn">html</li>
+      
+      <li id="javaScript" class="tags__li tags-btn">javaScript</li>
+      
+      <li id="Web" class="tags__li tags-btn">Web</li>
+      
+    </ul>
+    <div id="tags__bottom">
+      <a href="http://github.com/missMHWGO" rel="nofollow" id="icon-github" target="_blank" class="tags-btn fontello"></a>
+      <a href="http://shang.qq.com/wpa/qunwpa?idkey=6dc2741479cd031cc533fe5080081df44d0f9d95bc5083e8e1244c92f4aae218" rel="nofollow" id="icon-qq" target="_blank" class="tags-btn fontello"></a>
+    </div>
+  </nav> <!-- end #tags -->
+  <div id="posts-list">
+    <form action="#" id="search-form" target="_blank">
+      <a href="/" id="mobile-avatar" style="background-image:url(/images/favicon.png)"></a>
+      <input id="search-input" type="text" placeholder="上要撒得了娇，卖得了萌；下要码得了代码，装得了逼~" />
+    </form>
+    <nav id="pl__container">
+      
+            
+                <a class="hexo pl__all" href="/2016/03/05/hexo/" title="hexo">
+                  <span class="pl__circle"></span><span class="pl__title">hexo</span><span class="pl__date">2016-03-05</span>
+                </a>
+            
+      
+            
+                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
+                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
+                </a>
+            
+      
+            
+                <a class="javaScript pl__all" href="/2016/03/06/js文档加载顺序/" title="js文档加载顺序">
+                  <span class="pl__circle"></span><span class="pl__title">js文档加载顺序</span><span class="pl__date">2016-03-06</span>
+                </a>
+            
+      
+            
+                <a class="Web pl__all" href="/2016/03/08/web性能优化/" title="Web性能优化">
+                  <span class="pl__circle"></span><span class="pl__title">Web性能优化</span><span class="pl__date">2016-03-08</span>
+                </a>
+            
+                <a class="Web pl__all" href="/2016/03/10/判断PC端和网页端的方法/" title="判断PC端和网页端的方法">
+                  <span class="pl__circle"></span><span class="pl__title">判断PC端和网页端的方法</span><span class="pl__date">2016-03-10</span>
+                </a>
+            
+                <a class="Web pl__all" href="/2016/03/09/启用Apache服务器的Gzip压缩/" title="启用Apache服务器的Gzip压缩">
+                  <span class="pl__circle"></span><span class="pl__title">启用Apache服务器的Gzip压缩</span><span class="pl__date">2016-03-09</span>
+                </a>
+            
+                <a class="Web pl__all" href="/2016/03/11/响应式设计学习（一）/" title="响应式设计学习（一）">
+                  <span class="pl__circle"></span><span class="pl__title">响应式设计学习（一）</span><span class="pl__date">2016-03-11</span>
+                </a>
+            
+      
+    </nav>
+  </div> <!-- end #posts-list -->
+</aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        <article id="post__content">
+  <h1 id="post__title" data-identifier="2016-03-09">启用Apache服务器的Gzip压缩</h1>
+  <p><code>gzip</code> <code>Apache</code><br>http压缩，其实就是一种http编码方式，在编码的同时去除了一些冗余，降低了网络传输的字节数，加快了网页加载速度。</p>
+<h3 id="http压缩过程"><a href="#http压缩过程" class="headerlink" title="http压缩过程"></a>http压缩过程</h3><ul>
+<li>Web服务器接收到浏览器的HTTP请求后，检查浏览器是否支持HTTP压缩；</li>
+<li>如果支持，Web服务器检查请求文件的后缀名;</li>
+<li>如果请求文件是HTML、CSS等静态文件，Web服务器到压缩缓冲目录中检查是否已经存在请求文件的最新压缩文件；</li>
+<li>如果请求文件的压缩文件不存在，Web服务器向浏览器返回未压缩的请求文件，并在压缩缓冲目录中存放请求文件的压缩文件；</li>
+<li>如果请求文件的最新压缩文件已经存在，则直接返回请求文件的压缩文件。</li>
+<li>如果请求文件是动态文件，Web服务器动态压缩内容并返回浏览器，压缩内容不存放到压缩缓存目录中。</li>
+</ul>
+<h3 id="开启gzip压缩"><a href="#开启gzip压缩" class="headerlink" title="开启gzip压缩"></a>开启gzip压缩</h3><p>首先抓个包，判断浏览器是否支持gzip压缩。</p>
+<p><img src="http://7xqw4a.com1.z0.glb.clouddn.com/LWZNQSF7LV14%7D%5BVL%7D36T6AG.png" alt="抓包"></p>
+<p>可以看出，浏览器支持gzip和<a href="https://zh.wikipedia.org/wiki/DEFLATE" target="_blank" rel="external">deflate</a>压缩。</p>
+<blockquote>
+<p>gzip和deflate压缩的区别：<br>两者都是使用Gzip压缩算法，运作原理是类似的，但还是有些差别。</p>
+<ol>
+<li>安装它们的Apache Web服务器版本。Apache 1.x系列没有内建网页压缩技术，所以才去用额外的第三方mod_gzip 模块来执行压缩。而Apache 2.x官方在开发的时候，就把网页压缩考虑进去，内建了mod_deflate 这个模块，用以取代mod_gzip。</li>
+<li>第二个区别是压缩质量。mod_deflate 压缩速度略快而mod_gzip 的压缩比略高。一般默认情况下，mod_gzip 会比mod_deflate 多出4%~6％的压缩量。 </li>
+<li>对服务器资源的占用。 一般来说mod_gzip 对服务器CPU的占用要高一些。mod_deflate 是专门为确保服务器的性能而使用的一个压缩模块，mod_deflate 需要较少的资源来压缩文件。这意味着在高流量的服务器，使用mod_deflate 可能会比mod_gzip 加载速度更快。</li>
+</ol>
+</blockquote>
+<p><strong>好，下面就是如何开启啦~</strong></p>
+<ol>
+<li>首先，进入apache目录\bin\apache\apache2.4.9\modules,看是否有mod_deflate.so文件。若没有，则用 <code>/usr/local/apache2/bin/apxs -i -c -a mod_deflate.c</code> 命令安装并编译生成mod_deflate.so文件。</li>
+<li>打开httpd.conf文件，我的路径为\bin\apache\apache2.4.9\conf\httpd.conf，找到<code>LoadModule deflate_module modules/mod_deflate.so</code>这一行，如果前面有<code>#</code>号注释，干掉它！（如果你在第1步的时候安装使用参数<code>-a</code>是没有注释的，如果你用<code>-A</code>就是以注释的形式自动写入httpd.conf文件中）</li>
+<li>现在我们可以对文件压缩规则进行配置啦~</li>
+</ol>
+<ul>
+<li><p><strong>mod_gzip方式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ifModule mod_gzip.c&gt;</span><br><span class="line">mod_gzip_on Yes</span><br><span class="line">mod_gzip_dechunk Yes</span><br><span class="line">mod_gzip_item_include file \.(html?|txt|css|js|php|pl)$</span><br><span class="line">mod_gzip_item_include handler ^cgi-script$</span><br><span class="line">mod_gzip_item_include mime ^text/.*</span><br><span class="line">mod_gzip_item_include mime ^application/x-javascript.*</span><br><span class="line">mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*</span><br><span class="line">&lt;ifModule&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>mod_deflate方式</strong></p>
+</li>
+</ul>
+<p>严格匹配文件类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;ifmodule mod_deflate.c&gt;</span><br><span class="line">DeflateCompressionLevel 6 #压缩率, 6是建议值.</span><br><span class="line">AddOutputFilterByType DEFLATE text/plain</span><br><span class="line">AddOutputFilterByType DEFLATE text/html</span><br><span class="line">AddOutputFilterByType DEFLATE text/php</span><br><span class="line">AddOutputFilterByType DEFLATE text/xml</span><br><span class="line">AddOutputFilterByType DEFLATE text/css</span><br><span class="line">AddOutputFilterByType DEFLATE text/javascript</span><br><span class="line">AddOutputFilterByType DEFLATE application/xhtml+xml</span><br><span class="line">AddOutputFilterByType DEFLATE application/xml</span><br><span class="line">AddOutputFilterByType DEFLATE application/rss+xml</span><br><span class="line">AddOutputFilterByType DEFLATE application/atom_xml</span><br><span class="line">AddOutputFilterByType DEFLATE application/x-javascript</span><br><span class="line">AddOutputFilterByType DEFLATE application/x-httpd-php</span><br><span class="line">AddOutputFilterByType DEFLATE image/svg+xml</span><br><span class="line">AddOutputFilterByType DEFLATE image/gif image/png  image/jpe image/swf image/jpeg image/bmp</span><br><span class="line"># Don’t compress images and other  #排除不需要压缩的文件</span><br><span class="line">BrowserMatch ^Mozilla/4 gzip-only-text/html</span><br><span class="line">BrowserMatch ^Mozilla/4\.0[678] no-gzip</span><br><span class="line">BrowserMatch \bMSIE !no-gzip !gzip-only-text/html</span><br><span class="line">SetEnvIfNoCase Request_URI .(?:html|htm)$ no-gzip dont-varySetEnvIfNoCase </span><br><span class="line">#SetEnvIfNoCase Request_URI .(?:gif|jpe?g|png)$ no-gzip dont-vary</span><br><span class="line">SetEnvIfNoCase Request_URI .(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary</span><br><span class="line">SetEnvIfNoCase Request_URI .(?:pdf|doc)$ no-gzip dont-vary</span><br><span class="line">&lt;/ifmodule&gt;</span><br></pre></td></tr></table></figure></p>
+<p>过滤文件类型:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ifmodule mod_deflate.c&gt;</span><br><span class="line">DeflateCompressionLevel 6</span><br><span class="line">SetOutputFilter DEFLATE    #压缩所有文件</span><br><span class="line">#Don’t compress images and other  #过滤不需要压缩文件</span><br><span class="line">#SetEnvIfNoCase Request_URI .(?:gif|jpe?g|png)$ no-gzip dont-vary</span><br><span class="line">SetEnvIfNoCase Request_URI .(?:html|htm)$ no-gzip dont-vary</span><br><span class="line">SetEnvIfNoCase Request_URI .(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary</span><br><span class="line">SetEnvIfNoCase Request_URI .(?:pdf|doc)$ no-gzip dont-vary</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>现在我们来看看是否开启成功</strong><br>抓包：</p>
+<p><img src="http://7xqw4a.com1.z0.glb.clouddn.com/%7DIWDSIHDKXIDCVQLK105%5DN7.png" alt="抓包"></p>
+<p>发现内容是进行的gzip编码，成功啦~</p>
+<p>欢迎您的指导！</p>
+<p>参考资料：<br><a href="http://my.oschina.net/rasine/blog/343769#OSC_h1_5" target="_blank" rel="external">http://my.oschina.net/rasine/blog/343769#OSC_h1_5</a><br><a href="http://blog.chinaunix.net/uid-25266990-id-3479069.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-25266990-id-3479069.html</a><br><a href="http://www.cnblogs.com/TankXiao/archive/2012/11/13/2749055.html" target="_blank" rel="external">http://www.cnblogs.com/TankXiao/archive/2012/11/13/2749055.html</a></p>
+
+</article>
+<button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+<script src="/js/js-lib.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/codeStyle/xcode.css" />
+  <script src="/js/highlight.pack.js" type="text/javascript"></script>
+
+
+  <div id="post__action">
+      <a id="icon-heart" class="fontello" href="javascript:donate();"></a>
+  </div>
+  <script src="/layer/layer.js" type="text/javascript"></script>
+  <script src="/layer/extend/layer.ext.js" type="text/javascript"></script>
+
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="null" data-title="启用Apache服务器的Gzip压缩" data-url="http://wangjiajing.com/2016/03/09/启用Apache服务器的Gzip压缩/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shuoit"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+        <p id="copyright">Copyright © 2016 WangJiajing</p>
+<!-- 百度统计 -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?a01595b492af7e4a793230e3d49ae638";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+      </div>
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">目录</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

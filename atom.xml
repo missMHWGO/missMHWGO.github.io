@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>追梦翩跹</title>
+  <subtitle>wangjiajing&#39;s blog</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://wangjiajing.com/"/>
+  <updated>2016-03-11T07:23:44.528Z</updated>
+  <id>http://wangjiajing.com/</id>
+  
+  <author>
+    <name>wangjiajing</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>响应式设计学习（一）</title>
+    <link href="http://wangjiajing.com/2016/03/11/%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://wangjiajing.com/2016/03/11/响应式设计学习（一）/</id>
+    <published>2016-03-11T07:10:47.000Z</published>
+    <updated>2016-03-11T07:23:44.528Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;响应式设计&lt;/code&gt; &lt;code&gt;屏幕适配&lt;/code&gt;&lt;br&gt;之前我写过一篇通过识别PC端和移动端跳转到不同的页面来解决显示问题，可是这样就要同时维护好多个版本，既不能偷懒又不能装逼。那么问题来了，到底如何在不同终端设备上显示效果理想的网页？&lt;strong&gt;&lt;code&gt;响应式设计&lt;/code&gt;&lt;/strong&gt;就应运而生了~&lt;br&gt;其实讲人话嘛，就是让不同的网页能够根据设备大大小小的屏幕自动调整显示的样子，而没有做屏幕适配的网页需要通过自由缩放来看到整个页面的内容。阮一峰举了个&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《福尔摩斯历险记》六个主人公的头像&lt;/a&gt;的例子，十分生动形象，我就不赘述了。&lt;/p&gt;
+&lt;h2 id=&quot;移动端的viewport-视区&quot;&gt;&lt;a href=&quot;#移动端的viewport-视区&quot; class=&quot;headerlink&quot; title=&quot;移动端的viewport(视区)&quot;&gt;&lt;/a&gt;&lt;strong&gt;移动端的viewport(视区)&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;为了避免破坏没有针对手机浏览器优化的网页的布局，手机浏览器把页面放在一个虚拟的“窗口”中，通常这个虚拟的“窗口”比屏幕宽，用户可以通过平移和缩放来看网页的不同部分。这个“窗口”就叫&lt;code&gt;viewport&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;做法：&quot;&gt;&lt;a href=&quot;#做法：&quot; class=&quot;headerlink&quot; title=&quot;做法：&quot;&gt;&lt;/a&gt;&lt;strong&gt;做法：&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;步骤1.在头部加入如下代码：&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;上面这行代码的意思是，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1，即网页初始大小占屏幕面积的100%。用户缩放到的最大比例为1，即用户不能通过手势将屏幕放大。&lt;br&gt;还有其他的一些属性可供选择：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;属性&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;height&lt;/td&gt;
+&lt;td&gt;和 width 相对应，指定高度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;initial-scale&lt;/td&gt;
+&lt;td&gt;初始缩放比例，也即是当页面第一次 load 的时候缩放比例&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;maximum-scale&lt;/td&gt;
+&lt;td&gt;允许用户缩放到的最大比例&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;minimum-scale&lt;/td&gt;
+&lt;td&gt;允许用户缩放到的最小比例&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;user-scalable&lt;/td&gt;
+&lt;td&gt;用户是否可以手动缩放&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;步骤2. 布局上的注意事项&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不能使用像素指定绝对宽度，只能指定百分比或auto;&lt;/li&gt;
+&lt;li&gt;字体也不能使用绝对大小（px），只能使用相对大小（em），em可以理解为一个倍数关系。&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;body &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　font: normal 1em Helvetica, Arial, sans-serif;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;然而并不是所有浏览器都生而平等，在没人疼没人爱的IE下，1em会破坏弹性布局，解决方案为：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;body &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　font: normal 100% Helvetica, Arial, sans-serif;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;上面的代码指定，body字体大小是1em，而所有浏览器默认的字体大小都是16px，因此1em=16px。&lt;br&gt;如果你写：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　h1 &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　font-size: 1.5em; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;酱紫你就指定了&lt;code&gt;h1&lt;/code&gt;的大小为24px(16*1.5=24)。&lt;/p&gt;
+&lt;p&gt;可是，这样实现的效果并不是太好呢~所以绝大多数网站是用&lt;code&gt;Media Queries&lt;/code&gt;（媒体查询）做的。&lt;/p&gt;
+&lt;h2 id=&quot;Media-Queries（媒体查询）&quot;&gt;&lt;a href=&quot;#Media-Queries（媒体查询）&quot; class=&quot;headerlink&quot; title=&quot;Media Queries（媒体查询）&quot;&gt;&lt;/a&gt;&lt;strong&gt;Media Queries（媒体查询）&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Media Queries的意思就是自动探测查询浏览器屏幕的宽度，然后选择性地加载对应的文件。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 在html中用Media Queries&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    media=&amp;quot;screen and (max-device-width: 400px)&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　href=&amp;quot;tinyScreen.css&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;意思是，如果屏幕宽度小于400px，就加载tinyScreen.css文件。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　media=&amp;quot;screen and (min-width: 400px) and (max-device-width: 600px)&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　href=&amp;quot;smallScreen.css&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;意思是，如果屏幕宽度介于400px和600px之间，就加载smallScreen.css文件。&lt;br&gt;&lt;strong&gt;2. 在css中用Media Queries&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@media screen and (max-width : 320px)&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　.column &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　　　float: none;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　　　width:auto;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　#sidebar &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　　　display:none;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@media screen and (min-width: 800px) and (max-width: 1024px)&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;body&amp;#123;...&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;图片-视频自动缩放&quot;&gt;&lt;a href=&quot;#图片-视频自动缩放&quot; class=&quot;headerlink&quot; title=&quot;图片/视频自动缩放&quot;&gt;&lt;/a&gt;&lt;strong&gt;图片/视频自动缩放&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;对于大多数浏览器，只需要向css中写入一行代码：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;img, object &amp;#123; max-width: 100%;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;windows平台可能出现失真现象，解决方法：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;img &amp;#123; -ms-interpolation-mode: bicubic; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;欢迎您的指导！&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.iteye.com/topic/1135393&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.iteye.com/topic/1135393&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;响应式设计&lt;/code&gt; &lt;code&gt;屏幕适配&lt;/code&gt;&lt;br&gt;之前我写过一篇通过识别PC端和移动端跳转到不同的页面来解决显示问题，可是这样就要同时维护好多个版本，既不能偷懒又不能装逼。那么问题来了，到底如何在不同终端设备上显示效果理想的网页？&lt;strong
+    
+    </summary>
+    
+      <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
+    
+    
+      <category term="响应式设计 屏幕适配" scheme="http://wangjiajing.com/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1-%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>判断PC端和网页端的方法</title>
+    <link href="http://wangjiajing.com/2016/03/10/%E5%88%A4%E6%96%ADPC%E7%AB%AF%E5%92%8C%E7%BD%91%E9%A1%B5%E7%AB%AF%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <id>http://wangjiajing.com/2016/03/10/判断PC端和网页端的方法/</id>
+    <published>2016-03-10T15:18:35.000Z</published>
+    <updated>2016-03-11T07:15:36.313Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;javaScript&lt;/code&gt; &lt;code&gt;PC和移动端判断&lt;/code&gt;&lt;br&gt;网页在PC端和在移动端的显示效果肯定是不一样的，至少在目前来看，再大的手机屏幕貌似也拼不过PC吧~如果你想让自己的网页在移动端和PC端都能畅行无阻，首先肯定得把他两识别出来吧~&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			function IsPC()  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   var userAgentInfo = navigator.userAgent;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   var Agents = new Array(&amp;quot;Android&amp;quot;, &amp;quot;iPhone&amp;quot;, &amp;quot;SymbianOS&amp;quot;, &amp;quot;Windows Phone&amp;quot;, &amp;quot;iPad&amp;quot;, &amp;quot;iPod&amp;quot;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   var flag = true;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   for (var v = 0; v &amp;lt; Agents.length; v++) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				   if (userAgentInfo.indexOf(Agents[v]) &amp;gt; 0) &amp;#123;                           flag = false; break;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				   &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   return flag;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#125;            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			if (IsPC()== false)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			window.location.href=&amp;quot;./mobile_simple/index.html&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;其中，navigator对象包含所有浏览器的信息：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;属性&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;appCodeName&lt;/td&gt;
+&lt;td&gt;返回浏览器的代码名。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;appMinorVersion&lt;/td&gt;
+&lt;td&gt;返回浏览器的次级版本。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;appName&lt;/td&gt;
+&lt;td&gt;返回浏览器的名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;appVersion&lt;/td&gt;
+&lt;td&gt;返回浏览器的平台和版本信息。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;browserLanguage&lt;/td&gt;
+&lt;td&gt;返回当前浏览器的语言。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;cookieEnabled&lt;/td&gt;
+&lt;td&gt;返回指明浏览器中是否启用 cookie 的布尔值。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;cpuClass&lt;/td&gt;
+&lt;td&gt;返回浏览器系统的 CPU 等级。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;onLine&lt;/td&gt;
+&lt;td&gt;返回指明系统是否处于脱机模式的布尔值。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;platform&lt;/td&gt;
+&lt;td&gt;返回运行浏览器的操作系统平台。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;systemLanguage&lt;/td&gt;
+&lt;td&gt;返回 OS 使用的默认语言。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;userAgent&lt;/td&gt;
+&lt;td&gt;返回由客户机发送服务器的 user-agent 头部的值。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;userLanguage&lt;/td&gt;
+&lt;td&gt;返回 OS 的自然语言设置。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;举个例子：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(&amp;quot;&amp;lt;p&amp;gt;浏览器：&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(navigator.appName + &amp;quot;&amp;lt;/p&amp;gt;&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(&amp;quot;&amp;lt;p&amp;gt;浏览器版本：&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(navigator.appVersion + &amp;quot;&amp;lt;/p&amp;gt;&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(&amp;quot;&amp;lt;p&amp;gt;代码：&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(navigator.appCodeName + &amp;quot;&amp;lt;/p&amp;gt;&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(&amp;quot;&amp;lt;p&amp;gt;平台：&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(navigator.platform + &amp;quot;&amp;lt;/p&amp;gt;&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(&amp;quot;&amp;lt;p&amp;gt;Cookies 启用：&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(navigator.cookieEnabled + &amp;quot;&amp;lt;/p&amp;gt;&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(&amp;quot;&amp;lt;p&amp;gt;浏览器的用户代理报头：&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(navigator.userAgent + &amp;quot;&amp;lt;/p&amp;gt;&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;结果为：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;浏览器：Netscape&lt;br&gt;浏览器版本：5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36&lt;br&gt;代码：Mozilla&lt;br&gt;平台：Win32&lt;br&gt;Cookies 启用：true&lt;br&gt;浏览器的用户代理报头：Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;讲道理的话，酱紫的处理方法其实并不是很好，所以接下来我开始了响应式设计的学习~=。=~&lt;br&gt;欢迎您的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;javaScript&lt;/code&gt; &lt;code&gt;PC和移动端判断&lt;/code&gt;&lt;br&gt;网页在PC端和在移动端的显示效果肯定是不一样的，至少在目前来看，再大的手机屏幕貌似也拼不过PC吧~如果你想让自己的网页在移动端和PC端都能畅行无阻，首先肯定得把他两识别出来吧~
+    
+    </summary>
+    
+      <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
+    
+    
+      <category term="javaScript PC和移动端判断" scheme="http://wangjiajing.com/tags/javaScript-PC%E5%92%8C%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%88%A4%E6%96%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>启用Apache服务器的Gzip压缩</title>
+    <link href="http://wangjiajing.com/2016/03/09/%E5%90%AF%E7%94%A8Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84Gzip%E5%8E%8B%E7%BC%A9/"/>
+    <id>http://wangjiajing.com/2016/03/09/启用Apache服务器的Gzip压缩/</id>
+    <published>2016-03-09T08:37:32.000Z</published>
+    <updated>2016-03-09T13:32:43.507Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;gzip&lt;/code&gt; &lt;code&gt;Apache&lt;/code&gt;&lt;br&gt;http压缩，其实就是一种http编码方式，在编码的同时去除了一些冗余，降低了网络传输的字节数，加快了网页加载速度。&lt;/p&gt;
+&lt;h3 id=&quot;http压缩过程&quot;&gt;&lt;a href=&quot;#http压缩过程&quot; class=&quot;headerlink&quot; title=&quot;http压缩过程&quot;&gt;&lt;/a&gt;http压缩过程&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Web服务器接收到浏览器的HTTP请求后，检查浏览器是否支持HTTP压缩；&lt;/li&gt;
+&lt;li&gt;如果支持，Web服务器检查请求文件的后缀名;&lt;/li&gt;
+&lt;li&gt;如果请求文件是HTML、CSS等静态文件，Web服务器到压缩缓冲目录中检查是否已经存在请求文件的最新压缩文件；&lt;/li&gt;
+&lt;li&gt;如果请求文件的压缩文件不存在，Web服务器向浏览器返回未压缩的请求文件，并在压缩缓冲目录中存放请求文件的压缩文件；&lt;/li&gt;
+&lt;li&gt;如果请求文件的最新压缩文件已经存在，则直接返回请求文件的压缩文件。&lt;/li&gt;
+&lt;li&gt;如果请求文件是动态文件，Web服务器动态压缩内容并返回浏览器，压缩内容不存放到压缩缓存目录中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;开启gzip压缩&quot;&gt;&lt;a href=&quot;#开启gzip压缩&quot; class=&quot;headerlink&quot; title=&quot;开启gzip压缩&quot;&gt;&lt;/a&gt;开启gzip压缩&lt;/h3&gt;&lt;p&gt;首先抓个包，判断浏览器是否支持gzip压缩。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/LWZNQSF7LV14%7D%5BVL%7D36T6AG.png&quot; alt=&quot;抓包&quot;&gt;&lt;/p&gt;
+&lt;p&gt;可以看出，浏览器支持gzip和&lt;a href=&quot;https://zh.wikipedia.org/wiki/DEFLATE&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;deflate&lt;/a&gt;压缩。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;gzip和deflate压缩的区别：&lt;br&gt;两者都是使用Gzip压缩算法，运作原理是类似的，但还是有些差别。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装它们的Apache Web服务器版本。Apache 1.x系列没有内建网页压缩技术，所以才去用额外的第三方mod_gzip 模块来执行压缩。而Apache 2.x官方在开发的时候，就把网页压缩考虑进去，内建了mod_deflate 这个模块，用以取代mod_gzip。&lt;/li&gt;
+&lt;li&gt;第二个区别是压缩质量。mod_deflate 压缩速度略快而mod_gzip 的压缩比略高。一般默认情况下，mod_gzip 会比mod_deflate 多出4%~6％的压缩量。 &lt;/li&gt;
+&lt;li&gt;对服务器资源的占用。 一般来说mod_gzip 对服务器CPU的占用要高一些。mod_deflate 是专门为确保服务器的性能而使用的一个压缩模块，mod_deflate 需要较少的资源来压缩文件。这意味着在高流量的服务器，使用mod_deflate 可能会比mod_gzip 加载速度更快。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;好，下面就是如何开启啦~&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;首先，进入apache目录\bin\apache\apache2.4.9\modules,看是否有mod_deflate.so文件。若没有，则用 &lt;code&gt;/usr/local/apache2/bin/apxs -i -c -a mod_deflate.c&lt;/code&gt; 命令安装并编译生成mod_deflate.so文件。&lt;/li&gt;
+&lt;li&gt;打开httpd.conf文件，我的路径为\bin\apache\apache2.4.9\conf\httpd.conf，找到&lt;code&gt;LoadModule deflate_module modules/mod_deflate.so&lt;/code&gt;这一行，如果前面有&lt;code&gt;#&lt;/code&gt;号注释，干掉它！（如果你在第1步的时候安装使用参数&lt;code&gt;-a&lt;/code&gt;是没有注释的，如果你用&lt;code&gt;-A&lt;/code&gt;就是以注释的形式自动写入httpd.conf文件中）&lt;/li&gt;
+&lt;li&gt;现在我们可以对文件压缩规则进行配置啦~&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;mod_gzip方式&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;ifModule mod_gzip.c&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mod_gzip_on Yes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mod_gzip_dechunk Yes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mod_gzip_item_include file \.(html?|txt|css|js|php|pl)$&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mod_gzip_item_include handler ^cgi-script$&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mod_gzip_item_include mime ^text/.*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mod_gzip_item_include mime ^application/x-javascript.*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;ifModule&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;mod_deflate方式&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;严格匹配文件类型：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;ifmodule mod_deflate.c&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DeflateCompressionLevel 6 #压缩率, 6是建议值.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE text/plain&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE text/html&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE text/php&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE text/xml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE text/css&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE text/javascript&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE application/xhtml+xml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE application/xml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE application/rss+xml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE application/atom_xml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE application/x-javascript&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE application/x-httpd-php&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE image/svg+xml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE image/gif image/png  image/jpe image/swf image/jpeg image/bmp&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# Don’t compress images and other  #排除不需要压缩的文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;BrowserMatch ^Mozilla/4 gzip-only-text/html&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;BrowserMatch ^Mozilla/4\.0[678] no-gzip&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;BrowserMatch \bMSIE !no-gzip !gzip-only-text/html&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SetEnvIfNoCase Request_URI .(?:html|htm)$ no-gzip dont-varySetEnvIfNoCase &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#SetEnvIfNoCase Request_URI .(?:gif|jpe?g|png)$ no-gzip dont-vary&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SetEnvIfNoCase Request_URI .(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SetEnvIfNoCase Request_URI .(?:pdf|doc)$ no-gzip dont-vary&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/ifmodule&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;过滤文件类型:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;ifmodule mod_deflate.c&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DeflateCompressionLevel 6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SetOutputFilter DEFLATE    #压缩所有文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#Don’t compress images and other  #过滤不需要压缩文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#SetEnvIfNoCase Request_URI .(?:gif|jpe?g|png)$ no-gzip dont-vary&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SetEnvIfNoCase Request_URI .(?:html|htm)$ no-gzip dont-vary&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SetEnvIfNoCase Request_URI .(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SetEnvIfNoCase Request_URI .(?:pdf|doc)$ no-gzip dont-vary&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/IfModule&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;现在我们来看看是否开启成功&lt;/strong&gt;&lt;br&gt;抓包：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/%7DIWDSIHDKXIDCVQLK105%5DN7.png&quot; alt=&quot;抓包&quot;&gt;&lt;/p&gt;
+&lt;p&gt;发现内容是进行的gzip编码，成功啦~&lt;/p&gt;
+&lt;p&gt;欢迎您的指导！&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://my.oschina.net/rasine/blog/343769#OSC_h1_5&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://my.oschina.net/rasine/blog/343769#OSC_h1_5&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.chinaunix.net/uid-25266990-id-3479069.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.chinaunix.net/uid-25266990-id-3479069.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/TankXiao/archive/2012/11/13/2749055.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/TankXiao/archive/2012/11/13/2749055.html&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;gzip&lt;/code&gt; &lt;code&gt;Apache&lt;/code&gt;&lt;br&gt;http压缩，其实就是一种http编码方式，在编码的同时去除了一些冗余，降低了网络传输的字节数，加快了网页加载速度。&lt;/p&gt;
+&lt;h3 id=&quot;http压缩过程&quot;&gt;&lt;a href=&quot;#http压
+    
+    </summary>
+    
+      <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
+    
+    
+      <category term="gzip" scheme="http://wangjiajing.com/tags/gzip/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Web性能优化</title>
+    <link href="http://wangjiajing.com/2016/03/08/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <id>http://wangjiajing.com/2016/03/08/web性能优化/</id>
+    <published>2016-03-08T12:45:18.000Z</published>
+    <updated>2016-03-10T13:47:12.125Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;http协议&lt;/code&gt; &lt;code&gt;网络性能&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1秒钟能够加载出来的网页，如果你花了1.1秒，那么，对不起，you lose!&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;1-压缩源码。&quot;&gt;&lt;a href=&quot;#1-压缩源码。&quot; class=&quot;headerlink&quot; title=&quot;1. 压缩源码。&quot;&gt;&lt;/a&gt;&lt;strong&gt;1. 压缩源码。&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;所有代码删除不必要的注释、跳格符号、换行符号及无用的空格。js文件可以采用混淆（经过编码将变量和函数原命名改为毫无意义的命名，以防止他人窥视和窃取js源代码）压缩的方式，html、css文件进行普通压缩。&lt;br&gt;举个栗子：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/*示例代码*/		&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function echo(stringA,stringB)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	var hello=&amp;quot;你好&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	alert(&amp;quot;hello world&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;经过普通压缩后就变成了：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function echo(stringA,stringB)&amp;#123;var hello=&amp;quot;你好&amp;quot;;alert(&amp;quot;hello world&amp;quot;)&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这只是清除了一些冗余字符，但是如果经过Base62编码混淆压缩：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;eval(function(p,a,c,k,e,r)&amp;#123;e=String;if(!&amp;apos;&amp;apos;.replace(/^/,String))&amp;#123;while(c--)r[c]=k[c]||c;k=[function(e)&amp;#123;return r[e]&amp;#125;];e=function()&amp;#123;return&amp;apos;\\w+&amp;apos;&amp;#125;;c=1&amp;#125;;while(c--)if(k[c])p=p.replace(new RegExp(&amp;apos;\\b&amp;apos;+e(c)+&amp;apos;\\b&amp;apos;,&amp;apos;g&amp;apos;),k[c]);return p&amp;#125;(&amp;apos;1 2(3,4)&amp;#123;5 0=&amp;quot;你好&amp;quot;;6(&amp;quot;0 7&amp;quot;)&amp;#125;&amp;apos;,8,8,&amp;apos;hello|function|echo|stringA|stringB|var|alert|world&amp;apos;.split(&amp;apos;|&amp;apos;),0,&amp;#123;&amp;#125;))&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;真是连亲妈都不认识了= =&lt;/p&gt;
+&lt;h4 id=&quot;介绍一下Javascript主流压缩混淆工具：&quot;&gt;&lt;a href=&quot;#介绍一下Javascript主流压缩混淆工具：&quot; class=&quot;headerlink&quot; title=&quot;介绍一下Javascript主流压缩混淆工具：&quot;&gt;&lt;/a&gt;介绍一下Javascript主流压缩混淆工具：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;UglifyJS&lt;/li&gt;
+&lt;li&gt;Google Closure Compiler&lt;/li&gt;
+&lt;li&gt;Dean Edwards’ JS Packer&lt;/li&gt;
+&lt;li&gt;Douglas Crawford’s JS Min&lt;/li&gt;
+&lt;li&gt;YUI Compressor&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;据数据统计：&lt;br&gt;在压缩后的文件大小上，Closure Compiler压缩过的文件最小，JS Packer第二小；在压缩后代码的运行效率上，Google Closure Compiler在Advanced模式下运行效率优势非常明显，简直就是轻轻松松毫无压力碾压群雄，而且除了它，几乎任何压缩工具压缩后的代码的运行效率都比未压缩的代码要差。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/pandamicro/Javascript-Compressors-Analyse&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;数据统计来源&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-图片处理。&quot;&gt;&lt;a href=&quot;#2-图片处理。&quot; class=&quot;headerlink&quot; title=&quot;2. 图片处理。&quot;&gt;&lt;/a&gt;&lt;strong&gt;2. 图片处理。&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;图片格式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果图片颜色数较多则使用jpg格式，较少则使用png格式，如果能够通过服务器端判断浏览器支持WebP就使用&lt;a href=&quot;https://zh.wikipedia.org/wiki/WebP&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;WebP&lt;/a&gt;格式或SVG（矢量图）格式。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;图片压缩&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-合并静态资源，减少文件数量。&quot;&gt;&lt;a href=&quot;#3-合并静态资源，减少文件数量。&quot; class=&quot;headerlink&quot; title=&quot;3. 合并静态资源，减少文件数量。&quot;&gt;&lt;/a&gt;&lt;strong&gt;3. 合并静态资源，减少文件数量。&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;合并css、js文件，可以减少http连接请求数。有时使用 文本+css 可以代替纯文本图片，也可以减少http请求次数。&lt;/p&gt;
+&lt;h3 id=&quot;4-开启服务器端的Gzip压缩。&quot;&gt;&lt;a href=&quot;#4-开启服务器端的Gzip压缩。&quot; class=&quot;headerlink&quot; title=&quot;4. 开启服务器端的Gzip压缩。&quot;&gt;&lt;/a&gt;&lt;strong&gt;4. 开启服务器端的Gzip压缩。&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;文本资源压缩比率非常大。如何开启服务器端的Gzip压缩请看&lt;a href=&quot;http://wangjiajing.com/2016/03/09/%E5%90%AF%E7%94%A8Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84Gzip%E5%8E%8B%E7%BC%A9/&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;5-使用CDN。&quot;&gt;&lt;a href=&quot;#5-使用CDN。&quot; class=&quot;headerlink&quot; title=&quot;5. 使用CDN。&quot;&gt;&lt;/a&gt;&lt;strong&gt;5. 使用CDN。&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;或者使用第三方提供的静态资源地址。一方面增加并发下载量，另一方面能够和其他网站共享缓存。&lt;/p&gt;
+&lt;h3 id=&quot;6-使用缓存。&quot;&gt;&lt;a href=&quot;#6-使用缓存。&quot; class=&quot;headerlink&quot; title=&quot;6. 使用缓存。&quot;&gt;&lt;/a&gt;&lt;strong&gt;6. 使用缓存。&lt;/strong&gt;&lt;/h3&gt;&lt;h3 id=&quot;7-优化页面元素的加载顺序。&quot;&gt;&lt;a href=&quot;#7-优化页面元素的加载顺序。&quot; class=&quot;headerlink&quot; title=&quot;7. 优化页面元素的加载顺序。&quot;&gt;&lt;/a&gt;&lt;strong&gt;7. 优化页面元素的加载顺序。&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;将css放在页面头部，js放在页面底部，这样不会阻塞页面渲染，让页面出现长时间的空白。&lt;/p&gt;
+&lt;h3 id=&quot;8-使用合法的标签。&quot;&gt;&lt;a href=&quot;#8-使用合法的标签。&quot; class=&quot;headerlink&quot; title=&quot;8. 使用合法的标签。&quot;&gt;&lt;/a&gt;&lt;strong&gt;8. 使用合法的标签。&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;避免浏览器解析时做错误的操作，浪费时间。&lt;/p&gt;
+&lt;p&gt;欢迎您的指导！&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://developer.51cto.com/art/201311/418084.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://developer.51cto.com/art/201311/418084.htm&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://book.douban.com/subject/26598045/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Web全栈工程师的自我修养&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;http协议&lt;/code&gt; &lt;code&gt;网络性能&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1秒钟能够加载出来的网页，如果你花了1.1秒，那么，对不起，you lose!&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;1-压缩源码。&quot;&gt;&lt;a href=&quot;#1-压缩
+    
+    </summary>
+    
+      <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
+    
+    
+      <category term="http协议 网络性能" scheme="http://wangjiajing.com/tags/http%E5%8D%8F%E8%AE%AE-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>html页面加载解析流程</title>
+    <link href="http://wangjiajing.com/2016/03/07/html%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/"/>
+    <id>http://wangjiajing.com/2016/03/07/html页面加载解析流程/</id>
+    <published>2016-03-07T12:37:19.000Z</published>
+    <updated>2016-03-08T16:18:55.590Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;html&lt;/code&gt; &lt;code&gt;加载流程&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&quot;今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈-就记录下来啦&quot;&gt;&lt;a href=&quot;#今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈-就记录下来啦&quot; class=&quot;headerlink&quot; title=&quot;今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈~就记录下来啦~&quot;&gt;&lt;/a&gt;今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈~就记录下来啦~&lt;/h4&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;用户输入网址（假设是个html页面，并且是第一次访问），浏览器向服务器发出请求，服务器返回html文件；&lt;/li&gt;
+&lt;li&gt;浏览器开始载入html代码，发现&lt;code&gt;＜head＞&lt;/code&gt;标签内有一个&lt;code&gt;＜link＞&lt;/code&gt;标签引用外部CSS文件；&lt;/li&gt;
+&lt;li&gt;浏览器又发出CSS文件的请求，服务器返回这个CSS文件；&lt;br&gt;浏览器继续载入html中&lt;code&gt;＜body＞&lt;/code&gt;部分的代码，并且CSS文件已经拿到手了，可以开始渲染页面了；&lt;/li&gt;
+&lt;li&gt;浏览器在代码中发现一个&lt;code&gt;＜img＞&lt;/code&gt;标签引用了一张图片，向服务器发出请求。此时浏览器不会等到图片下载完，而是继续渲染后面的代码；&lt;br&gt;服务器返回图片文件，由于图片占用了一定面积，影响了后面段落的排布，因此浏览器需要回过头来重新渲染这部分代码；&lt;/li&gt;
+&lt;li&gt;浏览器发现了一个包含一行Javascript代码的&lt;code&gt;＜script＞&lt;/code&gt;标签，赶快运行它；&lt;/li&gt;
+&lt;li&gt;Javascript脚本执行了这条语句，它命令浏览器隐藏掉代码中的某个&lt;code&gt;＜div＞&lt;/code&gt;（style.display=”none”）。杯具啊，突然就少了这么一个元素，浏览器不得不重新渲染这部分代码；&lt;/li&gt;
+&lt;li&gt;终于等到了＜/html＞的到来，浏览器泪流满面……&lt;/li&gt;
+&lt;li&gt;等等，还没完，用户点了一下界面中的“换肤”按钮，Javascript让浏览器换了一下＜link＞标签的CSS路径；&lt;/li&gt;
+&lt;li&gt;浏览器召集了在座的各位&lt;code&gt;＜div＞&lt;/code&gt; &lt;code&gt;＜span＞&lt;/code&gt; &lt;code&gt;＜ul＞&lt;/code&gt; &lt;code&gt;＜li＞&lt;/code&gt;们，“大伙儿收拾收拾行李，咱得重新来过……”，浏览器向服务器请求了新的CSS文件，重新渲染页面。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;不过第一个步骤中写的貌似是以前服务器与浏览器传递数据的方式，现在一般不会直接返回一个html文件给前端，而是返回json格式的文本，将数据直接插入前端的DOM树中，在前端构成一个html文本。&lt;/p&gt;
+&lt;p&gt;欢迎您的指导！&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://developer.51cto.com/art/201311/418084.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://developer.51cto.com/art/201311/418084.htm&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;html&lt;/code&gt; &lt;code&gt;加载流程&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&quot;今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈-就记录下来啦&quot;&gt;&lt;a href=&quot;#今天看到一篇超级幽默的文章，讲的是html的加载渲染
+    
+    </summary>
+    
+      <category term="html" scheme="http://wangjiajing.com/categories/html/"/>
+    
+    
+      <category term="html 加载流程" scheme="http://wangjiajing.com/tags/html-%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js文档加载顺序</title>
+    <link href="http://wangjiajing.com/2016/03/06/js%E6%96%87%E6%A1%A3%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F/"/>
+    <id>http://wangjiajing.com/2016/03/06/js文档加载顺序/</id>
+    <published>2016-03-06T14:00:31.000Z</published>
+    <updated>2016-03-08T16:18:39.654Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;js&lt;/code&gt; &lt;code&gt;加载顺序&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;写东西的时候时常得不到想要的效果，debug的时候经常发现某些本应该赋了值的变量显示undefined，于是就去查找资料，顺便记录下来，真心感谢万能的网友^_^&lt;/p&gt;
+&lt;h2 id=&quot;常见的-lt-head-gt-和-lt-body-gt-标签中的js&quot;&gt;&lt;a href=&quot;#常见的-lt-head-gt-和-lt-body-gt-标签中的js&quot; class=&quot;headerlink&quot; title=&quot;常见的&amp;lt;head&amp;gt;和&amp;lt;body&amp;gt;标签中的js&quot;&gt;&lt;/a&gt;常见的&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;标签中的js&lt;/h2&gt;&lt;p&gt;概括来说：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;同一个js代码段的执行顺序是从上向下&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;优先级要高于&lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;用$(function(){});封装的部分优先级低于直接写的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上个例子就都明白了：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;js/jquery.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;　　// 最先加载&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;js/first.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;js/second.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var app = &amp;#123;&amp;#125;;　　// 紧跟着外联js运行&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    $(function()&amp;#123;　　　　// 将会在document文件加载完毕后运行，一般写在这个js片段的尾部&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        function a1()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        b();　　　　　　// 调用文档底部的b()函数成功&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var dpp = &amp;#123;&amp;#125;;　　// 紧跟app执行&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a1();　　　　　　　// 调用失败，a1()函数未定义&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b();　　　　　　　 // 调用失败，b() 函数未定义，因为不是出在同一js代码段，b()函数在这里还没有定义。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　 a2();　　　　　　　　// 调用成功，同一个js代码段的函数无先后顺序&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    function a2()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;js/body.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;　　　　// 程序执行到这里将会加载外联js&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;　　　　　　　　　　　　　　　　　　　　 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a1();　　　　// 将会调用失败，函数未定义&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a2();　　　　// 能调用成功，函数已经在前面的js片段中定义了&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　 b();　　　　// 成功调用本js代码片段的函数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function b()&amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　$(function()&amp;#123;　　　// 这里面的代码将在前面的$(function()&amp;#123;&amp;#125;) 执行后再执行&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　　// 代码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;js文件下载过程中页面的显示&quot;&gt;&lt;a href=&quot;#js文件下载过程中页面的显示&quot; class=&quot;headerlink&quot; title=&quot;js文件下载过程中页面的显示&quot;&gt;&lt;/a&gt;js文件下载过程中页面的显示&lt;/h2&gt;&lt;h4 id=&quot;如果用的是内嵌js，当前-HTML-页面无从获知-js-是否会向-lt-p-gt-标签添加内容，或引入其他元素，或甚至移除该标签，所以会停止处理页面，先执行js，再继续解析和渲染页面，页面渲染完全被阻塞了。&quot;&gt;&lt;a href=&quot;#如果用的是内嵌js，当前-HTML-页面无从获知-js-是否会向-lt-p-gt-标签添加内容，或引入其他元素，或甚至移除该标签，所以会停止处理页面，先执行js，再继续解析和渲染页面，页面渲染完全被阻塞了。&quot; class=&quot;headerlink&quot; title=&quot;如果用的是内嵌js，当前 HTML 页面无从获知 js 是否会向&amp;lt;p&amp;gt; 标签添加内容，或引入其他元素，或甚至移除该标签，所以会停止处理页面，先执行js，再继续解析和渲染页面，页面渲染完全被阻塞了。&quot;&gt;&lt;/a&gt;如果用的是内嵌js，当前 HTML 页面无从获知 js 是否会向&lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; 标签添加内容，或引入其他元素，或甚至移除该标签，所以会停止处理页面，先执行js，再继续解析和渲染页面，页面渲染完全被阻塞了。&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;title&amp;gt;Source Example&amp;lt;/title&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        document.write(&amp;quot;Today is &amp;quot; + (new Date()).toDateString());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;如果将js放在-lt-head-gt-里，当浏览器解析到-lt-script-gt-标签（第-4-行）时，浏览器会停止解析其后的内容，而优先下载脚本文件，并执行其中的代码，这意味着，其后的-styles-css-样式文件和标签都无法被加载，由于-lt-body-gt-标签无法被加载，那么页面自然就无法渲染了。因此在该-JavaScript-代码完全执行完之前，页面都是一片空白。&quot;&gt;&lt;a href=&quot;#如果将js放在-lt-head-gt-里，当浏览器解析到-lt-script-gt-标签（第-4-行）时，浏览器会停止解析其后的内容，而优先下载脚本文件，并执行其中的代码，这意味着，其后的-styles-css-样式文件和标签都无法被加载，由于-lt-body-gt-标签无法被加载，那么页面自然就无法渲染了。因此在该-JavaScript-代码完全执行完之前，页面都是一片空白。&quot; class=&quot;headerlink&quot; title=&quot;如果将js放在&amp;lt;head&amp;gt;里，当浏览器解析到 &amp;lt;script&amp;gt; 标签（第 4 行）时，浏览器会停止解析其后的内容，而优先下载脚本文件，并执行其中的代码，这意味着，其后的 styles.css 样式文件和标签都无法被加载，由于&amp;lt;body&amp;gt;标签无法被加载，那么页面自然就无法渲染了。因此在该 JavaScript 代码完全执行完之前，页面都是一片空白。&quot;&gt;&lt;/a&gt;如果将js放在&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;里，当浏览器解析到 &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; 标签（第 4 行）时，浏览器会停止解析其后的内容，而优先下载脚本文件，并执行其中的代码，这意味着，其后的 styles.css 样式文件和&lt;body&gt;标签都无法被加载，由于&lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;标签无法被加载，那么页面自然就无法渲染了。因此在该 JavaScript 代码完全执行完之前，页面都是一片空白。&lt;/body&gt;&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;title&amp;gt;Source Example&amp;lt;/title&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;script1.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;script2.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;script3.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;styles.css&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;p&amp;gt;Hello world!&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;如果将代码放在-lt-body-gt-的最后面，尽管脚本下载会阻塞另一个脚本，但是页面的大部分内容都已经下载完成并显示给了用户，因此页面下载不会显得太慢。这是优化-JavaScript-的首要规则：将脚本放在底部。&quot;&gt;&lt;a href=&quot;#如果将代码放在-lt-body-gt-的最后面，尽管脚本下载会阻塞另一个脚本，但是页面的大部分内容都已经下载完成并显示给了用户，因此页面下载不会显得太慢。这是优化-JavaScript-的首要规则：将脚本放在底部。&quot; class=&quot;headerlink&quot; title=&quot;如果将代码放在&amp;lt;body&amp;gt;的最后面，尽管脚本下载会阻塞另一个脚本，但是页面的大部分内容都已经下载完成并显示给了用户，因此页面下载不会显得太慢。这是优化 JavaScript 的首要规则：将脚本放在底部。&quot;&gt;&lt;/a&gt;如果将代码放在&lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;的最后面，尽管脚本下载会阻塞另一个脚本，但是页面的大部分内容都已经下载完成并显示给了用户，因此页面下载不会显得太慢。这是优化 JavaScript 的首要规则：将脚本放在底部。&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;title&amp;gt;Source Example&amp;lt;/title&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;styles.css&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;p&amp;gt;Hello world!&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;!-- Example of efficient script positioning --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;script1.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;script2.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;script3.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;欢迎您的指导！&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/zjfazc/archive/2012/08/17/2643611.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/zjfazc/archive/2012/08/17/2643611.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.ibm.com/developerworks/cn/web/1308_caiys_jsload/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.ibm.com/developerworks/cn/web/1308_caiys_jsload/&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;js&lt;/code&gt; &lt;code&gt;加载顺序&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;写东西的时候时常得不到想要的效果，debug的时候经常发现某些本应该赋了值的变量显示undefined，于是就去查找资料，顺便记录下来，真心感谢万能的网友^_^&lt;/p&gt;
+&lt;h2 id=&quot;常见的
+    
+    </summary>
+    
+      <category term="javaScript" scheme="http://wangjiajing.com/categories/javaScript/"/>
+    
+    
+      <category term="js 加载顺序" scheme="http://wangjiajing.com/tags/js-%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo</title>
+    <link href="http://wangjiajing.com/2016/03/05/hexo/"/>
+    <id>http://wangjiajing.com/2016/03/05/hexo/</id>
+    <published>2016-03-04T17:32:57.000Z</published>
+    <updated>2016-03-06T06:28:00.767Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;hexo&lt;/code&gt; &lt;code&gt;deploy&lt;/code&gt; &lt;code&gt;ssh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;hexo这种博客神器，不用简直对不起我强烈的&lt;strong&gt;装逼&lt;/strong&gt;欲望=。=&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;已经有前辈的blog将hexo的安装配置过程写得很详细了,我也是站在巨人的肩膀上享受着他人辛勤劳动的成果，十分&lt;strong&gt;感谢&lt;/strong&gt;^_^&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://augustus.wang/2016/02/28/hexo-experience/#more&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://augustus.wang/2016/02/28/hexo-experience/#more&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.isetsuna.com/categories/Hexo/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.isetsuna.com/categories/Hexo/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://ibruce.info/2013/11/22/hexo-your-blog/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://ibruce.info/2013/11/22/hexo-your-blog/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果以上资料还不能解决问题的话，请移步&lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo官方文档&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;部署&quot;&gt;&lt;a href=&quot;#部署&quot; class=&quot;headerlink&quot; title=&quot;部署&quot;&gt;&lt;/a&gt;部署&lt;/h2&gt;&lt;p&gt;之前的安装一路都是顺风顺水,可是部署到GitHub上时出bug了= =&lt;br&gt;我输完&lt;code&gt;hexo d&lt;/code&gt;后，弹出了一个错误框：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/RT3I7(14V8T5(4I%24L%7DS_YIR.png&quot; alt=&quot;错误框&quot;&gt;&lt;/p&gt;
+&lt;p&gt;看上面的提示信息我以为是公钥出了问题，用&lt;code&gt;ssh -T git@github.com&lt;/code&gt;命令测试提示：&lt;br&gt;&lt;strong&gt;&lt;em&gt;Hi username! You’ve successfully authenticated, but GitHub does not provide shell access Connection to github.com closed.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;到github上看，发现公钥是使用过的（钥匙图标左边有一个小绿点，如下图~）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/N98%40504Y8%25%7D~S~KQ6~\&quot; alt=&quot;公钥&quot;&gt;)M6T.png)&lt;/p&gt;
+&lt;p&gt;查找资料后，万能的网友说可能是ssh密钥的问题，解决方法是：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;鼠标右键 &amp;gt; Set TortoiseGit &amp;gt; Settings &amp;gt; Network &amp;gt; SSH Client 改为 C:\Program Files (x86)\Git\bin\ssh.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;或(主要看你的git装在哪个目录下)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;鼠标右键 &amp;gt; Set TortoiseGit &amp;gt; Settings &amp;gt; Network &amp;gt; SSH Client 改为 C:\Program Files\Git\usr\bin\ssh.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;即：将&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/%7BHL7492S5VNK9%60%24L%60Z97%40LJ.png&quot; alt=&quot;修改前&quot;&gt;&lt;/p&gt;
+&lt;p&gt;修改成：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/%60NR7BBJ32%24XS1RM30%7DKVWLF.png&quot; alt=&quot;修改后&quot;&gt;&lt;/p&gt;
+&lt;p&gt;但是修改后依旧报错= =&lt;/p&gt;
+&lt;p&gt;这时候万能的网友又说啦：可能是环境变量&lt;code&gt;GIT_SSH&lt;/code&gt;的问题，可以通过设置环境变量&lt;code&gt;GIT_SSH&lt;/code&gt;使得git找到你的ssh client，具体做法为：&lt;br&gt;在根目录&lt;code&gt;C:\Users\[user]&lt;/code&gt;下创建一个文件&lt;code&gt;.profile&lt;/code&gt;（有人的是&lt;code&gt;.bash_profile&lt;/code&gt;，因机器而异= =），里面写一句话：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;GIT_SSH=&amp;quot;/usr/bin/ssh.exe&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;保存后重新执行&lt;code&gt;hexo d&lt;/code&gt;命令部署，好，下面就是见证奇迹的时刻，你会发现不报错啦~=。=~&lt;/p&gt;
+&lt;p&gt;欢迎您的指导！&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://stackoverflow.com/questions/3431314/github-no-supported-authentication-methods-available&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github: No supported authentication methods available&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;hexo&lt;/code&gt; &lt;code&gt;deploy&lt;/code&gt; &lt;code&gt;ssh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;hexo这种博客神器，不用简直对不起我强烈的&lt;strong&gt;装逼&lt;/strong&gt;欲望=。=&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://wangjiajing.com/categories/hexo/"/>
+    
+    
+      <category term="hexo deploy ssh" scheme="http://wangjiajing.com/tags/hexo-deploy-ssh/"/>
+    
+  </entry>
+  
+</feed>

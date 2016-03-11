@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
+
+<title>html页面加载解析流程</title>
+<meta name="author" content="wangjiajing">
+
+<meta name="keywords" content="undefined">
+
+<meta name="description " content="null">
+
+<link rel="icon" href="/images/favicon.png">
+
+<link rel="stylesheet" href="/css/style.css">
+
+  </head>
+  <body>
+    <aside id="sidebar">
+  <nav id="tags">
+    <a href="http://wangjiajing.com" id="avatar" style="background-image:url(/images/favicon.png)"></a>
+    <ul id="tags__ul">
+      <li id="pl__all" class="tags__li tags-btn active">All</li>
+      
+      <li id="hexo" class="tags__li tags-btn">hexo</li>
+      
+      <li id="html" class="tags__li tags-btn">html</li>
+      
+      <li id="javaScript" class="tags__li tags-btn">javaScript</li>
+      
+      <li id="Web" class="tags__li tags-btn">Web</li>
+      
+    </ul>
+    <div id="tags__bottom">
+      <a href="http://github.com/missMHWGO" rel="nofollow" id="icon-github" target="_blank" class="tags-btn fontello"></a>
+      <a href="http://shang.qq.com/wpa/qunwpa?idkey=6dc2741479cd031cc533fe5080081df44d0f9d95bc5083e8e1244c92f4aae218" rel="nofollow" id="icon-qq" target="_blank" class="tags-btn fontello"></a>
+    </div>
+  </nav> <!-- end #tags -->
+  <div id="posts-list">
+    <form action="#" id="search-form" target="_blank">
+      <a href="/" id="mobile-avatar" style="background-image:url(/images/favicon.png)"></a>
+      <input id="search-input" type="text" placeholder="上要撒得了娇，卖得了萌；下要码得了代码，装得了逼~" />
+    </form>
+    <nav id="pl__container">
+      
+            
+                <a class="hexo pl__all" href="/2016/03/05/hexo/" title="hexo">
+                  <span class="pl__circle"></span><span class="pl__title">hexo</span><span class="pl__date">2016-03-05</span>
+                </a>
+            
+      
+            
+                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
+                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
+                </a>
+            
+      
+            
+                <a class="javaScript pl__all" href="/2016/03/06/js文档加载顺序/" title="js文档加载顺序">
+                  <span class="pl__circle"></span><span class="pl__title">js文档加载顺序</span><span class="pl__date">2016-03-06</span>
+                </a>
+            
+      
+            
+                <a class="Web pl__all" href="/2016/03/08/web性能优化/" title="Web性能优化">
+                  <span class="pl__circle"></span><span class="pl__title">Web性能优化</span><span class="pl__date">2016-03-08</span>
+                </a>
+            
+                <a class="Web pl__all" href="/2016/03/10/判断PC端和网页端的方法/" title="判断PC端和网页端的方法">
+                  <span class="pl__circle"></span><span class="pl__title">判断PC端和网页端的方法</span><span class="pl__date">2016-03-10</span>
+                </a>
+            
+                <a class="Web pl__all" href="/2016/03/09/启用Apache服务器的Gzip压缩/" title="启用Apache服务器的Gzip压缩">
+                  <span class="pl__circle"></span><span class="pl__title">启用Apache服务器的Gzip压缩</span><span class="pl__date">2016-03-09</span>
+                </a>
+            
+                <a class="Web pl__all" href="/2016/03/11/响应式设计学习（一）/" title="响应式设计学习（一）">
+                  <span class="pl__circle"></span><span class="pl__title">响应式设计学习（一）</span><span class="pl__date">2016-03-11</span>
+                </a>
+            
+      
+    </nav>
+  </div> <!-- end #posts-list -->
+</aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        <article id="post__content">
+  <h1 id="post__title" data-identifier="2016-03-07">html页面加载解析流程</h1>
+  <p><code>html</code> <code>加载流程</code></p>
+<h4 id="今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈-就记录下来啦"><a href="#今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈-就记录下来啦" class="headerlink" title="今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈~就记录下来啦~"></a>今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈~就记录下来啦~</h4><blockquote>
+<ol>
+<li>用户输入网址（假设是个html页面，并且是第一次访问），浏览器向服务器发出请求，服务器返回html文件；</li>
+<li>浏览器开始载入html代码，发现<code>＜head＞</code>标签内有一个<code>＜link＞</code>标签引用外部CSS文件；</li>
+<li>浏览器又发出CSS文件的请求，服务器返回这个CSS文件；<br>浏览器继续载入html中<code>＜body＞</code>部分的代码，并且CSS文件已经拿到手了，可以开始渲染页面了；</li>
+<li>浏览器在代码中发现一个<code>＜img＞</code>标签引用了一张图片，向服务器发出请求。此时浏览器不会等到图片下载完，而是继续渲染后面的代码；<br>服务器返回图片文件，由于图片占用了一定面积，影响了后面段落的排布，因此浏览器需要回过头来重新渲染这部分代码；</li>
+<li>浏览器发现了一个包含一行Javascript代码的<code>＜script＞</code>标签，赶快运行它；</li>
+<li>Javascript脚本执行了这条语句，它命令浏览器隐藏掉代码中的某个<code>＜div＞</code>（style.display=”none”）。杯具啊，突然就少了这么一个元素，浏览器不得不重新渲染这部分代码；</li>
+<li>终于等到了＜/html＞的到来，浏览器泪流满面……</li>
+<li>等等，还没完，用户点了一下界面中的“换肤”按钮，Javascript让浏览器换了一下＜link＞标签的CSS路径；</li>
+<li>浏览器召集了在座的各位<code>＜div＞</code> <code>＜span＞</code> <code>＜ul＞</code> <code>＜li＞</code>们，“大伙儿收拾收拾行李，咱得重新来过……”，浏览器向服务器请求了新的CSS文件，重新渲染页面。</li>
+</ol>
+</blockquote>
+<p>不过第一个步骤中写的貌似是以前服务器与浏览器传递数据的方式，现在一般不会直接返回一个html文件给前端，而是返回json格式的文本，将数据直接插入前端的DOM树中，在前端构成一个html文本。</p>
+<p>欢迎您的指导！</p>
+<p>参考资料：<br><a href="http://developer.51cto.com/art/201311/418084.htm" target="_blank" rel="external">http://developer.51cto.com/art/201311/418084.htm</a></p>
+
+</article>
+<button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+<script src="/js/js-lib.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/codeStyle/xcode.css" />
+  <script src="/js/highlight.pack.js" type="text/javascript"></script>
+
+
+  <div id="post__action">
+      <a id="icon-heart" class="fontello" href="javascript:donate();"></a>
+  </div>
+  <script src="/layer/layer.js" type="text/javascript"></script>
+  <script src="/layer/extend/layer.ext.js" type="text/javascript"></script>
+
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="null" data-title="html页面加载解析流程" data-url="http://wangjiajing.com/2016/03/07/html页面加载解析流程/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shuoit"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+        <p id="copyright">Copyright © 2016 WangJiajing</p>
+<!-- 百度统计 -->
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?a01595b492af7e4a793230e3d49ae638";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+      </div>
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">目录</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
