@@ -24,13 +24,13 @@
     <ul id="tags__ul">
       <li id="pl__all" class="tags__li tags-btn active">All</li>
       
-      <li id="hexo" class="tags__li tags-btn">hexo</li>
-      
-      <li id="html" class="tags__li tags-btn">html</li>
+      <li id="Web" class="tags__li tags-btn">Web</li>
       
       <li id="javaScript" class="tags__li tags-btn">javaScript</li>
       
-      <li id="Web" class="tags__li tags-btn">Web</li>
+      <li id="hexo" class="tags__li tags-btn">hexo</li>
+      
+      <li id="html" class="tags__li tags-btn">html</li>
       
     </ul>
     <div id="tags__bottom">
@@ -46,26 +46,12 @@
     <nav id="pl__container">
       
             
-                <a class="hexo pl__all" href="/2016/03/05/hexo/" title="hexo">
-                  <span class="pl__circle"></span><span class="pl__title">hexo</span><span class="pl__date">2016-03-05</span>
+                <a class="Web pl__all" href="/2016/03/08/web性能优化（一）：内容优化/" title="Web性能优化（一）：内容优化">
+                  <span class="pl__circle"></span><span class="pl__title">Web性能优化（一）：内容优化</span><span class="pl__date">2016-03-08</span>
                 </a>
             
-      
-            
-                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
-                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
-                </a>
-            
-      
-            
-                <a class="javaScript pl__all" href="/2016/03/06/js文档加载顺序/" title="js文档加载顺序">
-                  <span class="pl__circle"></span><span class="pl__title">js文档加载顺序</span><span class="pl__date">2016-03-06</span>
-                </a>
-            
-      
-            
-                <a class="Web pl__all" href="/2016/03/08/web性能优化/" title="Web性能优化">
-                  <span class="pl__circle"></span><span class="pl__title">Web性能优化</span><span class="pl__date">2016-03-08</span>
+                <a class="Web pl__all" href="/2016/03/14/web性能优化（二）：CDN加速/" title="web性能优化（二）：CDN加速&amp;&amp;传输协议优化">
+                  <span class="pl__circle"></span><span class="pl__title">web性能优化（二）：CDN加速&amp;&amp;传输协议优化</span><span class="pl__date">2016-03-14</span>
                 </a>
             
                 <a class="Web pl__all" href="/2016/03/10/判断PC端和网页端的方法/" title="判断PC端和网页端的方法">
@@ -81,6 +67,24 @@
                 </a>
             
       
+            
+                <a class="javaScript pl__all" href="/2016/03/06/js文档加载顺序/" title="js文档加载顺序">
+                  <span class="pl__circle"></span><span class="pl__title">js文档加载顺序</span><span class="pl__date">2016-03-06</span>
+                </a>
+            
+      
+            
+                <a class="hexo pl__all" href="/2016/03/05/hexo/" title="hexo">
+                  <span class="pl__circle"></span><span class="pl__title">hexo</span><span class="pl__date">2016-03-05</span>
+                </a>
+            
+      
+            
+                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
+                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
+                </a>
+            
+      
     </nav>
   </div> <!-- end #posts-list -->
 </aside> <!-- end #sidebar -->
@@ -89,59 +93,18 @@
       <div id="pjax">
         
     <article id="post__content">
-      <h1 id="post__title" data-identifier="2016-03-11">响应式设计学习（一）</h1>
-      <p><code>响应式设计</code> <code>屏幕适配</code><br>之前我写过一篇通过识别PC端和移动端跳转到不同的页面来解决显示问题，可是这样就要同时维护好多个版本，既不能偷懒又不能装逼。那么问题来了，到底如何在不同终端设备上显示效果理想的网页？<strong><code>响应式设计</code></strong>就应运而生了~<br>其实讲人话嘛，就是让不同的网页能够根据设备大大小小的屏幕自动调整显示的样子，而没有做屏幕适配的网页需要通过自由缩放来看到整个页面的内容。阮一峰举了个<a href="http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html" target="_blank" rel="external">《福尔摩斯历险记》六个主人公的头像</a>的例子，十分生动形象，我就不赘述了。</p>
-<h2 id="移动端的viewport-视区"><a href="#移动端的viewport-视区" class="headerlink" title="移动端的viewport(视区)"></a><strong>移动端的viewport(视区)</strong></h2><p>为了避免破坏没有针对手机浏览器优化的网页的布局，手机浏览器把页面放在一个虚拟的“窗口”中，通常这个虚拟的“窗口”比屏幕宽，用户可以通过平移和缩放来看网页的不同部分。这个“窗口”就叫<code>viewport</code>。</p>
-<h3 id="做法："><a href="#做法：" class="headerlink" title="做法："></a><strong>做法：</strong></h3><p><strong>步骤1.在头部加入如下代码：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″&gt;</span><br></pre></td></tr></table></figure></p>
-<p>上面这行代码的意思是，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1，即网页初始大小占屏幕面积的100%。用户缩放到的最大比例为1，即用户不能通过手势将屏幕放大。<br>还有其他的一些属性可供选择：</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>height</td>
-<td>和 width 相对应，指定高度</td>
-</tr>
-<tr>
-<td>initial-scale</td>
-<td>初始缩放比例，也即是当页面第一次 load 的时候缩放比例</td>
-</tr>
-<tr>
-<td>maximum-scale</td>
-<td>允许用户缩放到的最大比例</td>
-</tr>
-<tr>
-<td>minimum-scale</td>
-<td>允许用户缩放到的最小比例</td>
-</tr>
-<tr>
-<td>user-scalable</td>
-<td>用户是否可以手动缩放</td>
-</tr>
-</tbody>
-</table>
-<p><strong>步骤2. 布局上的注意事项</strong></p>
-<ol>
-<li>不能使用像素指定绝对宽度，只能指定百分比或auto;</li>
-<li>字体也不能使用绝对大小（px），只能使用相对大小（em），em可以理解为一个倍数关系。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">　　　　font: normal 1em Helvetica, Arial, sans-serif;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>然而并不是所有浏览器都生而平等，在没人疼没人爱的IE下，1em会破坏弹性布局，解决方案为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">　　　　font: normal 100% Helvetica, Arial, sans-serif;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
-<p>上面的代码指定，body字体大小是1em，而所有浏览器默认的字体大小都是16px，因此1em=16px。<br>如果你写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">　h1 &#123;</span><br><span class="line">　　　　font-size: 1.5em; </span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
-<p>酱紫你就指定了<code>h1</code>的大小为24px(16*1.5=24)。</p>
-<p>可是，这样实现的效果并不是太好呢~所以绝大多数网站是用<code>Media Queries</code>（媒体查询）做的。</p>
-<h2 id="Media-Queries（媒体查询）"><a href="#Media-Queries（媒体查询）" class="headerlink" title="Media Queries（媒体查询）"></a><strong>Media Queries（媒体查询）</strong></h2><p>Media Queries的意思就是自动探测查询浏览器屏幕的宽度，然后选择性地加载对应的文件。</p>
-<p><strong>1. 在html中用Media Queries</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</span><br><span class="line">    media=&quot;screen and (max-device-width: 400px)&quot;</span><br><span class="line">　　href=&quot;tinyScreen.css&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
-<p>意思是，如果屏幕宽度小于400px，就加载tinyScreen.css文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</span><br><span class="line">　　media=&quot;screen and (min-width: 400px) and (max-device-width: 600px)&quot;</span><br><span class="line">　　href=&quot;smallScreen.css&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
-<p>意思是，如果屏幕宽度介于400px和600px之间，就加载smallScreen.css文件。<br><strong>2. 在css中用Media Queries</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (max-width : 320px)&#123;  </span><br><span class="line">　.column &#123;</span><br><span class="line">　　　　　　float: none;</span><br><span class="line">　　　　　　width:auto;</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　　　#sidebar &#123;</span><br><span class="line">　　　　　　display:none;</span><br><span class="line">　　　　&#125;</span><br><span class="line">&#125;  </span><br><span class="line">@media screen and (min-width: 800px) and (max-width: 1024px)&#123;  </span><br><span class="line">body&#123;...&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="图片-视频自动缩放"><a href="#图片-视频自动缩放" class="headerlink" title="图片/视频自动缩放"></a><strong>图片/视频自动缩放</strong></h2><p>对于大多数浏览器，只需要向css中写入一行代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img, object &#123; max-width: 100%;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>windows平台可能出现失真现象，解决方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img &#123; -ms-interpolation-mode: bicubic; &#125;</span><br></pre></td></tr></table></figure></p>
+      <h1 id="post__title" data-identifier="2016-03-14">web性能优化（二）：CDN加速&amp;&amp;传输协议优化</h1>
+      <p><code>网络性能</code> <code>CDN</code> <code>HTTP</code> <code>TCP</code></p>
+<h2 id="CDN加速"><a href="#CDN加速" class="headerlink" title="CDN加速"></a>CDN加速</h2><p><strong>CDN</strong>的全称是Content Delivery Network，即内容分发网络。它是一种新型网络构建方式，通过在现有的互联网基础之上增加一层智能虚拟网络，这个网络由许多节点服务器构成且位于网络边缘，它能够实时根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上，该服务节点有大量缓存信息，由该缓存服务器直接响应用户请求，使得用户能够就近获取所需资源，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度。<br>CDN主要包括分布式存储、负载均衡、网络请求的重定向和内容管理等部分，涉及的技术主要有内容发布、内容路由、内容交换和性能管理。</p>
+<h2 id="传输协议优化"><a href="#传输协议优化" class="headerlink" title="传输协议优化"></a>传输协议优化</h2><p>都说HTTP是因特网的信使，而传输层绝大多数情况下用的是TCP协议，所以，一般的传输协议优化指的就是HTTP协议或TCP协议的优化。<br><strong>HTTP协议优化</strong><br>Google提出了<code>SPDY</code>协议，来替代广泛使用的HTTP 协议。SPDY 协议可以通过一个单独的 TCP 链接实现并行的多路复用流通信，并且支持优先级，优先传送最重要的 HTML 内容，而其他 JavaScript，视频等不是太重要的内容的优先级则会相对较低。<br><strong>TCP协议优化</strong><br>因为HTTP协议基于TCP协议，所以如果TCP协议得到了优化，HTTP协议也自然得到了优化。但是，这种TCP优化，要求优化后的协议与标准TCP协议兼容。主流的TCP优化技术包括：</p>
+<ul>
+<li>Zeta-TCP</li>
+<li>FastTCP</li>
+</ul>
+<p>由于Zeta-TCP和FastTCP是直接对TCP协议进行优化，所以其不仅仅对于HTTP协议有效，对于所有基于TCP的协议，例如FTP、SMTP、POP3或其它基于TCP的自定义协议，都有加速效果。<br>TCP协议优化对于静态内容和动态内容同样生效。</p>
 <p>欢迎您的指导！</p>
-<p>参考资料：<br><a href="http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html</a><br><a href="http://www.iteye.com/topic/1135393" target="_blank" rel="external">http://www.iteye.com/topic/1135393</a></p>
+<p>参考资料：</p>
+<p><a href="http://baike.baidu.com/view/2505965.htm" target="_blank" rel="external">http://baike.baidu.com/view/2505965.htm</a></p>
 
     </article>
     <button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
@@ -159,7 +122,7 @@
 
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="null" data-title="响应式设计学习（一）" data-url="http://wangjiajing.com/2016/03/11/响应式设计学习（一）/"></div>
+<div class="ds-thread" data-thread-key="null" data-title="web性能优化（二）：CDN加速&amp;&amp;传输协议优化" data-url="http://wangjiajing.com/2016/03/14/web性能优化（二）：CDN加速/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

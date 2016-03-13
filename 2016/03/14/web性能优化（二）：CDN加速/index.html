@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
 
-<title>Tag: javaScript PC和移动端判断</title>
+<title>web性能优化（二）：CDN加速&amp;&amp;传输协议优化</title>
 <meta name="author" content="wangjiajing">
 
 <meta name="keywords" content="undefined">
@@ -91,7 +91,51 @@
 
     <div id="post">
       <div id="pjax">
-        
+        <article id="post__content">
+  <h1 id="post__title" data-identifier="2016-03-14">web性能优化（二）：CDN加速&amp;&amp;传输协议优化</h1>
+  <p><code>网络性能</code> <code>CDN</code> <code>HTTP</code> <code>TCP</code></p>
+<h2 id="CDN加速"><a href="#CDN加速" class="headerlink" title="CDN加速"></a>CDN加速</h2><p><strong>CDN</strong>的全称是Content Delivery Network，即内容分发网络。它是一种新型网络构建方式，通过在现有的互联网基础之上增加一层智能虚拟网络，这个网络由许多节点服务器构成且位于网络边缘，它能够实时根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上，该服务节点有大量缓存信息，由该缓存服务器直接响应用户请求，使得用户能够就近获取所需资源，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度。<br>CDN主要包括分布式存储、负载均衡、网络请求的重定向和内容管理等部分，涉及的技术主要有内容发布、内容路由、内容交换和性能管理。</p>
+<h2 id="传输协议优化"><a href="#传输协议优化" class="headerlink" title="传输协议优化"></a>传输协议优化</h2><p>都说HTTP是因特网的信使，而传输层绝大多数情况下用的是TCP协议，所以，一般的传输协议优化指的就是HTTP协议或TCP协议的优化。<br><strong>HTTP协议优化</strong><br>Google提出了<code>SPDY</code>协议，来替代广泛使用的HTTP 协议。SPDY 协议可以通过一个单独的 TCP 链接实现并行的多路复用流通信，并且支持优先级，优先传送最重要的 HTML 内容，而其他 JavaScript，视频等不是太重要的内容的优先级则会相对较低。<br><strong>TCP协议优化</strong><br>因为HTTP协议基于TCP协议，所以如果TCP协议得到了优化，HTTP协议也自然得到了优化。但是，这种TCP优化，要求优化后的协议与标准TCP协议兼容。主流的TCP优化技术包括：</p>
+<ul>
+<li>Zeta-TCP</li>
+<li>FastTCP</li>
+</ul>
+<p>由于Zeta-TCP和FastTCP是直接对TCP协议进行优化，所以其不仅仅对于HTTP协议有效，对于所有基于TCP的协议，例如FTP、SMTP、POP3或其它基于TCP的自定义协议，都有加速效果。<br>TCP协议优化对于静态内容和动态内容同样生效。</p>
+<p>欢迎您的指导！</p>
+<p>参考资料：</p>
+<p><a href="http://baike.baidu.com/view/2505965.htm" target="_blank" rel="external">http://baike.baidu.com/view/2505965.htm</a></p>
+
+</article>
+<button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+<script src="/js/js-lib.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/codeStyle/xcode.css" />
+  <script src="/js/highlight.pack.js" type="text/javascript"></script>
+
+
+  <div id="post__action">
+      <a id="icon-heart" class="fontello" href="javascript:donate();"></a>
+  </div>
+  <script src="/layer/layer.js" type="text/javascript"></script>
+  <script src="/layer/extend/layer.ext.js" type="text/javascript"></script>
+
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="null" data-title="web性能优化（二）：CDN加速&amp;&amp;传输协议优化" data-url="http://wangjiajing.com/2016/03/14/web性能优化（二）：CDN加速/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shuoit"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
 
         <p id="copyright">Copyright © 2016 WangJiajing</p>
 <!-- 百度统计 -->

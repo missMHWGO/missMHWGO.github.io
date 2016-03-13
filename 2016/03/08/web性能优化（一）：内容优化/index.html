@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
 
-<title>Web性能优化</title>
+<title>Web性能优化（一）：内容优化</title>
 <meta name="author" content="wangjiajing">
 
 <meta name="keywords" content="undefined">
@@ -24,13 +24,13 @@
     <ul id="tags__ul">
       <li id="pl__all" class="tags__li tags-btn active">All</li>
       
-      <li id="hexo" class="tags__li tags-btn">hexo</li>
-      
-      <li id="html" class="tags__li tags-btn">html</li>
+      <li id="Web" class="tags__li tags-btn">Web</li>
       
       <li id="javaScript" class="tags__li tags-btn">javaScript</li>
       
-      <li id="Web" class="tags__li tags-btn">Web</li>
+      <li id="hexo" class="tags__li tags-btn">hexo</li>
+      
+      <li id="html" class="tags__li tags-btn">html</li>
       
     </ul>
     <div id="tags__bottom">
@@ -46,26 +46,12 @@
     <nav id="pl__container">
       
             
-                <a class="hexo pl__all" href="/2016/03/05/hexo/" title="hexo">
-                  <span class="pl__circle"></span><span class="pl__title">hexo</span><span class="pl__date">2016-03-05</span>
+                <a class="Web pl__all" href="/2016/03/08/web性能优化（一）：内容优化/" title="Web性能优化（一）：内容优化">
+                  <span class="pl__circle"></span><span class="pl__title">Web性能优化（一）：内容优化</span><span class="pl__date">2016-03-08</span>
                 </a>
             
-      
-            
-                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
-                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
-                </a>
-            
-      
-            
-                <a class="javaScript pl__all" href="/2016/03/06/js文档加载顺序/" title="js文档加载顺序">
-                  <span class="pl__circle"></span><span class="pl__title">js文档加载顺序</span><span class="pl__date">2016-03-06</span>
-                </a>
-            
-      
-            
-                <a class="Web pl__all" href="/2016/03/08/web性能优化/" title="Web性能优化">
-                  <span class="pl__circle"></span><span class="pl__title">Web性能优化</span><span class="pl__date">2016-03-08</span>
+                <a class="Web pl__all" href="/2016/03/14/web性能优化（二）：CDN加速/" title="web性能优化（二）：CDN加速&amp;&amp;传输协议优化">
+                  <span class="pl__circle"></span><span class="pl__title">web性能优化（二）：CDN加速&amp;&amp;传输协议优化</span><span class="pl__date">2016-03-14</span>
                 </a>
             
                 <a class="Web pl__all" href="/2016/03/10/判断PC端和网页端的方法/" title="判断PC端和网页端的方法">
@@ -81,6 +67,24 @@
                 </a>
             
       
+            
+                <a class="javaScript pl__all" href="/2016/03/06/js文档加载顺序/" title="js文档加载顺序">
+                  <span class="pl__circle"></span><span class="pl__title">js文档加载顺序</span><span class="pl__date">2016-03-06</span>
+                </a>
+            
+      
+            
+                <a class="hexo pl__all" href="/2016/03/05/hexo/" title="hexo">
+                  <span class="pl__circle"></span><span class="pl__title">hexo</span><span class="pl__date">2016-03-05</span>
+                </a>
+            
+      
+            
+                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
+                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
+                </a>
+            
+      
     </nav>
   </div> <!-- end #posts-list -->
 </aside> <!-- end #sidebar -->
@@ -88,7 +92,7 @@
     <div id="post">
       <div id="pjax">
         <article id="post__content">
-  <h1 id="post__title" data-identifier="2016-03-08">Web性能优化</h1>
+  <h1 id="post__title" data-identifier="2016-03-08">Web性能优化（一）：内容优化</h1>
   <p><code>http协议</code> <code>网络性能</code></p>
 <p><strong>1秒钟能够加载出来的网页，如果你花了1.1秒，那么，对不起，you lose!</strong></p>
 <h3 id="1-压缩源码。"><a href="#1-压缩源码。" class="headerlink" title="1. 压缩源码。"></a><strong>1. 压缩源码。</strong></h3><p>所有代码删除不必要的注释、跳格符号、换行符号及无用的空格。js文件可以采用混淆（经过编码将变量和函数原命名改为毫无意义的命名，以防止他人窥视和窃取js源代码）压缩的方式，html、css文件进行普通压缩。<br>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/*示例代码*/		</span><br><span class="line"></span><br><span class="line">function echo(stringA,stringB)&#123;</span><br><span class="line"></span><br><span class="line">	var hello=&quot;你好&quot;;</span><br><span class="line">	</span><br><span class="line">	alert(&quot;hello world&quot;);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -137,7 +141,7 @@
 
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="null" data-title="Web性能优化" data-url="http://wangjiajing.com/2016/03/08/web性能优化/"></div>
+<div class="ds-thread" data-thread-key="null" data-title="Web性能优化（一）：内容优化" data-url="http://wangjiajing.com/2016/03/08/web性能优化（一）：内容优化/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
