@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-03-13T17:10:18.926Z</updated>
+  <updated>2016-03-13T17:14:04.121Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -16,15 +16,19 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>web性能优化（二）：CDN加速&amp;&amp;传输协议优化</title>
-    <link href="http://wangjiajing.com/2016/03/14/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9ACDN%E5%8A%A0%E9%80%9F/"/>
-    <id>http://wangjiajing.com/2016/03/14/web性能优化（二）：CDN加速/</id>
+    <title>web性能优化（二）：CDN加速&amp;传输协议优化</title>
+    <link href="http://wangjiajing.com/2016/03/14/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9ACDN%E5%8A%A0%E9%80%9F&%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E4%BC%98%E5%8C%96/"/>
+    <id>http://wangjiajing.com/2016/03/14/web性能优化（二）：CDN加速&传输协议优化/</id>
     <published>2016-03-13T16:22:21.000Z</published>
-    <updated>2016-03-13T17:10:18.926Z</updated>
+    <updated>2016-03-13T17:14:04.121Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;网络性能&lt;/code&gt; &lt;code&gt;CDN&lt;/code&gt; &lt;code&gt;HTTP&lt;/code&gt; &lt;code&gt;TCP&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&quot;CDN加速&quot;&gt;&lt;a href=&quot;#CDN加速&quot; class=&quot;headerlink&quot; title=&quot;CDN加速&quot;&gt;&lt;/a&gt;CDN加速&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;CDN&lt;/strong&gt;的全称是Content Delivery Network，即内容分发网络。它是一种新型网络构建方式，通过在现有的互联网基础之上增加一层智能虚拟网络，这个网络由许多节点服务器构成且位于网络边缘，它能够实时根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上，该服务节点有大量缓存信息，由该缓存服务器直接响应用户请求，使得用户能够就近获取所需资源，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度。&lt;br&gt;CDN主要包括分布式存储、负载均衡、网络请求的重定向和内容管理等部分，涉及的技术主要有内容发布、内容路由、内容交换和性能管理。&lt;/p&gt;
-&lt;h2 id=&quot;传输协议优化&quot;&gt;&lt;a href=&quot;#传输协议优化&quot; class=&quot;headerlink&quot; title=&quot;传输协议优化&quot;&gt;&lt;/a&gt;传输协议优化&lt;/h2&gt;&lt;p&gt;都说HTTP是因特网的信使，而传输层绝大多数情况下用的是TCP协议，所以，一般的传输协议优化指的就是HTTP协议或TCP协议的优化。&lt;br&gt;&lt;strong&gt;HTTP协议优化&lt;/strong&gt;&lt;br&gt;Google提出了&lt;code&gt;SPDY&lt;/code&gt;协议，来替代广泛使用的HTTP 协议。SPDY 协议可以通过一个单独的 TCP 链接实现并行的多路复用流通信，并且支持优先级，优先传送最重要的 HTML 内容，而其他 JavaScript，视频等不是太重要的内容的优先级则会相对较低。&lt;br&gt;&lt;strong&gt;TCP协议优化&lt;/strong&gt;&lt;br&gt;因为HTTP协议基于TCP协议，所以如果TCP协议得到了优化，HTTP协议也自然得到了优化。但是，这种TCP优化，要求优化后的协议与标准TCP协议兼容。主流的TCP优化技术包括：&lt;/p&gt;
+&lt;h2 id=&quot;传输协议优化&quot;&gt;&lt;a href=&quot;#传输协议优化&quot; class=&quot;headerlink&quot; title=&quot;传输协议优化&quot;&gt;&lt;/a&gt;传输协议优化&lt;/h2&gt;&lt;p&gt;都说HTTP是因特网的信使，而传输层绝大多数情况下用的是TCP协议，所以，一般的传输协议优化指的就是HTTP协议或TCP协议的优化。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HTTP协议优化&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Google提出了&lt;code&gt;SPDY&lt;/code&gt;协议，来替代广泛使用的HTTP 协议。SPDY 协议可以通过一个单独的 TCP 链接实现并行的多路复用流通信，并且支持优先级，优先传送最重要的 HTML 内容，而其他 JavaScript，视频等不是太重要的内容的优先级则会相对较低。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TCP协议优化&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;因为HTTP协议基于TCP协议，所以如果TCP协议得到了优化，HTTP协议也自然得到了优化。但是，这种TCP优化，要求优化后的协议与标准TCP协议兼容。主流的TCP优化技术包括：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Zeta-TCP&lt;/li&gt;
 &lt;li&gt;FastTCP&lt;/li&gt;
