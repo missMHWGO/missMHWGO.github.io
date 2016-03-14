@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-03-13T17:14:04.121Z</updated>
+  <updated>2016-03-14T06:50:30.198Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://wangjiajing.com/2016/03/14/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9ACDN%E5%8A%A0%E9%80%9F&%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%E4%BC%98%E5%8C%96/"/>
     <id>http://wangjiajing.com/2016/03/14/web性能优化（二）：CDN加速&传输协议优化/</id>
     <published>2016-03-13T16:22:21.000Z</published>
-    <updated>2016-03-13T17:14:04.121Z</updated>
+    <updated>2016-03-14T06:50:30.198Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;网络性能&lt;/code&gt; &lt;code&gt;CDN&lt;/code&gt; &lt;code&gt;HTTP&lt;/code&gt; &lt;code&gt;TCP&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&quot;CDN加速&quot;&gt;&lt;a href=&quot;#CDN加速&quot; class=&quot;headerlink&quot; title=&quot;CDN加速&quot;&gt;&lt;/a&gt;CDN加速&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;CDN&lt;/strong&gt;的全称是Content Delivery Network，即内容分发网络。它是一种新型网络构建方式，通过在现有的互联网基础之上增加一层智能虚拟网络，这个网络由许多节点服务器构成且位于网络边缘，它能够实时根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上，该服务节点有大量缓存信息，由该缓存服务器直接响应用户请求，使得用户能够就近获取所需资源，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度。&lt;br&gt;CDN主要包括分布式存储、负载均衡、网络请求的重定向和内容管理等部分，涉及的技术主要有内容发布、内容路由、内容交换和性能管理。&lt;/p&gt;
@@ -41,8 +41,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;网络性能&lt;/code&gt; &lt;code&gt;CDN&lt;/code&gt; &lt;code&gt;HTTP&lt;/code&gt; &lt;code&gt;TCP&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&quot;CDN加速&quot;&gt;&lt;a href=&quot;#CDN加速&quot; class=&quot;headerlink&quot; title=&quot;CDN加速
+      本文主要介绍web性能优化的两种方式：CDN加速和传输协议优化。
     
     </summary>
     
@@ -58,7 +57,7 @@
     <link href="http://wangjiajing.com/2016/03/11/%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>http://wangjiajing.com/2016/03/11/响应式设计学习（一）/</id>
     <published>2016-03-11T07:10:47.000Z</published>
-    <updated>2016-03-11T07:23:44.528Z</updated>
+    <updated>2016-03-14T06:54:13.551Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;响应式设计&lt;/code&gt; &lt;code&gt;屏幕适配&lt;/code&gt;&lt;br&gt;之前我写过一篇通过识别PC端和移动端跳转到不同的页面来解决显示问题，可是这样就要同时维护好多个版本，既不能偷懒又不能装逼。那么问题来了，到底如何在不同终端设备上显示效果理想的网页？&lt;strong&gt;&lt;code&gt;响应式设计&lt;/code&gt;&lt;/strong&gt;就应运而生了~&lt;br&gt;其实讲人话嘛，就是让不同的网页能够根据设备大大小小的屏幕自动调整显示的样子，而没有做屏幕适配的网页需要通过自由缩放来看到整个页面的内容。阮一峰举了个&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《福尔摩斯历险记》六个主人公的头像&lt;/a&gt;的例子，十分生动形象，我就不赘述了。&lt;/p&gt;
 &lt;h2 id=&quot;移动端的viewport-视区&quot;&gt;&lt;a href=&quot;#移动端的viewport-视区&quot; class=&quot;headerlink&quot; title=&quot;移动端的viewport(视区)&quot;&gt;&lt;/a&gt;&lt;strong&gt;移动端的viewport(视区)&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;为了避免破坏没有针对手机浏览器优化的网页的布局，手机浏览器把页面放在一个虚拟的“窗口”中，通常这个虚拟的“窗口”比屏幕宽，用户可以通过平移和缩放来看网页的不同部分。这个“窗口”就叫&lt;code&gt;viewport&lt;/code&gt;。&lt;/p&gt;
@@ -116,7 +115,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;响应式设计&lt;/code&gt; &lt;code&gt;屏幕适配&lt;/code&gt;&lt;br&gt;之前我写过一篇通过识别PC端和移动端跳转到不同的页面来解决显示问题，可是这样就要同时维护好多个版本，既不能偷懒又不能装逼。那么问题来了，到底如何在不同终端设备上显示效果理想的网页？&lt;strong
+      到底如何在不同终端设备上显示效果理想的网页？**`响应式设计`**就应运而生了~
     
     </summary>
     
@@ -132,7 +131,7 @@
     <link href="http://wangjiajing.com/2016/03/10/%E5%88%A4%E6%96%ADPC%E7%AB%AF%E5%92%8C%E7%BD%91%E9%A1%B5%E7%AB%AF%E7%9A%84%E6%96%B9%E6%B3%95/"/>
     <id>http://wangjiajing.com/2016/03/10/判断PC端和网页端的方法/</id>
     <published>2016-03-10T15:18:35.000Z</published>
-    <updated>2016-03-11T07:15:36.313Z</updated>
+    <updated>2016-03-14T06:52:52.853Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;javaScript&lt;/code&gt; &lt;code&gt;PC和移动端判断&lt;/code&gt;&lt;br&gt;网页在PC端和在移动端的显示效果肯定是不一样的，至少在目前来看，再大的手机屏幕貌似也拼不过PC吧~如果你想让自己的网页在移动端和PC端都能畅行无阻，首先肯定得把他两识别出来吧~&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			function IsPC()  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   var userAgentInfo = navigator.userAgent;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   var Agents = new Array(&amp;quot;Android&amp;quot;, &amp;quot;iPhone&amp;quot;, &amp;quot;SymbianOS&amp;quot;, &amp;quot;Windows Phone&amp;quot;, &amp;quot;iPad&amp;quot;, &amp;quot;iPod&amp;quot;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   var flag = true;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   for (var v = 0; v &amp;lt; Agents.length; v++) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				   if (userAgentInfo.indexOf(Agents[v]) &amp;gt; 0) &amp;#123;                           flag = false; break;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				   &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   return flag;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#125;            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			if (IsPC()== false)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			window.location.href=&amp;quot;./mobile_simple/index.html&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -205,7 +204,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;javaScript&lt;/code&gt; &lt;code&gt;PC和移动端判断&lt;/code&gt;&lt;br&gt;网页在PC端和在移动端的显示效果肯定是不一样的，至少在目前来看，再大的手机屏幕貌似也拼不过PC吧~如果你想让自己的网页在移动端和PC端都能畅行无阻，首先肯定得把他两识别出来吧~
+      如果你想让自己的网页在移动端和PC端都能畅行无阻，首先肯定得把他两识别出来吧~
     
     </summary>
     
@@ -221,7 +220,7 @@
     <link href="http://wangjiajing.com/2016/03/09/%E5%90%AF%E7%94%A8Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84Gzip%E5%8E%8B%E7%BC%A9/"/>
     <id>http://wangjiajing.com/2016/03/09/启用Apache服务器的Gzip压缩/</id>
     <published>2016-03-09T08:37:32.000Z</published>
-    <updated>2016-03-09T13:32:43.507Z</updated>
+    <updated>2016-03-14T06:53:29.255Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;gzip&lt;/code&gt; &lt;code&gt;Apache&lt;/code&gt;&lt;br&gt;http压缩，其实就是一种http编码方式，在编码的同时去除了一些冗余，降低了网络传输的字节数，加快了网页加载速度。&lt;/p&gt;
 &lt;h3 id=&quot;http压缩过程&quot;&gt;&lt;a href=&quot;#http压缩过程&quot; class=&quot;headerlink&quot; title=&quot;http压缩过程&quot;&gt;&lt;/a&gt;http压缩过程&lt;/h3&gt;&lt;ul&gt;
@@ -267,15 +266,14 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;gzip&lt;/code&gt; &lt;code&gt;Apache&lt;/code&gt;&lt;br&gt;http压缩，其实就是一种http编码方式，在编码的同时去除了一些冗余，降低了网络传输的字节数，加快了网页加载速度。&lt;/p&gt;
-&lt;h3 id=&quot;http压缩过程&quot;&gt;&lt;a href=&quot;#http压
+      http压缩，其实就是一种http编码方式，在编码的同时去除了一些冗余，降低了网络传输的字节数，加快了网页加载速度。
     
     </summary>
     
       <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
     
     
-      <category term="gzip" scheme="http://wangjiajing.com/tags/gzip/"/>
+      <category term="gzip Apache" scheme="http://wangjiajing.com/tags/gzip-Apache/"/>
     
   </entry>
   
@@ -284,7 +282,7 @@
     <link href="http://wangjiajing.com/2016/03/08/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%86%85%E5%AE%B9%E4%BC%98%E5%8C%96/"/>
     <id>http://wangjiajing.com/2016/03/08/web性能优化（一）：内容优化/</id>
     <published>2016-03-08T12:45:18.000Z</published>
-    <updated>2016-03-13T16:35:22.922Z</updated>
+    <updated>2016-03-14T06:51:59.002Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;http协议&lt;/code&gt; &lt;code&gt;网络性能&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1秒钟能够加载出来的网页，如果你花了1.1秒，那么，对不起，you lose!&lt;/strong&gt;&lt;/p&gt;
@@ -321,9 +319,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;http协议&lt;/code&gt; &lt;code&gt;网络性能&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1秒钟能够加载出来的网页，如果你花了1.1秒，那么，对不起，you lose!&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&quot;1-压缩源码。&quot;&gt;&lt;a href=&quot;#1-压缩
+      本文主要介绍如何通过对web内容进行优化达到优化整个网页性能的目的。
     
     </summary>
     
@@ -339,7 +335,7 @@
     <link href="http://wangjiajing.com/2016/03/07/html%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/"/>
     <id>http://wangjiajing.com/2016/03/07/html页面加载解析流程/</id>
     <published>2016-03-07T12:37:19.000Z</published>
-    <updated>2016-03-08T16:18:55.590Z</updated>
+    <updated>2016-03-14T06:48:52.988Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;html&lt;/code&gt; &lt;code&gt;加载流程&lt;/code&gt;&lt;/p&gt;
 &lt;h4 id=&quot;今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈-就记录下来啦&quot;&gt;&lt;a href=&quot;#今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈-就记录下来啦&quot; class=&quot;headerlink&quot; title=&quot;今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈~就记录下来啦~&quot;&gt;&lt;/a&gt;今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈~就记录下来啦~&lt;/h4&gt;&lt;blockquote&gt;
@@ -362,8 +358,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;html&lt;/code&gt; &lt;code&gt;加载流程&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&quot;今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈-就记录下来啦&quot;&gt;&lt;a href=&quot;#今天看到一篇超级幽默的文章，讲的是html的加载渲染
+      今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈~就记录下来啦~
     
     </summary>
     
@@ -379,7 +374,7 @@
     <link href="http://wangjiajing.com/2016/03/06/js%E6%96%87%E6%A1%A3%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F/"/>
     <id>http://wangjiajing.com/2016/03/06/js文档加载顺序/</id>
     <published>2016-03-06T14:00:31.000Z</published>
-    <updated>2016-03-08T16:18:39.654Z</updated>
+    <updated>2016-03-14T06:49:35.113Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;js&lt;/code&gt; &lt;code&gt;加载顺序&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;写东西的时候时常得不到想要的效果，debug的时候经常发现某些本应该赋了值的变量显示undefined，于是就去查找资料，顺便记录下来，真心感谢万能的网友^_^&lt;/p&gt;
@@ -401,9 +396,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;js&lt;/code&gt; &lt;code&gt;加载顺序&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;写东西的时候时常得不到想要的效果，debug的时候经常发现某些本应该赋了值的变量显示undefined，于是就去查找资料，顺便记录下来，真心感谢万能的网友^_^&lt;/p&gt;
-&lt;h2 id=&quot;常见的
+      写东西的时候时常得不到想要的效果，debug的时候经常发现某些本应该赋了值的变量显示undefined，于是就去查找资料，顺便记录下来，真心感谢万能的网友^_^
     
     </summary>
     
@@ -419,7 +412,7 @@
     <link href="http://wangjiajing.com/2016/03/05/hexo/"/>
     <id>http://wangjiajing.com/2016/03/05/hexo/</id>
     <published>2016-03-04T17:32:57.000Z</published>
-    <updated>2016-03-06T06:28:00.767Z</updated>
+    <updated>2016-03-14T06:47:27.301Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;hexo&lt;/code&gt; &lt;code&gt;deploy&lt;/code&gt; &lt;code&gt;ssh&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;hexo这种博客神器，不用简直对不起我强烈的&lt;strong&gt;装逼&lt;/strong&gt;欲望=。=&lt;/p&gt;
@@ -458,9 +451,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;hexo&lt;/code&gt; &lt;code&gt;deploy&lt;/code&gt; &lt;code&gt;ssh&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;hexo这种博客神器，不用简直对不起我强烈的&lt;strong&gt;装逼&lt;/strong&gt;欲望=。=&lt;/p&gt;
-&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装
+      本文主要介绍使用hexo搭建个人博客时遇到的问题及解决过程。
     
     </summary>
     
