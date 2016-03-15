@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-03-15T08:40:53.630Z</updated>
+  <updated>2016-03-15T08:50:08.543Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://wangjiajing.com/2016/03/14/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASEO/"/>
     <id>http://wangjiajing.com/2016/03/14/web性能优化（三）：SEO/</id>
     <published>2016-03-14T15:53:49.000Z</published>
-    <updated>2016-03-15T08:40:53.630Z</updated>
+    <updated>2016-03-15T08:50:08.543Z</updated>
     
     <content type="html">&lt;h2 id=&quot;什么是SEO&quot;&gt;&lt;a href=&quot;#什么是SEO&quot; class=&quot;headerlink&quot; title=&quot;什么是SEO&quot;&gt;&lt;/a&gt;&lt;strong&gt;什么是SEO&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;SEO，Search Engine Optimization，中文意译为“搜索引擎优化”，指在了解搜索引擎自然排名机制的基础上，对网站进行内部及外部的调整优化，改进网站在搜索引擎中关键词的自然排名，获得更多的展现量，吸引更多目标客户点击访问网站，从而达到网络营销及品牌建设的目标。&lt;/p&gt;
 &lt;p&gt;站长应该将优化的重心和出发点主要放在用户体验上,因为用户才是网站内容的受众，是他们通过搜索引擎找到了这个网站。过度专注于用特定的技巧获取搜索引擎自然搜索结果的排名不一定能够达到期望的结果。讲人话，SEO就是让网站以最理想的姿态出现在搜索引擎的结果中，但是您的最终的服务对象是您的用户而不是搜索引擎。&lt;/p&gt;
@@ -60,7 +60,7 @@
 &lt;/ul&gt;
 &lt;p&gt;给用户的网站地图示例：&lt;br&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/~%40VX0%5D7ZWDBH27\&quot; alt=&quot;给用户的网站地图&quot;&gt;LXS7Z%24WQ.png)&lt;/p&gt;
 &lt;p&gt;给浏览器的网站地图示例：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;?xml version=“1.0” encoding=“UTF-8”?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;urlset xmlns=“http://www.sitemaps.org/schemas/sitemap/0.9”&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;loc&amp;gt;http://www.brandonsbaseballcards.com/&amp;lt;/loc&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;changefreq&amp;gt;daily&amp;lt;/changefreq&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;priority&amp;gt;0.8&amp;lt;/priority&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;loc&amp;gt;http://www.brandonsbaseballcards.com/news/&amp;lt;/loc&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;loc&amp;gt;http://www.brandonsbaseballcards.com/news/2008/&amp;lt;/loc&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;loc&amp;gt;http://www.brandonsbaseballcards.com/news/2009/&amp;lt;/loc&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;loc&amp;gt;http://www.brandonsbaseballcards.com/news/2010/&amp;lt;/loc&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/urlset&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;3-优化内容&quot;&gt;&lt;a href=&quot;#3-优化内容&quot; class=&quot;headerlink&quot; title=&quot;3. 优化内容&quot;&gt;&lt;/a&gt;&lt;strong&gt;3. 优化内容&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;我之前有些过关于网站内容的优化，这里做一点补充。&lt;/p&gt;
+&lt;h3 id=&quot;3-优化内容&quot;&gt;&lt;a href=&quot;#3-优化内容&quot; class=&quot;headerlink&quot; title=&quot;3. 优化内容&quot;&gt;&lt;/a&gt;&lt;strong&gt;3. 优化内容&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;我之前有些过关于网站内容的优化，这里作一点补充。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3.1 网站提供高质量的内容和服务&lt;/strong&gt;&lt;br&gt;毋庸置疑，高质量的内容和服务会吸引大量的访客，得到认可的网站会提高在用户和搜索引擎中的声望，为网站带来更多的流量，造成良性循环。&lt;/p&gt;
 &lt;p&gt;在撰写网站内容时，预先考虑到一种事物的多种名称叫法，通过综合使用各种具有潜在搜索可能性的关键词，兼顾到不同用户的搜索习惯，那么将会收到更好的效果。&lt;br&gt;提供高质量的内容和服务的参考方法：&lt;/p&gt;
 &lt;ul&gt;
@@ -88,8 +88,8 @@
 &lt;li&gt;垃圾留言。比如，您网站上的某条留言中有个链接，您并不明白该链接指向什么内容，如果是指向某些垃圾信息，您的网站声誉将会受到影响。如果使用了nofollow属性，则不会损坏您网站的声誉。&lt;/li&gt;
 &lt;li&gt;引用链接。您在某个地方引用了一个链接，那么您会将自己的pr传递给链接所指向的页面。如果您需要引用一个垃圾页面，使用nofollow属性则不会将您网站的声誉值传递给引用的页面。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;5-用正确的手段推广网站&quot;&gt;&lt;a href=&quot;#5-用正确的手段推广网站&quot; class=&quot;headerlink&quot; title=&quot;5. 用正确的手段推广网站&quot;&gt;&lt;/a&gt;&lt;strong&gt;5. 用正确的手段推广网站&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;5.1 通过增加反向链接&lt;/strong&gt;&lt;br&gt;链向您网站的链接需要逐渐积累，因为人们总是通过搜索或者其他途径认识到了您的网站，之后才会链接向它。&lt;br&gt;&lt;strong&gt;5.2 学会使用社交网络&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;5.3 充分利用网站站长工具&lt;/strong&gt;&lt;br&gt;利用网站站长工具可以让Googlebot的抓取更加的顺利。您还可以获取分析服务的数据包，对访问者如何与您的网站进行互动得出更详尽的分析，获取访问者主要是通过哪些关键词访问到自己的网站。&lt;/p&gt;
-&lt;p&gt;欢迎您的知道！&lt;/p&gt;
+&lt;h3 id=&quot;5-用正确的手段推广网站&quot;&gt;&lt;a href=&quot;#5-用正确的手段推广网站&quot; class=&quot;headerlink&quot; title=&quot;5. 用正确的手段推广网站&quot;&gt;&lt;/a&gt;&lt;strong&gt;5. 用正确的手段推广网站&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;5.1 通过增加反向链接&lt;/strong&gt;&lt;br&gt;链向您网站的链接需要逐渐积累，因为人们总是通过搜索或者其他途径认识到了您的网站，之后才会链接向它。&lt;br&gt;&lt;strong&gt;5.2 学会使用社交网络&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;5.3 充分利用网站站长工具&lt;/strong&gt;&lt;br&gt;利用网站站长工具可以让Googlebot的抓取更加顺利。您还可以获取分析服务的数据包，对访问者如何与您的网站进行互动得出更详尽的分析，获取访问者主要是通过哪些关键词访问到自己的网站。&lt;/p&gt;
+&lt;p&gt;欢迎您的指导！&lt;/p&gt;
 &lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://baike.baidu.com/view/1047.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;百度百科——SEO&lt;/a&gt;&lt;br&gt;google搜索引擎优化初学者指南&lt;/p&gt;
 </content>
     
