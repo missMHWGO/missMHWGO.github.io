@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-03-15T08:56:36.706Z</updated>
+  <updated>2016-03-17T16:33:05.666Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>uri与url</title>
+    <link href="http://wangjiajing.com/2016/03/17/uri%E4%B8%8Eurl/"/>
+    <id>http://wangjiajing.com/2016/03/17/uri与url/</id>
+    <published>2016-03-17T08:49:48.000Z</published>
+    <updated>2016-03-17T16:33:05.666Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;http&lt;/code&gt; &lt;code&gt;uri&lt;/code&gt; &lt;code&gt;url&lt;/code&gt;&lt;br&gt;URI和URL只差一个字母，很多时候都发现用URI的地方貌似也可以用URL= =，所以以前一直都很困惑他两有啥区别，现在有空就记录下来啦~&lt;/p&gt;
+&lt;h2 id=&quot;URI&quot;&gt;&lt;a href=&quot;#URI&quot; class=&quot;headerlink&quot; title=&quot;URI&quot;&gt;&lt;/a&gt;&lt;strong&gt;URI&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;&lt;br&gt;&lt;code&gt;URI&lt;/code&gt;，Uniform Resource Identifier，翻译成中文是&lt;code&gt;统一资源标识符&lt;/code&gt;，用于标识某一互联网资源名称的字符串，该种标识允许用户对网络中（一般指万维网）的资源通过特定的协议进行交互操作。&lt;br&gt;讲人话呢，其实就是每个Web服务器资源都有一个名字，这样客户端就可以准确找到它们了，而uri就是这些名字。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;类型&lt;/strong&gt;&lt;br&gt;URI包括&lt;code&gt;URL&lt;/code&gt;和&lt;code&gt;URN&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;URL&quot;&gt;&lt;a href=&quot;#URL&quot; class=&quot;headerlink&quot; title=&quot;URL&quot;&gt;&lt;/a&gt;&lt;strong&gt;URL&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;&lt;br&gt;URL，Uniform Resource Locator，翻译成中文是&lt;code&gt;统一资源定位符&lt;/code&gt;，是URI最常见的形式。URL 描述了一台特定服务器上某资源的特定位置，它们可以明确说明如何从一个精确、固定的位置获取资源。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语法&lt;/strong&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;scheme&amp;gt;://&amp;lt;user&amp;gt;:&amp;lt;password&amp;gt;@&amp;lt;host&amp;gt;:&amp;lt;port&amp;gt;/&amp;lt;path&amp;gt;;&amp;lt;params&amp;gt;?&amp;lt;query&amp;gt;#&amp;lt;frag&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其中：&lt;br&gt;&lt;code&gt;scheme&lt;/code&gt;：&lt;code&gt;方案&lt;/code&gt;，一般指协议，有http、https、ftp、mailto、telnet等等。&lt;br&gt;&lt;code&gt;user&lt;/code&gt;、&lt;code&gt;password&lt;/code&gt;：&lt;code&gt;用户名&lt;/code&gt;、&lt;code&gt;密码&lt;/code&gt;，一些服务器需要用户输入用户名和密码才允许访问。如ftp协议。&lt;br&gt;&lt;code&gt;host&lt;/code&gt;、&lt;code&gt;port&lt;/code&gt;：&lt;code&gt;主机&lt;/code&gt;、&lt;code&gt;端口&lt;/code&gt;，主机标识了因特网上能够访问资源的宿主机器，可用主机名（域名）或IP地址表示；端口标识了服务器正在监听的网络端口。&lt;br&gt;&lt;code&gt;path&lt;/code&gt;：&lt;code&gt;路径&lt;/code&gt;，说明了资源位于服务器的什么地方，通常像一个分级的文件系统路径。&lt;br&gt;&lt;code&gt;params&lt;/code&gt;：&lt;code&gt;参数&lt;/code&gt;，向应用程序提供它们所需的输入参数，以便正确地与服务器进行交互，形式为key-value键值对，由“;”将其与URL其余部分分隔开来。例子：ftp://prep.ai.mit.edu/pub/gnu;graphics=true&lt;br&gt;&lt;code&gt;query&lt;/code&gt;：&lt;code&gt;查询字符串&lt;/code&gt;，可以通过查询字符串来缩小所请求资源的范围，形式同样为key-value对，之间用字符“&amp;amp;”分隔，由“?”将其与URL其余部分分隔开来。例子：&lt;a href=&quot;http://localhost/test?id=123&amp;amp;show=false&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost/test?id=123&amp;amp;show=false&lt;/a&gt;&lt;br&gt;&lt;code&gt;frag&lt;/code&gt;：&lt;code&gt;片段&lt;/code&gt;，表示一个资源内部的片段，通常用于在页面中设置“书签”并实现页内跳转。片段出现在URL的最右边，前面有一个字符“#”。注意客户端不会将片段发送到服务器，浏览器从服务器获得整个资源后，会根据片段在页内跳转到指定的位置。&lt;/p&gt;
+&lt;h2 id=&quot;URN&quot;&gt;&lt;a href=&quot;#URN&quot; class=&quot;headerlink&quot; title=&quot;URN&quot;&gt;&lt;/a&gt;&lt;strong&gt;URN&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;&lt;br&gt;&lt;code&gt;统一资源名&lt;/code&gt;，作为特定内容的唯一名称使用，与目前的资源所在地无关。使用这些与位置无关的URN，就可以将资源四处搬移。通过URN，还可以用同一个名字通过多种网络访问协议来访问资源。为了更有效地工作， URN 需要一个支撑架构来解析资源的位置，而此类架构的缺乏也延缓了其被采用的进度。所以URN仍然处于试验阶段，还未大范围使用。 &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;&lt;br&gt;可以&lt;code&gt;urn:ietf:rfc:2141&lt;/code&gt;来命名因特网标准文档RFC2141，无论它位于何处。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;欢迎您的指导！&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;br&gt;《HTTP权威指南》&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      本文主要介绍uri和url的区别。
+    
+    </summary>
+    
+      <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
+    
+    
+      <category term="http url uri" scheme="http://wangjiajing.com/tags/http-url-uri/"/>
+    
+  </entry>
   
   <entry>
     <title>web性能优化（三）：SEO</title>
@@ -370,11 +409,11 @@
   </entry>
   
   <entry>
-    <title>Web性能优化（一）：内容优化</title>
+    <title>web性能优化（一）：内容优化</title>
     <link href="http://wangjiajing.com/2016/03/08/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%86%85%E5%AE%B9%E4%BC%98%E5%8C%96/"/>
     <id>http://wangjiajing.com/2016/03/08/web性能优化（一）：内容优化/</id>
     <published>2016-03-08T12:45:18.000Z</published>
-    <updated>2016-03-14T06:51:59.002Z</updated>
+    <updated>2016-03-15T09:00:01.314Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;http协议&lt;/code&gt; &lt;code&gt;网络性能&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1秒钟能够加载出来的网页，如果你花了1.1秒，那么，对不起，you lose!&lt;/strong&gt;&lt;/p&gt;
