@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-04-01T13:17:58.786Z</updated>
+  <updated>2016-04-01T13:18:50.988Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://wangjiajing.com/2016/04/01/json%E4%B8%8Ejs%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8E%A5%E6%94%B6%E9%97%AE%E9%A2%98/"/>
     <id>http://wangjiajing.com/2016/04/01/json与js数据的接收问题/</id>
     <published>2016-04-01T12:51:53.000Z</published>
-    <updated>2016-04-01T13:17:58.786Z</updated>
+    <updated>2016-04-01T13:18:50.988Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;json&lt;/code&gt; &lt;code&gt;javaScript&lt;/code&gt; &lt;code&gt;字符串&lt;/code&gt; &lt;code&gt;php&lt;/code&gt; &lt;code&gt;数据类型转换&lt;/code&gt;&lt;br&gt;以前在前后端传递数据的时候会出错，后来发现是字符串和json格式不匹配的问题，这里把他们之间转换的方法记录下来。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;应用场景：&lt;/strong&gt;前端js接收后台发来的数据。后台往往是将字符串发过来，需要在前端转化为json格式的对象。&lt;/p&gt;
@@ -42,6 +42,8 @@
       &lt;p&gt;&lt;code&gt;json&lt;/code&gt; &lt;code&gt;javaScript&lt;/code&gt; &lt;code&gt;字符串&lt;/code&gt; &lt;code&gt;php&lt;/code&gt; &lt;code&gt;数据类型转换&lt;/code&gt;&lt;br&gt;以前在前后端传递数据的时候会出错，后来发现是字符串和json格式不匹配的问题
     
     </summary>
+    
+      <category term="javaScript" scheme="http://wangjiajing.com/categories/javaScript/"/>
     
     
       <category term="json javaScript 字符串 php 数据类型转换" scheme="http://wangjiajing.com/tags/json-javaScript-%E5%AD%97%E7%AC%A6%E4%B8%B2-php-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/"/>
