@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-04-01T12:34:25.695Z</updated>
+  <updated>2016-04-01T13:17:58.786Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>json与js数据的接收问题</title>
+    <link href="http://wangjiajing.com/2016/04/01/json%E4%B8%8Ejs%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8E%A5%E6%94%B6%E9%97%AE%E9%A2%98/"/>
+    <id>http://wangjiajing.com/2016/04/01/json与js数据的接收问题/</id>
+    <published>2016-04-01T12:51:53.000Z</published>
+    <updated>2016-04-01T13:17:58.786Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;json&lt;/code&gt; &lt;code&gt;javaScript&lt;/code&gt; &lt;code&gt;字符串&lt;/code&gt; &lt;code&gt;php&lt;/code&gt; &lt;code&gt;数据类型转换&lt;/code&gt;&lt;br&gt;以前在前后端传递数据的时候会出错，后来发现是字符串和json格式不匹配的问题，这里把他们之间转换的方法记录下来。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;应用场景：&lt;/strong&gt;前端js接收后台发来的数据。后台往往是将字符串发过来，需要在前端转化为json格式的对象。&lt;/p&gt;
+&lt;h3 id=&quot;字符串转化为json&quot;&gt;&lt;a href=&quot;#字符串转化为json&quot; class=&quot;headerlink&quot; title=&quot;字符串转化为json:&quot;&gt;&lt;/a&gt;&lt;strong&gt;字符串转化为json:&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;1. JSON.parse(string);//要求给的string格式很严格&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;2. $.parseJSON(string);&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;3. eval(‘(‘ + string + ‘)’);&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function strToJson(str)&amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var json = (new Function(&amp;quot;return &amp;quot; + str))(); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return json; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;应用场景：&lt;/strong&gt;有些时候某些函数只接收字符串类型的数据，比如说用ajax的DELETE方法，里面传的data数据必须是字符串。&lt;/p&gt;
+&lt;h3 id=&quot;json转化为字符串：&quot;&gt;&lt;a href=&quot;#json转化为字符串：&quot; class=&quot;headerlink&quot; title=&quot;json转化为字符串：&quot;&gt;&lt;/a&gt;&lt;strong&gt;json转化为字符串：&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;JSON.stringify(obj);&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;php中字符转换：&quot;&gt;&lt;a href=&quot;#php中字符转换：&quot; class=&quot;headerlink&quot; title=&quot;php中字符转换：&quot;&gt;&lt;/a&gt;&lt;strong&gt;php中字符转换：&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;其实归根结底，需要字符转换的原因是数据在网络中是以字节流传输的。我们可以将字符编码成各种类型的字节流，比如ASCII码，UTF-8码等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;json_decode();&lt;/strong&gt;&lt;br&gt;接受一个 JSON 格式的字符串，返回值：&lt;br&gt;无参数TRUE: 返回一个js对象；&lt;br&gt;有参数TRUE: 返回一个数组。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;json_encode();&lt;/strong&gt;&lt;br&gt;接受几乎任何类型的变量，返回：&lt;br&gt;若不加参数JSON_FORCE_OBJECT： 返回json格式的字符串；&lt;br&gt;若加参数JSON_FORCE_OBJECT： 返回js对象。&lt;/p&gt;
+&lt;p&gt;欢迎您的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;json&lt;/code&gt; &lt;code&gt;javaScript&lt;/code&gt; &lt;code&gt;字符串&lt;/code&gt; &lt;code&gt;php&lt;/code&gt; &lt;code&gt;数据类型转换&lt;/code&gt;&lt;br&gt;以前在前后端传递数据的时候会出错，后来发现是字符串和json格式不匹配的问题
+    
+    </summary>
+    
+    
+      <category term="json javaScript 字符串 php 数据类型转换" scheme="http://wangjiajing.com/tags/json-javaScript-%E5%AD%97%E7%AC%A6%E4%B8%B2-php-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/"/>
+    
+  </entry>
   
   <entry>
     <title>谈谈字符编码</title>

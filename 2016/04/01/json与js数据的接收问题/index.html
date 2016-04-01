@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
 
-<title>判断PC端和网页端的方法</title>
+<title>json与js数据的接收问题</title>
 <meta name="author" content="wangjiajing">
 
-<meta name="keywords" content="javaScript PC和移动端判断">
+<meta name="keywords" content="json javaScript 字符串 php 数据类型转换">
 
-<meta name="description " content="如果你想让自己的网页在移动端和PC端都能畅行无阻，首先肯定得把他两识别出来吧~">
+<meta name="description " content="null">
 
 <link rel="icon" href="/images/favicon.png">
 
@@ -112,74 +112,20 @@
     <div id="post">
       <div id="pjax">
         <article id="post__content">
-  <h1 id="post__title" data-identifier="2016-03-10">判断PC端和网页端的方法</h1>
-  <p><code>javaScript</code> <code>PC和移动端判断</code><br>网页在PC端和在移动端的显示效果肯定是不一样的，至少在目前来看，再大的手机屏幕貌似也拼不过PC吧~如果你想让自己的网页在移动端和PC端都能畅行无阻，首先肯定得把他两识别出来吧~</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">			function IsPC()  </span><br><span class="line">			&#123;  </span><br><span class="line">			   var userAgentInfo = navigator.userAgent;  </span><br><span class="line">			   var Agents = new Array(&quot;Android&quot;, &quot;iPhone&quot;, &quot;SymbianOS&quot;, &quot;Windows Phone&quot;, &quot;iPad&quot;, &quot;iPod&quot;);  </span><br><span class="line">			   var flag = true;  </span><br><span class="line">			   for (var v = 0; v &lt; Agents.length; v++) &#123;  </span><br><span class="line">				   if (userAgentInfo.indexOf(Agents[v]) &gt; 0) &#123;                           flag = false; break;</span><br><span class="line">				   &#125;  </span><br><span class="line">			   &#125;  </span><br><span class="line">			   return flag;  </span><br><span class="line">			&#125;            </span><br><span class="line">			</span><br><span class="line">			if (IsPC()== false)</span><br><span class="line">			window.location.href=&quot;./mobile_simple/index.html&quot;;</span><br><span class="line">		&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>其中，navigator对象包含所有浏览器的信息：</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>appCodeName</td>
-<td>返回浏览器的代码名。</td>
-</tr>
-<tr>
-<td>appMinorVersion</td>
-<td>返回浏览器的次级版本。</td>
-</tr>
-<tr>
-<td>appName</td>
-<td>返回浏览器的名称。</td>
-</tr>
-<tr>
-<td>appVersion</td>
-<td>返回浏览器的平台和版本信息。</td>
-</tr>
-<tr>
-<td>browserLanguage</td>
-<td>返回当前浏览器的语言。</td>
-</tr>
-<tr>
-<td>cookieEnabled</td>
-<td>返回指明浏览器中是否启用 cookie 的布尔值。</td>
-</tr>
-<tr>
-<td>cpuClass</td>
-<td>返回浏览器系统的 CPU 等级。</td>
-</tr>
-<tr>
-<td>onLine</td>
-<td>返回指明系统是否处于脱机模式的布尔值。</td>
-</tr>
-<tr>
-<td>platform</td>
-<td>返回运行浏览器的操作系统平台。</td>
-</tr>
-<tr>
-<td>systemLanguage</td>
-<td>返回 OS 使用的默认语言。</td>
-</tr>
-<tr>
-<td>userAgent</td>
-<td>返回由客户机发送服务器的 user-agent 头部的值。</td>
-</tr>
-<tr>
-<td>userLanguage</td>
-<td>返回 OS 的自然语言设置。</td>
-</tr>
-</tbody>
-</table>
-<p>举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">document.write(&quot;&lt;p&gt;浏览器：&quot;)</span><br><span class="line">document.write(navigator.appName + &quot;&lt;/p&gt;&quot;)</span><br><span class="line"></span><br><span class="line">document.write(&quot;&lt;p&gt;浏览器版本：&quot;)</span><br><span class="line">document.write(navigator.appVersion + &quot;&lt;/p&gt;&quot;)</span><br><span class="line"></span><br><span class="line">document.write(&quot;&lt;p&gt;代码：&quot;)</span><br><span class="line">document.write(navigator.appCodeName + &quot;&lt;/p&gt;&quot;)</span><br><span class="line"></span><br><span class="line">document.write(&quot;&lt;p&gt;平台：&quot;)</span><br><span class="line">document.write(navigator.platform + &quot;&lt;/p&gt;&quot;)</span><br><span class="line"></span><br><span class="line">document.write(&quot;&lt;p&gt;Cookies 启用：&quot;)</span><br><span class="line">document.write(navigator.cookieEnabled + &quot;&lt;/p&gt;&quot;)</span><br><span class="line"></span><br><span class="line">document.write(&quot;&lt;p&gt;浏览器的用户代理报头：&quot;)</span><br><span class="line">document.write(navigator.userAgent + &quot;&lt;/p&gt;&quot;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p>结果为：</p>
-<blockquote>
-<p>浏览器：Netscape<br>浏览器版本：5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36<br>代码：Mozilla<br>平台：Win32<br>Cookies 启用：true<br>浏览器的用户代理报头：Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36</p>
-</blockquote>
-<p>讲道理的话，酱紫的处理方法其实并不是很好，所以接下来我开始了响应式设计的学习~=。=~<br>欢迎您的指导！</p>
+  <h1 id="post__title" data-identifier="2016-04-01">json与js数据的接收问题</h1>
+  <p><code>json</code> <code>javaScript</code> <code>字符串</code> <code>php</code> <code>数据类型转换</code><br>以前在前后端传递数据的时候会出错，后来发现是字符串和json格式不匹配的问题，这里把他们之间转换的方法记录下来。</p>
+<p><strong>应用场景：</strong>前端js接收后台发来的数据。后台往往是将字符串发过来，需要在前端转化为json格式的对象。</p>
+<h3 id="字符串转化为json"><a href="#字符串转化为json" class="headerlink" title="字符串转化为json:"></a><strong>字符串转化为json:</strong></h3><p><strong>1. JSON.parse(string);//要求给的string格式很严格</strong><br><strong>2. $.parseJSON(string);</strong><br><strong>3. eval(‘(‘ + string + ‘)’);</strong></p>
+<ol>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function strToJson(str)&#123; </span><br><span class="line">    var json = (new Function(&quot;return &quot; + str))(); </span><br><span class="line">    return json; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>应用场景：</strong>有些时候某些函数只接收字符串类型的数据，比如说用ajax的DELETE方法，里面传的data数据必须是字符串。</p>
+<h3 id="json转化为字符串："><a href="#json转化为字符串：" class="headerlink" title="json转化为字符串："></a><strong>json转化为字符串：</strong></h3><p><strong>JSON.stringify(obj);</strong></p>
+<h3 id="php中字符转换："><a href="#php中字符转换：" class="headerlink" title="php中字符转换："></a><strong>php中字符转换：</strong></h3><p>其实归根结底，需要字符转换的原因是数据在网络中是以字节流传输的。我们可以将字符编码成各种类型的字节流，比如ASCII码，UTF-8码等。</p>
+<p><strong>json_decode();</strong><br>接受一个 JSON 格式的字符串，返回值：<br>无参数TRUE: 返回一个js对象；<br>有参数TRUE: 返回一个数组。</p>
+<p><strong>json_encode();</strong><br>接受几乎任何类型的变量，返回：<br>若不加参数JSON_FORCE_OBJECT： 返回json格式的字符串；<br>若加参数JSON_FORCE_OBJECT： 返回js对象。</p>
+<p>欢迎您的指导！</p>
 
 </article>
 <button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
@@ -197,7 +143,7 @@
 
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="null" data-title="判断PC端和网页端的方法" data-url="http://wangjiajing.com/2016/03/10/判断PC端和网页端的方法/"></div>
+<div class="ds-thread" data-thread-key="null" data-title="json与js数据的接收问题" data-url="http://wangjiajing.com/2016/04/01/json与js数据的接收问题/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
