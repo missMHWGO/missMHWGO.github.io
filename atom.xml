@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-03-19T18:37:53.449Z</updated>
+  <updated>2016-04-01T12:31:29.169Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>谈谈字符编码</title>
+    <link href="http://wangjiajing.com/2016/03/28/%E8%B0%88%E8%B0%88%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/"/>
+    <id>http://wangjiajing.com/2016/03/28/谈谈字符编码/</id>
+    <published>2016-03-28T04:25:40.000Z</published>
+    <updated>2016-04-01T12:31:29.169Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;字符编码&lt;/code&gt; &lt;code&gt;ASCII码&lt;/code&gt; &lt;code&gt;Unicode&lt;/code&gt; &lt;code&gt;UTF-8&lt;/code&gt;&lt;br&gt;记得上学期种子讲坛有同学分享过字符编码的问题，但是当时有事没听，现在查阅了资料就记下来了。&lt;/p&gt;
+&lt;h3 id=&quot;ASCII码&quot;&gt;&lt;a href=&quot;#ASCII码&quot; class=&quot;headerlink&quot; title=&quot;ASCII码&quot;&gt;&lt;/a&gt;&lt;strong&gt;ASCII码&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;讲道理的话，这可是编码界的鼻祖了，人家用区区1个字节就能轻轻松松编码英文字母，并且编码各种常见字符也毫无压力。但是，ASCII码固然好，可是1个字节毕竟太小。比如如果要编码汉字的话，它就不够用了。于是中国人制定了&lt;code&gt;GB2312&lt;/code&gt;等来编码简体中文，用&lt;code&gt;Big5&lt;/code&gt;等来编码繁体中文。可是，其他国家的人也这么干，法语有法语的编码，俄语有俄语的编码，所以如果一篇文章中有多种语言，就会出现&lt;code&gt;乱码&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;Unicode编码&quot;&gt;&lt;a href=&quot;#Unicode编码&quot; class=&quot;headerlink&quot; title=&quot;Unicode编码&quot;&gt;&lt;/a&gt;&lt;strong&gt;Unicode编码&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;辣么怎么办呢？&lt;br&gt;我们先来分析一下出现问题的原因：因为多种编码方式的存在，同一编码可能对应不同的字符，这样才导致了乱码的产生。那如果字符和编码是一一对应关系呢？对，那么问题就解决了。这就是Unicode编码。&lt;br&gt;Unicode编码可以编码100多万个字符，是一个十分庞大的家族。它由1-4个字节表示，一般情况下使用2个字节，比较生僻的字符需要使用3个甚至4个字节,但是有ASCII码的字符的Unicode编码就是在ASCII码前加8bit的0。那么问题来了，如果是一个英文文本，它的存储空间就是原来的2倍，这个就略显奢侈了= =于是，传说中的&lt;code&gt;UTF-8&lt;/code&gt;编码就应运而生了。&lt;/p&gt;
+&lt;h3 id=&quot;UTF-8编码&quot;&gt;&lt;a href=&quot;#UTF-8编码&quot; class=&quot;headerlink&quot; title=&quot;UTF-8编码&quot;&gt;&lt;/a&gt;&lt;strong&gt;UTF-8编码&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;我认为，其实&lt;code&gt;utf-8&lt;/code&gt;是Unicode的一种特殊编码方式。&lt;br&gt;&lt;strong&gt;UTF-8编码规则&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果字符只需使用一个字节，那么它的第一位为0.&lt;/li&gt;
+&lt;li&gt;如果字符需要使用n(n&amp;gt;=2)字节，那么从左到右，它的第一个字节就有n个1，接下来那位是0；第二个及以后的字节，开头的两位是&lt;code&gt;10&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;剩下的位补0.&lt;br&gt;举个栗子：&lt;br&gt;|字符|ASCII|Unicode|UTF-8|&lt;br&gt;|—|—|—|—|&lt;br&gt;|A|01000001|00000000 01000001|01000001|&lt;br&gt;|励|无|01010010 10110001|11001010 10010101 10100010|&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;欢迎您的指导！&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阮一峰的字符编码笔记&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      本文主要介绍常见的字符编码。
+    
+    </summary>
+    
+      <category term="其他" scheme="http://wangjiajing.com/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="字符编码 ASCII码 Unicode UTF-8" scheme="http://wangjiajing.com/tags/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81-ASCII%E7%A0%81-Unicode-UTF-8/"/>
+    
+  </entry>
   
   <entry>
     <title>谈谈对网络爬虫的理解</title>
