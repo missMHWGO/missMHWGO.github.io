@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-04-10T10:50:32.719Z</updated>
+  <updated>2016-04-10T11:27:14.960Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -16,16 +16,48 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>解决浏览器访问不了云服务器外网的问题</title>
+    <link href="http://wangjiajing.com/2016/04/10/%E8%A7%A3%E5%86%B3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%96%E7%BD%91%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://wangjiajing.com/2016/04/10/解决浏览器访问不了云服务器外网的问题/</id>
+    <published>2016-04-10T10:55:11.000Z</published>
+    <updated>2016-04-10T11:27:14.960Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;nginx&lt;/code&gt; &lt;code&gt;云服务器&lt;/code&gt; &lt;code&gt;安全组&lt;/code&gt;&lt;br&gt;听说最近腾讯云推出了1块钱买服务器，域名免费的活动，真是心动不已啊~为了鼓励这样的良心商家，我也决定去买一个~=。=~&lt;br&gt;买完下了nginx，但是在服务器访问不了= =&lt;/p&gt;
+&lt;h3 id=&quot;探索过程&quot;&gt;&lt;a href=&quot;#探索过程&quot; class=&quot;headerlink&quot; title=&quot;探索过程&quot;&gt;&lt;/a&gt;&lt;strong&gt;探索过程&lt;/strong&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;用&lt;code&gt;# nginx -t&lt;/code&gt;测试一下，成功（说明nginx配置成功）&lt;/li&gt;
+&lt;li&gt;用&lt;code&gt;# wget http://127.0.0.1&lt;/code&gt;，成功（说明nginx正常工作）&lt;/li&gt;
+&lt;li&gt;ping服务器外网，成功（本机可以正常上网，并且是可以连接到服务器的）&lt;/li&gt;
+&lt;li&gt;用ssh连接，成功 = = （简直是在逗我，怎样都是可以连接的嘛。。。为啥偏偏浏览器访问不了，讲道理的话80端也没有被占用啊。。。）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;&lt;strong&gt;解决办法&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;到&lt;code&gt;安全组&lt;/code&gt;里把服务器加入&lt;code&gt;默认安全组放通全部端口&lt;/code&gt;就行了（买的时候随手的惩罚），当然这样存在安全隐患，我现在只知道设个强大点的密码，文件系统的命名尽量不要用默认名酱紫的机制，你造的话要悄悄告诉我哦~&lt;/p&gt;
+&lt;h3 id=&quot;思考解决原理&quot;&gt;&lt;a href=&quot;#思考解决原理&quot; class=&quot;headerlink&quot; title=&quot;思考解决原理&quot;&gt;&lt;/a&gt;&lt;strong&gt;思考解决原理&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;其实服务器是配置好了的，但由于我在买服务器的时候选的是&lt;code&gt;Linux安全组放通22端口&lt;/code&gt;，所以服务器就只有22端口开放了，其他的端口都不监听了（我是酱紫理解的），所以我用ssh是可以连接的，用浏览器就跪了，因为80端口不干活啦~&lt;/p&gt;
+&lt;p&gt;果然读书少就自己把自己坑了。。。= =&lt;/p&gt;
+&lt;p&gt;欢迎你的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      本文讲述因为安全组使得浏览器访问不了服务器。
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://wangjiajing.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="nginx 腾讯云 云服务器 安全组 ssh 浏览器" scheme="http://wangjiajing.com/tags/nginx-%E8%85%BE%E8%AE%AF%E4%BA%91-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E5%AE%89%E5%85%A8%E7%BB%84-ssh-%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>解决使用SAE配置微信接口失败问题</title>
     <link href="http://wangjiajing.com/2016/04/10/%E8%A7%A3%E5%86%B3%E4%BD%BF%E7%94%A8SAE%E9%85%8D%E7%BD%AE%E5%BE%AE%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/"/>
     <id>http://wangjiajing.com/2016/04/10/解决使用SAE配置微信接口失败问题/</id>
     <published>2016-04-10T10:23:36.000Z</published>
-    <updated>2016-04-10T10:50:32.719Z</updated>
+    <updated>2016-04-10T11:27:35.973Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;SAE&lt;/code&gt; &lt;code&gt;服务器&lt;/code&gt; &lt;code&gt;微信&lt;/code&gt;&lt;br&gt;最近心血来潮，就去注册了一个SAE，打算用作微信开发的服务器。结果配置接口的时候一直提示“配置失败”，查找资料终于解决这个坑。&lt;/p&gt;
 &lt;p&gt;配置原理微信官方文档已经写得很清楚了，这里不再赘述。但是我输出几个变量的值进行比较，发现没有任何问题，代码可以执行到返回&lt;code&gt;$echoStr&lt;/code&gt;变量。于是我就郁闷了，代码执行得很乖啊~完全按照微信官方文档要求的步骤在跑啊~后来想了一下，代码在我服务器上跑得很好，但我无法知道微信后台接收到的数据到底是什么啊，所以我不能确定&lt;code&gt;$echoStr&lt;/code&gt;变量返回的数据是否正确。&lt;/p&gt;
-&lt;p&gt;###&lt;strong&gt;解决方法&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;在返回&lt;code&gt;$echoStr&lt;/code&gt;前加上&lt;code&gt;header(&amp;#39;content-type:text&amp;#39;);&lt;/code&gt;就好啦~&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;if($this-&amp;gt;checkSignature())&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            header(&amp;apos;content-type:text&amp;apos;);//加上这句&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        	echo $echoStr;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        	exit;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;解决方法&quot;&gt;&lt;a href=&quot;#解决方法&quot; class=&quot;headerlink&quot; title=&quot;解决方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;解决方法&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;在返回&lt;code&gt;$echoStr&lt;/code&gt;前加上&lt;code&gt;header(&amp;#39;content-type:text&amp;#39;);&lt;/code&gt;就好啦~&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;if($this-&amp;gt;checkSignature())&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            header(&amp;apos;content-type:text&amp;apos;);//加上这句&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        	echo $echoStr;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        	exit;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;思考原理：&lt;br&gt;&lt;code&gt;header(&amp;#39;content-type:text&amp;#39;);&lt;/code&gt;这句话的意思是在&lt;code&gt;http&lt;/code&gt;的&lt;code&gt;header&lt;/code&gt;上加上引号里的内容，也就是说让http请求返回的数据是text文本类型的。所以我认为可能返回的数据并不是以文本类型返回的（小小的推测）。&lt;/p&gt;
 &lt;p&gt;这个问题我真的不是很清楚，所以十分欢迎您的指导！&lt;/p&gt;
 </content>

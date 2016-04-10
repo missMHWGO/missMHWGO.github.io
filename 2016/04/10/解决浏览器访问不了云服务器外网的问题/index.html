@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
 
-<title>Category: javaScript</title>
+<title>解决浏览器访问不了云服务器外网的问题</title>
 <meta name="author" content="wangjiajing">
 
-<meta name="keywords" content="undefined">
+<meta name="keywords" content="nginx 腾讯云 云服务器 安全组 ssh 浏览器">
 
-<meta name="description " content="null">
+<meta name="description " content="本文讲述因为安全组使得浏览器访问不了服务器。">
 
 <link rel="icon" href="/images/favicon.png">
 
@@ -127,7 +127,51 @@
 
     <div id="post">
       <div id="pjax">
-        
+        <article id="post__content">
+  <h1 id="post__title" data-identifier="2016-04-10">解决浏览器访问不了云服务器外网的问题</h1>
+  <p><code>nginx</code> <code>云服务器</code> <code>安全组</code><br>听说最近腾讯云推出了1块钱买服务器，域名免费的活动，真是心动不已啊~为了鼓励这样的良心商家，我也决定去买一个~=。=~<br>买完下了nginx，但是在服务器访问不了= =</p>
+<h3 id="探索过程"><a href="#探索过程" class="headerlink" title="探索过程"></a><strong>探索过程</strong></h3><ol>
+<li>用<code># nginx -t</code>测试一下，成功（说明nginx配置成功）</li>
+<li>用<code># wget http://127.0.0.1</code>，成功（说明nginx正常工作）</li>
+<li>ping服务器外网，成功（本机可以正常上网，并且是可以连接到服务器的）</li>
+<li>用ssh连接，成功 = = （简直是在逗我，怎样都是可以连接的嘛。。。为啥偏偏浏览器访问不了，讲道理的话80端也没有被占用啊。。。）</li>
+</ol>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a><strong>解决办法</strong></h3><p>到<code>安全组</code>里把服务器加入<code>默认安全组放通全部端口</code>就行了（买的时候随手的惩罚），当然这样存在安全隐患，我现在只知道设个强大点的密码，文件系统的命名尽量不要用默认名酱紫的机制，你造的话要悄悄告诉我哦~</p>
+<h3 id="思考解决原理"><a href="#思考解决原理" class="headerlink" title="思考解决原理"></a><strong>思考解决原理</strong></h3><p>其实服务器是配置好了的，但由于我在买服务器的时候选的是<code>Linux安全组放通22端口</code>，所以服务器就只有22端口开放了，其他的端口都不监听了（我是酱紫理解的），所以我用ssh是可以连接的，用浏览器就跪了，因为80端口不干活啦~</p>
+<p>果然读书少就自己把自己坑了。。。= =</p>
+<p>欢迎你的指导！</p>
+
+</article>
+<button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+<script src="/js/js-lib.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/codeStyle/xcode.css" />
+  <script src="/js/highlight.pack.js" type="text/javascript"></script>
+
+
+  <div id="post__action">
+      <a id="icon-heart" class="fontello" href="javascript:donate();"></a>
+  </div>
+  <script src="/layer/layer.js" type="text/javascript"></script>
+  <script src="/layer/extend/layer.ext.js" type="text/javascript"></script>
+
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="null" data-title="解决浏览器访问不了云服务器外网的问题" data-url="http://wangjiajing.com/2016/04/10/解决浏览器访问不了云服务器外网的问题/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shuoit"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
 
         <p id="copyright">Copyright © 2016 WangJiajing</p>
 <!-- 百度统计 -->
