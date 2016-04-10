@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
 
-<title>Category: Web</title>
+<title>解决ssh连接不上远程服务器的问题</title>
 <meta name="author" content="wangjiajing">
 
-<meta name="keywords" content="undefined">
+<meta name="keywords" content="putty ssh 远程主机 密钥 ppk">
 
-<meta name="description " content="null">
+<meta name="description " content="本文解决使用putty连接远程服务器提示错误，没有认证机制的问题。">
 
 <link rel="icon" href="/images/favicon.png">
 
@@ -131,7 +131,55 @@
 
     <div id="post">
       <div id="pjax">
-        
+        <article id="post__content">
+  <h1 id="post__title" data-identifier="2016-04-10">解决ssh连接不上远程服务器的问题</h1>
+  <p><code>putty</code> <code>ssh</code> <code>密钥</code><br>头几次登服务器都是在线编辑，想想怎么能这么low呢~不装逼的事情我从来不干，向来都是怎么装逼怎么来~</p>
+<h3 id="putty"><a href="#putty" class="headerlink" title="putty"></a><strong>putty</strong></h3><p>万万没想到有一天用putty都会出错…………<br><img src="http://7xqw4a.com1.z0.glb.clouddn.com/%E6%8D%95%E8%8E%B7.PNG" alt="putty连接出错提示"></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a><strong>解决方法</strong></h3><p>将买服务器时存储的密钥转换成<code>ppk</code>格式。</p>
+<h3 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a><strong>具体步骤</strong></h3><ol>
+<li>打开<code>puttygen.exe</code>（putty或winSCP的安装目录里都有），没有的话就去下一个，网上资源应该是大大的。</li>
+<li>“Conversions”-&gt;”Import key”,选择买服务器时存储的密钥文件，转换成ppk后点<code>save private key</code>，保存好新生成的文件。</li>
+<li>登putty,”SSH”-&gt;”Auth”-&gt;”Browse”,导入刚刚生成的文件。</li>
+<li>其他的主机号，端口号啥的都正常填写，然后就可以open啦~</li>
+<li>用winSCP的时候也是一样的方法。</li>
+</ol>
+<h3 id="思考原理"><a href="#思考原理" class="headerlink" title="思考原理"></a><strong>思考原理</strong></h3><ol>
+<li>没有提供认证方法。</li>
+<li>putty不认识密钥文件，需要转成ppk格式才认识。</li>
+</ol>
+<p>欢迎你的指导！</p>
+
+</article>
+<button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+<script src="/js/js-lib.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/codeStyle/xcode.css" />
+  <script src="/js/highlight.pack.js" type="text/javascript"></script>
+
+
+  <div id="post__action">
+      <a id="icon-heart" class="fontello" href="javascript:donate();"></a>
+  </div>
+  <script src="/layer/layer.js" type="text/javascript"></script>
+  <script src="/layer/extend/layer.ext.js" type="text/javascript"></script>
+
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="null" data-title="解决ssh连接不上远程服务器的问题" data-url="http://wangjiajing.com/2016/04/10/解决ssh连接不上远程服务器的问题/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shuoit"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
 
         <p id="copyright">Copyright © 2016 WangJiajing</p>
 <!-- 百度统计 -->

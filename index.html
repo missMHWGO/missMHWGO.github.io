@@ -106,6 +106,10 @@
             
       
             
+                <a class="服务器 pl__all" href="/2016/04/10/解决ssh连接不上远程服务器的问题/" title="解决ssh连接不上远程服务器的问题">
+                  <span class="pl__circle"></span><span class="pl__title">解决ssh连接不上远程服务器的问题</span><span class="pl__date">2016-04-10</span>
+                </a>
+            
                 <a class="服务器 pl__all" href="/2016/04/10/解决使用SAE配置微信接口失败问题/" title="解决使用SAE配置微信接口失败问题">
                   <span class="pl__circle"></span><span class="pl__title">解决使用SAE配置微信接口失败问题</span><span class="pl__date">2016-04-10</span>
                 </a>
@@ -129,17 +133,21 @@
       <div id="pjax">
         
     <article id="post__content">
-      <h1 id="post__title" data-identifier="2016-04-10">解决浏览器访问不了云服务器外网的问题</h1>
-      <p><code>nginx</code> <code>云服务器</code> <code>安全组</code><br>听说最近腾讯云推出了1块钱买服务器，域名免费的活动，真是心动不已啊~为了鼓励这样的良心商家，我也决定去买一个~=。=~<br>买完下了nginx，但是在服务器访问不了= =</p>
-<h3 id="探索过程"><a href="#探索过程" class="headerlink" title="探索过程"></a><strong>探索过程</strong></h3><ol>
-<li>用<code># nginx -t</code>测试一下，成功（说明nginx配置成功）</li>
-<li>用<code># wget http://127.0.0.1</code>，成功（说明nginx正常工作）</li>
-<li>ping服务器外网，成功（本机可以正常上网，并且是可以连接到服务器的）</li>
-<li>用ssh连接，成功 = = （简直是在逗我，怎样都是可以连接的嘛。。。为啥偏偏浏览器访问不了，讲道理的话80端也没有被占用啊。。。）</li>
+      <h1 id="post__title" data-identifier="2016-04-10">解决ssh连接不上远程服务器的问题</h1>
+      <p><code>putty</code> <code>ssh</code> <code>密钥</code><br>头几次登服务器都是在线编辑，想想怎么能这么low呢~不装逼的事情我从来不干，向来都是怎么装逼怎么来~</p>
+<h3 id="putty"><a href="#putty" class="headerlink" title="putty"></a><strong>putty</strong></h3><p>万万没想到有一天用putty都会出错…………<br><img src="http://7xqw4a.com1.z0.glb.clouddn.com/%E6%8D%95%E8%8E%B7.PNG" alt="putty连接出错提示"></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a><strong>解决方法</strong></h3><p>将买服务器时存储的密钥转换成<code>ppk</code>格式。</p>
+<h3 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a><strong>具体步骤</strong></h3><ol>
+<li>打开<code>puttygen.exe</code>（putty或winSCP的安装目录里都有），没有的话就去下一个，网上资源应该是大大的。</li>
+<li>“Conversions”-&gt;”Import key”,选择买服务器时存储的密钥文件，转换成ppk后点<code>save private key</code>，保存好新生成的文件。</li>
+<li>登putty,”SSH”-&gt;”Auth”-&gt;”Browse”,导入刚刚生成的文件。</li>
+<li>其他的主机号，端口号啥的都正常填写，然后就可以open啦~</li>
+<li>用winSCP的时候也是一样的方法。</li>
 </ol>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a><strong>解决办法</strong></h3><p>到<code>安全组</code>里把服务器加入<code>默认安全组放通全部端口</code>就行了（买的时候随手的惩罚），当然这样存在安全隐患，我现在只知道设个强大点的密码，文件系统的命名尽量不要用默认名酱紫的机制，你造的话要悄悄告诉我哦~</p>
-<h3 id="思考解决原理"><a href="#思考解决原理" class="headerlink" title="思考解决原理"></a><strong>思考解决原理</strong></h3><p>其实服务器是配置好了的，但由于我在买服务器的时候选的是<code>Linux安全组放通22端口</code>，所以服务器就只有22端口开放了，其他的端口都不监听了（我是酱紫理解的），所以我用ssh是可以连接的，用浏览器就跪了，因为80端口不干活啦~</p>
-<p>果然读书少就自己把自己坑了。。。= =</p>
+<h3 id="思考原理"><a href="#思考原理" class="headerlink" title="思考原理"></a><strong>思考原理</strong></h3><ol>
+<li>没有提供认证方法。</li>
+<li>putty不认识密钥文件，需要转成ppk格式才认识。</li>
+</ol>
 <p>欢迎你的指导！</p>
 
     </article>
@@ -158,7 +166,7 @@
 
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="null" data-title="解决浏览器访问不了云服务器外网的问题" data-url="http://wangjiajing.com/2016/04/10/解决浏览器访问不了云服务器外网的问题/"></div>
+<div class="ds-thread" data-thread-key="null" data-title="解决ssh连接不上远程服务器的问题" data-url="http://wangjiajing.com/2016/04/10/解决ssh连接不上远程服务器的问题/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

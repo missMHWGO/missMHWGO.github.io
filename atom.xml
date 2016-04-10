@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-04-10T11:27:14.960Z</updated>
+  <updated>2016-04-10T12:02:43.801Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决ssh连接不上远程服务器的问题</title>
+    <link href="http://wangjiajing.com/2016/04/10/%E8%A7%A3%E5%86%B3ssh%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8A%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://wangjiajing.com/2016/04/10/解决ssh连接不上远程服务器的问题/</id>
+    <published>2016-04-10T11:30:56.000Z</published>
+    <updated>2016-04-10T12:02:43.801Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;putty&lt;/code&gt; &lt;code&gt;ssh&lt;/code&gt; &lt;code&gt;密钥&lt;/code&gt;&lt;br&gt;头几次登服务器都是在线编辑，想想怎么能这么low呢~不装逼的事情我从来不干，向来都是怎么装逼怎么来~&lt;/p&gt;
+&lt;h3 id=&quot;putty&quot;&gt;&lt;a href=&quot;#putty&quot; class=&quot;headerlink&quot; title=&quot;putty&quot;&gt;&lt;/a&gt;&lt;strong&gt;putty&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;万万没想到有一天用putty都会出错…………&lt;br&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/%E6%8D%95%E8%8E%B7.PNG&quot; alt=&quot;putty连接出错提示&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;解决方法&quot;&gt;&lt;a href=&quot;#解决方法&quot; class=&quot;headerlink&quot; title=&quot;解决方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;解决方法&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;将买服务器时存储的密钥转换成&lt;code&gt;ppk&lt;/code&gt;格式。&lt;/p&gt;
+&lt;h3 id=&quot;具体步骤&quot;&gt;&lt;a href=&quot;#具体步骤&quot; class=&quot;headerlink&quot; title=&quot;具体步骤&quot;&gt;&lt;/a&gt;&lt;strong&gt;具体步骤&lt;/strong&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;打开&lt;code&gt;puttygen.exe&lt;/code&gt;（putty或winSCP的安装目录里都有），没有的话就去下一个，网上资源应该是大大的。&lt;/li&gt;
+&lt;li&gt;“Conversions”-&amp;gt;”Import key”,选择买服务器时存储的密钥文件，转换成ppk后点&lt;code&gt;save private key&lt;/code&gt;，保存好新生成的文件。&lt;/li&gt;
+&lt;li&gt;登putty,”SSH”-&amp;gt;”Auth”-&amp;gt;”Browse”,导入刚刚生成的文件。&lt;/li&gt;
+&lt;li&gt;其他的主机号，端口号啥的都正常填写，然后就可以open啦~&lt;/li&gt;
+&lt;li&gt;用winSCP的时候也是一样的方法。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;思考原理&quot;&gt;&lt;a href=&quot;#思考原理&quot; class=&quot;headerlink&quot; title=&quot;思考原理&quot;&gt;&lt;/a&gt;&lt;strong&gt;思考原理&lt;/strong&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;没有提供认证方法。&lt;/li&gt;
+&lt;li&gt;putty不认识密钥文件，需要转成ppk格式才认识。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;欢迎你的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      本文解决使用putty连接远程服务器提示错误，没有认证机制的问题。
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://wangjiajing.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="putty ssh 远程主机 密钥 ppk" scheme="http://wangjiajing.com/tags/putty-ssh-%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA-%E5%AF%86%E9%92%A5-ppk/"/>
+    
+  </entry>
   
   <entry>
     <title>解决浏览器访问不了云服务器外网的问题</title>
