@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-04-01T13:18:50.988Z</updated>
+  <updated>2016-04-10T10:50:32.719Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决使用SAE配置微信接口失败问题</title>
+    <link href="http://wangjiajing.com/2016/04/10/%E8%A7%A3%E5%86%B3%E4%BD%BF%E7%94%A8SAE%E9%85%8D%E7%BD%AE%E5%BE%AE%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/"/>
+    <id>http://wangjiajing.com/2016/04/10/解决使用SAE配置微信接口失败问题/</id>
+    <published>2016-04-10T10:23:36.000Z</published>
+    <updated>2016-04-10T10:50:32.719Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;SAE&lt;/code&gt; &lt;code&gt;服务器&lt;/code&gt; &lt;code&gt;微信&lt;/code&gt;&lt;br&gt;最近心血来潮，就去注册了一个SAE，打算用作微信开发的服务器。结果配置接口的时候一直提示“配置失败”，查找资料终于解决这个坑。&lt;/p&gt;
+&lt;p&gt;配置原理微信官方文档已经写得很清楚了，这里不再赘述。但是我输出几个变量的值进行比较，发现没有任何问题，代码可以执行到返回&lt;code&gt;$echoStr&lt;/code&gt;变量。于是我就郁闷了，代码执行得很乖啊~完全按照微信官方文档要求的步骤在跑啊~后来想了一下，代码在我服务器上跑得很好，但我无法知道微信后台接收到的数据到底是什么啊，所以我不能确定&lt;code&gt;$echoStr&lt;/code&gt;变量返回的数据是否正确。&lt;/p&gt;
+&lt;p&gt;###&lt;strong&gt;解决方法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在返回&lt;code&gt;$echoStr&lt;/code&gt;前加上&lt;code&gt;header(&amp;#39;content-type:text&amp;#39;);&lt;/code&gt;就好啦~&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;if($this-&amp;gt;checkSignature())&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            header(&amp;apos;content-type:text&amp;apos;);//加上这句&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        	echo $echoStr;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        	exit;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;思考原理：&lt;br&gt;&lt;code&gt;header(&amp;#39;content-type:text&amp;#39;);&lt;/code&gt;这句话的意思是在&lt;code&gt;http&lt;/code&gt;的&lt;code&gt;header&lt;/code&gt;上加上引号里的内容，也就是说让http请求返回的数据是text文本类型的。所以我认为可能返回的数据并不是以文本类型返回的（小小的推测）。&lt;/p&gt;
+&lt;p&gt;这个问题我真的不是很清楚，所以十分欢迎您的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      记录使用SAE配置微信接口遇到的坑。
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://wangjiajing.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="SAE 服务器 微信" scheme="http://wangjiajing.com/tags/SAE-%E6%9C%8D%E5%8A%A1%E5%99%A8-%E5%BE%AE%E4%BF%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>json与js数据的接收问题</title>

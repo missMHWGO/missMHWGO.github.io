@@ -26,11 +26,13 @@
       
       <li id="hexo" class="tags__li tags-btn">hexo</li>
       
-      <li id="javaScript" class="tags__li tags-btn">javaScript</li>
-      
       <li id="html" class="tags__li tags-btn">html</li>
       
+      <li id="javaScript" class="tags__li tags-btn">javaScript</li>
+      
       <li id="Web" class="tags__li tags-btn">Web</li>
+      
+      <li id="服务器" class="tags__li tags-btn">服务器</li>
       
       <li id="others" class="tags__li tags-btn">others</li>
       
@@ -54,18 +56,18 @@
             
       
             
-                <a class="javaScript pl__all" href="/2016/03/06/js文档加载顺序/" title="js文档加载顺序">
-                  <span class="pl__circle"></span><span class="pl__title">js文档加载顺序</span><span class="pl__date">2016-03-06</span>
+                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
+                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
                 </a>
+            
+      
             
                 <a class="javaScript pl__all" href="/2016/04/01/json与js数据的接收问题/" title="json与js数据的接收问题">
                   <span class="pl__circle"></span><span class="pl__title">json与js数据的接收问题</span><span class="pl__date">2016-04-01</span>
                 </a>
             
-      
-            
-                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
-                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
+                <a class="javaScript pl__all" href="/2016/03/06/js文档加载顺序/" title="js文档加载顺序">
+                  <span class="pl__circle"></span><span class="pl__title">js文档加载顺序</span><span class="pl__date">2016-03-06</span>
                 </a>
             
       
@@ -104,6 +106,12 @@
             
       
             
+                <a class="服务器 pl__all" href="/2016/04/10/解决使用SAE配置微信接口失败问题/" title="解决使用SAE配置微信接口失败问题">
+                  <span class="pl__circle"></span><span class="pl__title">解决使用SAE配置微信接口失败问题</span><span class="pl__date">2016-04-10</span>
+                </a>
+            
+      
+            
                 <a class="others pl__all" href="/2016/03/28/谈谈字符编码/" title="谈谈字符编码">
                   <span class="pl__circle"></span><span class="pl__title">谈谈字符编码</span><span class="pl__date">2016-03-28</span>
                 </a>
@@ -117,24 +125,38 @@
       <div id="pjax">
         
     <article id="post__content">
-      <h1 id="post__title" data-identifier="2016-03-07">html页面加载解析流程</h1>
-      <p><code>html</code> <code>加载流程</code></p>
-<h4 id="今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈-就记录下来啦"><a href="#今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈-就记录下来啦" class="headerlink" title="今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈~就记录下来啦~"></a>今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈~就记录下来啦~</h4><blockquote>
-<ol>
-<li>用户输入网址（假设是个html页面，并且是第一次访问），浏览器向服务器发出请求，服务器返回html文件；</li>
-<li>浏览器开始载入html代码，发现<code>＜head＞</code>标签内有一个<code>＜link＞</code>标签引用外部CSS文件；</li>
-<li>浏览器又发出CSS文件的请求，服务器返回这个CSS文件；<br>浏览器继续载入html中<code>＜body＞</code>部分的代码，并且CSS文件已经拿到手了，可以开始渲染页面了；</li>
-<li>浏览器在代码中发现一个<code>＜img＞</code>标签引用了一张图片，向服务器发出请求。此时浏览器不会等到图片下载完，而是继续渲染后面的代码；<br>服务器返回图片文件，由于图片占用了一定面积，影响了后面段落的排布，因此浏览器需要回过头来重新渲染这部分代码；</li>
-<li>浏览器发现了一个包含一行Javascript代码的<code>＜script＞</code>标签，赶快运行它；</li>
-<li>Javascript脚本执行了这条语句，它命令浏览器隐藏掉代码中的某个<code>＜div＞</code>（style.display=”none”）。杯具啊，突然就少了这么一个元素，浏览器不得不重新渲染这部分代码；</li>
-<li>终于等到了＜/html＞的到来，浏览器泪流满面……</li>
-<li>等等，还没完，用户点了一下界面中的“换肤”按钮，Javascript让浏览器换了一下＜link＞标签的CSS路径；</li>
-<li>浏览器召集了在座的各位<code>＜div＞</code> <code>＜span＞</code> <code>＜ul＞</code> <code>＜li＞</code>们，“大伙儿收拾收拾行李，咱得重新来过……”，浏览器向服务器请求了新的CSS文件，重新渲染页面。</li>
-</ol>
-</blockquote>
-<p>不过第一个步骤中写的貌似是以前服务器与浏览器传递数据的方式，现在一般不会直接返回一个html文件给前端，而是返回json格式的文本，将数据直接插入前端的DOM树中，在前端构成一个html文本。</p>
+      <h1 id="post__title" data-identifier="2016-03-08">web性能优化（一）：内容优化</h1>
+      <p><code>http协议</code> <code>网络性能</code></p>
+<p><strong>1秒钟能够加载出来的网页，如果你花了1.1秒，那么，对不起，you lose!</strong></p>
+<h3 id="1-压缩源码。"><a href="#1-压缩源码。" class="headerlink" title="1. 压缩源码。"></a><strong>1. 压缩源码。</strong></h3><p>所有代码删除不必要的注释、跳格符号、换行符号及无用的空格。js文件可以采用混淆（经过编码将变量和函数原命名改为毫无意义的命名，以防止他人窥视和窃取js源代码）压缩的方式，html、css文件进行普通压缩。<br>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/*示例代码*/		</span><br><span class="line"></span><br><span class="line">function echo(stringA,stringB)&#123;</span><br><span class="line"></span><br><span class="line">	var hello=&quot;你好&quot;;</span><br><span class="line">	</span><br><span class="line">	alert(&quot;hello world&quot;);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>经过普通压缩后就变成了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function echo(stringA,stringB)&#123;var hello=&quot;你好&quot;;alert(&quot;hello world&quot;)&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这只是清除了一些冗余字符，但是如果经过Base62编码混淆压缩：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval(function(p,a,c,k,e,r)&#123;e=String;if(!&apos;&apos;.replace(/^/,String))&#123;while(c--)r[c]=k[c]||c;k=[function(e)&#123;return r[e]&#125;];e=function()&#123;return&apos;\\w+&apos;&#125;;c=1&#125;;while(c--)if(k[c])p=p.replace(new RegExp(&apos;\\b&apos;+e(c)+&apos;\\b&apos;,&apos;g&apos;),k[c]);return p&#125;(&apos;1 2(3,4)&#123;5 0=&quot;你好&quot;;6(&quot;0 7&quot;)&#125;&apos;,8,8,&apos;hello|function|echo|stringA|stringB|var|alert|world&apos;.split(&apos;|&apos;),0,&#123;&#125;))</span><br></pre></td></tr></table></figure></p>
+<p>真是连亲妈都不认识了= =</p>
+<h4 id="介绍一下Javascript主流压缩混淆工具："><a href="#介绍一下Javascript主流压缩混淆工具：" class="headerlink" title="介绍一下Javascript主流压缩混淆工具："></a>介绍一下Javascript主流压缩混淆工具：</h4><ul>
+<li>UglifyJS</li>
+<li>Google Closure Compiler</li>
+<li>Dean Edwards’ JS Packer</li>
+<li>Douglas Crawford’s JS Min</li>
+<li>YUI Compressor</li>
+</ul>
+<p>据数据统计：<br>在压缩后的文件大小上，Closure Compiler压缩过的文件最小，JS Packer第二小；在压缩后代码的运行效率上，Google Closure Compiler在Advanced模式下运行效率优势非常明显，简直就是轻轻松松毫无压力碾压群雄，而且除了它，几乎任何压缩工具压缩后的代码的运行效率都比未压缩的代码要差。</p>
+<ul>
+<li><a href="https://github.com/pandamicro/Javascript-Compressors-Analyse" target="_blank" rel="external">数据统计来源</a></li>
+</ul>
+<h3 id="2-图片处理。"><a href="#2-图片处理。" class="headerlink" title="2. 图片处理。"></a><strong>2. 图片处理。</strong></h3><ul>
+<li>图片格式</li>
+</ul>
+<p>如果图片颜色数较多则使用jpg格式，较少则使用png格式，如果能够通过服务器端判断浏览器支持WebP就使用<a href="https://zh.wikipedia.org/wiki/WebP" target="_blank" rel="external">WebP</a>格式或SVG（矢量图）格式。</p>
+<ul>
+<li>图片压缩</li>
+</ul>
+<h3 id="3-合并静态资源，减少文件数量。"><a href="#3-合并静态资源，减少文件数量。" class="headerlink" title="3. 合并静态资源，减少文件数量。"></a><strong>3. 合并静态资源，减少文件数量。</strong></h3><p>合并css、js文件，可以减少http连接请求数。有时使用 文本+css 可以代替纯文本图片，也可以减少http请求次数。</p>
+<h3 id="4-开启服务器端的Gzip压缩。"><a href="#4-开启服务器端的Gzip压缩。" class="headerlink" title="4. 开启服务器端的Gzip压缩。"></a><strong>4. 开启服务器端的Gzip压缩。</strong></h3><p>文本资源压缩比率非常大。如何开启服务器端的Gzip压缩请看<a href="http://wangjiajing.com/2016/03/09/%E5%90%AF%E7%94%A8Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84Gzip%E5%8E%8B%E7%BC%A9/">这里</a>。</p>
+<h3 id="5-使用CDN。"><a href="#5-使用CDN。" class="headerlink" title="5. 使用CDN。"></a><strong>5. 使用CDN。</strong></h3><p>或者使用第三方提供的静态资源地址。一方面增加并发下载量，另一方面能够和其他网站共享缓存。</p>
+<h3 id="6-使用缓存。"><a href="#6-使用缓存。" class="headerlink" title="6. 使用缓存。"></a><strong>6. 使用缓存。</strong></h3><h3 id="7-优化页面元素的加载顺序。"><a href="#7-优化页面元素的加载顺序。" class="headerlink" title="7. 优化页面元素的加载顺序。"></a><strong>7. 优化页面元素的加载顺序。</strong></h3><p>将css放在页面头部，js放在页面底部，这样不会阻塞页面渲染，让页面出现长时间的空白。</p>
+<h3 id="8-使用合法的标签。"><a href="#8-使用合法的标签。" class="headerlink" title="8. 使用合法的标签。"></a><strong>8. 使用合法的标签。</strong></h3><p>避免浏览器解析时做错误的操作，浪费时间。</p>
 <p>欢迎您的指导！</p>
-<p>参考资料：<br><a href="http://developer.51cto.com/art/201311/418084.htm" target="_blank" rel="external">http://developer.51cto.com/art/201311/418084.htm</a></p>
+<p>参考资料：<br><a href="http://developer.51cto.com/art/201311/418084.htm" target="_blank" rel="external">http://developer.51cto.com/art/201311/418084.htm</a><br><a href="https://book.douban.com/subject/26598045/" target="_blank" rel="external">Web全栈工程师的自我修养</a></p>
 
     </article>
     <button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
@@ -152,7 +174,7 @@
 
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="null" data-title="html页面加载解析流程" data-url="http://wangjiajing.com/2016/03/07/html页面加载解析流程/"></div>
+<div class="ds-thread" data-thread-key="null" data-title="web性能优化（一）：内容优化" data-url="http://wangjiajing.com/2016/03/08/web性能优化（一）：内容优化/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
