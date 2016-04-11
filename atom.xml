@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-04-11T15:35:43.687Z</updated>
+  <updated>2016-04-11T16:10:31.630Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决使用微信jssdk报域名不合法的错误</title>
+    <link href="http://wangjiajing.com/2016/04/11/%E8%A7%A3%E5%86%B3%E4%BD%BF%E7%94%A8%E5%BE%AE%E4%BF%A1jssdk%E6%8A%A5%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%88%E6%B3%95%E7%9A%84%E9%94%99%E8%AF%AF/"/>
+    <id>http://wangjiajing.com/2016/04/11/解决使用微信jssdk报域名不合法的错误/</id>
+    <published>2016-04-11T15:40:05.000Z</published>
+    <updated>2016-04-11T16:10:31.630Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;微信&lt;/code&gt; &lt;code&gt;jssdk&lt;/code&gt;&lt;br&gt;今天使用微信jssdk时，报&lt;code&gt;invalid url domain&lt;/code&gt;，然后发现微信官方文档最常见的错误第一个就是这个，还说明了可能的错误原因，真是要感动哭了~&lt;br&gt;官方给出的原因是&lt;strong&gt;&lt;code&gt;当前页面所在域名与使用的appid没有绑定&lt;/code&gt;&lt;/strong&gt;，然后我就郁闷了。。。我明明就有绑定啊。。。最终各种修改JS接口安全域名，终于解决这个坑。&lt;/p&gt;
+&lt;h3 id=&quot;解决方法&quot;&gt;&lt;a href=&quot;#解决方法&quot; class=&quot;headerlink&quot; title=&quot;解决方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;解决方法&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;去掉JS接口安全域名里的&lt;strong&gt;&lt;code&gt;http://&lt;/code&gt;&lt;/strong&gt; 。。。= =&lt;br&gt;微信专业坑爹一万年= =&lt;/p&gt;
+&lt;p&gt;另外，查找资料的时候看到有人说二级域名不能用，我是可以用的。。。&lt;/p&gt;
+&lt;p&gt;欢迎你的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      本文讲述如何解决使用微信jssdk报域名不合法的问题。
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://wangjiajing.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="微信 服务器 jssdk 域名 不合法" scheme="http://wangjiajing.com/tags/%E5%BE%AE%E4%BF%A1-%E6%9C%8D%E5%8A%A1%E5%99%A8-jssdk-%E5%9F%9F%E5%90%8D-%E4%B8%8D%E5%90%88%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>解决用脚本修改不了微信菜单的问题</title>
