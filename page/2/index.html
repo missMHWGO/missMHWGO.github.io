@@ -24,9 +24,9 @@
     <ul id="tags__ul">
       <li id="pl__all" class="tags__li tags-btn active">All</li>
       
-      <li id="hexo" class="tags__li tags-btn">hexo</li>
-      
       <li id="html" class="tags__li tags-btn">html</li>
+      
+      <li id="hexo" class="tags__li tags-btn">hexo</li>
       
       <li id="javaScript" class="tags__li tags-btn">javaScript</li>
       
@@ -50,14 +50,14 @@
     <nav id="pl__container">
       
             
-                <a class="hexo pl__all" href="/2016/03/05/hexo/" title="hexo">
-                  <span class="pl__circle"></span><span class="pl__title">hexo</span><span class="pl__date">2016-03-05</span>
+                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
+                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
                 </a>
             
       
             
-                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
-                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
+                <a class="hexo pl__all" href="/2016/03/05/hexo/" title="hexo">
+                  <span class="pl__circle"></span><span class="pl__title">hexo</span><span class="pl__date">2016-03-05</span>
                 </a>
             
       
@@ -76,12 +76,12 @@
                   <span class="pl__circle"></span><span class="pl__title">uri与url</span><span class="pl__date">2016-03-17</span>
                 </a>
             
-                <a class="Web pl__all" href="/2016/03/08/web性能优化（一）：内容优化/" title="web性能优化（一）：内容优化">
-                  <span class="pl__circle"></span><span class="pl__title">web性能优化（一）：内容优化</span><span class="pl__date">2016-03-08</span>
-                </a>
-            
                 <a class="Web pl__all" href="/2016/03/14/web性能优化（三）：SEO/" title="web性能优化（三）：SEO">
                   <span class="pl__circle"></span><span class="pl__title">web性能优化（三）：SEO</span><span class="pl__date">2016-03-14</span>
+                </a>
+            
+                <a class="Web pl__all" href="/2016/03/08/web性能优化（一）：内容优化/" title="web性能优化（一）：内容优化">
+                  <span class="pl__circle"></span><span class="pl__title">web性能优化（一）：内容优化</span><span class="pl__date">2016-03-08</span>
                 </a>
             
                 <a class="Web pl__all" href="/2016/03/14/web性能优化（二）：CDN加速&传输协议优化/" title="web性能优化（二）：CDN加速&amp;传输协议优化">
@@ -110,6 +110,10 @@
                   <span class="pl__circle"></span><span class="pl__title">解决ssh连接不上远程服务器的问题</span><span class="pl__date">2016-04-10</span>
                 </a>
             
+                <a class="服务器 pl__all" href="/2016/04/11/解决用脚本修改不了微信菜单的问题/" title="解决用脚本修改不了微信菜单的问题">
+                  <span class="pl__circle"></span><span class="pl__title">解决用脚本修改不了微信菜单的问题</span><span class="pl__date">2016-04-11</span>
+                </a>
+            
                 <a class="服务器 pl__all" href="/2016/04/10/解决使用SAE配置微信接口失败问题/" title="解决使用SAE配置微信接口失败问题">
                   <span class="pl__circle"></span><span class="pl__title">解决使用SAE配置微信接口失败问题</span><span class="pl__date">2016-04-10</span>
                 </a>
@@ -133,10 +137,11 @@
       <div id="pjax">
         
     <article id="post__content">
-      <h1 id="post__title" data-identifier="2016-03-10">判断PC端和网页端的方法</h1>
-      <p><code>javaScript</code> <code>PC和移动端判断</code><br>网页在PC端和在移动端的显示效果肯定是不一样的，至少在目前来看，再大的手机屏幕貌似也拼不过PC吧~如果你想让自己的网页在移动端和PC端都能畅行无阻，首先肯定得把他两识别出来吧~</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">			function IsPC()  </span><br><span class="line">			&#123;  </span><br><span class="line">			   var userAgentInfo = navigator.userAgent;  </span><br><span class="line">			   var Agents = new Array(&quot;Android&quot;, &quot;iPhone&quot;, &quot;SymbianOS&quot;, &quot;Windows Phone&quot;, &quot;iPad&quot;, &quot;iPod&quot;);  </span><br><span class="line">			   var flag = true;  </span><br><span class="line">			   for (var v = 0; v &lt; Agents.length; v++) &#123;  </span><br><span class="line">				   if (userAgentInfo.indexOf(Agents[v]) &gt; 0) &#123;                           flag = false; break;</span><br><span class="line">				   &#125;  </span><br><span class="line">			   &#125;  </span><br><span class="line">			   return flag;  </span><br><span class="line">			&#125;            </span><br><span class="line">			</span><br><span class="line">			if (IsPC()== false)</span><br><span class="line">			window.location.href=&quot;./mobile_simple/index.html&quot;;</span><br><span class="line">		&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>其中，navigator对象包含所有浏览器的信息：</p>
+      <h1 id="post__title" data-identifier="2016-03-11">响应式设计学习（一）</h1>
+      <p><code>响应式设计</code> <code>屏幕适配</code><br>之前我写过一篇通过识别PC端和移动端跳转到不同的页面来解决显示问题，可是这样就要同时维护好多个版本，既不能偷懒又不能装逼。那么问题来了，到底如何在不同终端设备上显示效果理想的网页？<strong><code>响应式设计</code></strong>就应运而生了~<br>其实讲人话嘛，就是让不同的网页能够根据设备大大小小的屏幕自动调整显示的样子，而没有做屏幕适配的网页需要通过自由缩放来看到整个页面的内容。阮一峰举了个<a href="http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html" target="_blank" rel="external">《福尔摩斯历险记》六个主人公的头像</a>的例子，十分生动形象，我就不赘述了。</p>
+<h2 id="移动端的viewport-视区"><a href="#移动端的viewport-视区" class="headerlink" title="移动端的viewport(视区)"></a><strong>移动端的viewport(视区)</strong></h2><p>为了避免破坏没有针对手机浏览器优化的网页的布局，手机浏览器把页面放在一个虚拟的“窗口”中，通常这个虚拟的“窗口”比屏幕宽，用户可以通过平移和缩放来看网页的不同部分。这个“窗口”就叫<code>viewport</code>。</p>
+<h3 id="做法："><a href="#做法：" class="headerlink" title="做法："></a><strong>做法：</strong></h3><p><strong>步骤1.在头部加入如下代码：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″&gt;</span><br></pre></td></tr></table></figure></p>
+<p>上面这行代码的意思是，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1，即网页初始大小占屏幕面积的100%。用户缩放到的最大比例为1，即用户不能通过手势将屏幕放大。<br>还有其他的一些属性可供选择：</p>
 <table>
 <thead>
 <tr>
@@ -146,61 +151,45 @@
 </thead>
 <tbody>
 <tr>
-<td>appCodeName</td>
-<td>返回浏览器的代码名。</td>
+<td>height</td>
+<td>和 width 相对应，指定高度</td>
 </tr>
 <tr>
-<td>appMinorVersion</td>
-<td>返回浏览器的次级版本。</td>
+<td>initial-scale</td>
+<td>初始缩放比例，也即是当页面第一次 load 的时候缩放比例</td>
 </tr>
 <tr>
-<td>appName</td>
-<td>返回浏览器的名称。</td>
+<td>maximum-scale</td>
+<td>允许用户缩放到的最大比例</td>
 </tr>
 <tr>
-<td>appVersion</td>
-<td>返回浏览器的平台和版本信息。</td>
+<td>minimum-scale</td>
+<td>允许用户缩放到的最小比例</td>
 </tr>
 <tr>
-<td>browserLanguage</td>
-<td>返回当前浏览器的语言。</td>
-</tr>
-<tr>
-<td>cookieEnabled</td>
-<td>返回指明浏览器中是否启用 cookie 的布尔值。</td>
-</tr>
-<tr>
-<td>cpuClass</td>
-<td>返回浏览器系统的 CPU 等级。</td>
-</tr>
-<tr>
-<td>onLine</td>
-<td>返回指明系统是否处于脱机模式的布尔值。</td>
-</tr>
-<tr>
-<td>platform</td>
-<td>返回运行浏览器的操作系统平台。</td>
-</tr>
-<tr>
-<td>systemLanguage</td>
-<td>返回 OS 使用的默认语言。</td>
-</tr>
-<tr>
-<td>userAgent</td>
-<td>返回由客户机发送服务器的 user-agent 头部的值。</td>
-</tr>
-<tr>
-<td>userLanguage</td>
-<td>返回 OS 的自然语言设置。</td>
+<td>user-scalable</td>
+<td>用户是否可以手动缩放</td>
 </tr>
 </tbody>
 </table>
-<p>举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">document.write(&quot;&lt;p&gt;浏览器：&quot;)</span><br><span class="line">document.write(navigator.appName + &quot;&lt;/p&gt;&quot;)</span><br><span class="line"></span><br><span class="line">document.write(&quot;&lt;p&gt;浏览器版本：&quot;)</span><br><span class="line">document.write(navigator.appVersion + &quot;&lt;/p&gt;&quot;)</span><br><span class="line"></span><br><span class="line">document.write(&quot;&lt;p&gt;代码：&quot;)</span><br><span class="line">document.write(navigator.appCodeName + &quot;&lt;/p&gt;&quot;)</span><br><span class="line"></span><br><span class="line">document.write(&quot;&lt;p&gt;平台：&quot;)</span><br><span class="line">document.write(navigator.platform + &quot;&lt;/p&gt;&quot;)</span><br><span class="line"></span><br><span class="line">document.write(&quot;&lt;p&gt;Cookies 启用：&quot;)</span><br><span class="line">document.write(navigator.cookieEnabled + &quot;&lt;/p&gt;&quot;)</span><br><span class="line"></span><br><span class="line">document.write(&quot;&lt;p&gt;浏览器的用户代理报头：&quot;)</span><br><span class="line">document.write(navigator.userAgent + &quot;&lt;/p&gt;&quot;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p>结果为：</p>
-<blockquote>
-<p>浏览器：Netscape<br>浏览器版本：5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36<br>代码：Mozilla<br>平台：Win32<br>Cookies 启用：true<br>浏览器的用户代理报头：Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36</p>
-</blockquote>
-<p>讲道理的话，酱紫的处理方法其实并不是很好，所以接下来我开始了响应式设计的学习~=。=~<br>欢迎您的指导！</p>
+<p><strong>步骤2. 布局上的注意事项</strong></p>
+<ol>
+<li>不能使用像素指定绝对宽度，只能指定百分比或auto;</li>
+<li>字体也不能使用绝对大小（px），只能使用相对大小（em），em可以理解为一个倍数关系。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">　　　　font: normal 1em Helvetica, Arial, sans-serif;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>然而并不是所有浏览器都生而平等，在没人疼没人爱的IE下，1em会破坏弹性布局，解决方案为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">　　　　font: normal 100% Helvetica, Arial, sans-serif;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面的代码指定，body字体大小是1em，而所有浏览器默认的字体大小都是16px，因此1em=16px。<br>如果你写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">　h1 &#123;</span><br><span class="line">　　　　font-size: 1.5em; </span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
+<p>酱紫你就指定了<code>h1</code>的大小为24px(16*1.5=24)。</p>
+<p>可是，这样实现的效果并不是太好呢~所以绝大多数网站是用<code>Media Queries</code>（媒体查询）做的。</p>
+<h2 id="Media-Queries（媒体查询）"><a href="#Media-Queries（媒体查询）" class="headerlink" title="Media Queries（媒体查询）"></a><strong>Media Queries（媒体查询）</strong></h2><p>Media Queries的意思就是自动探测查询浏览器屏幕的宽度，然后选择性地加载对应的文件。</p>
+<p><strong>1. 在html中用Media Queries</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</span><br><span class="line">    media=&quot;screen and (max-device-width: 400px)&quot;</span><br><span class="line">　　href=&quot;tinyScreen.css&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>意思是，如果屏幕宽度小于400px，就加载tinyScreen.css文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</span><br><span class="line">　　media=&quot;screen and (min-width: 400px) and (max-device-width: 600px)&quot;</span><br><span class="line">　　href=&quot;smallScreen.css&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>意思是，如果屏幕宽度介于400px和600px之间，就加载smallScreen.css文件。<br><strong>2. 在css中用Media Queries</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (max-width : 320px)&#123;  </span><br><span class="line">　.column &#123;</span><br><span class="line">　　　　　　float: none;</span><br><span class="line">　　　　　　width:auto;</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　　　#sidebar &#123;</span><br><span class="line">　　　　　　display:none;</span><br><span class="line">　　　　&#125;</span><br><span class="line">&#125;  </span><br><span class="line">@media screen and (min-width: 800px) and (max-width: 1024px)&#123;  </span><br><span class="line">body&#123;...&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="图片-视频自动缩放"><a href="#图片-视频自动缩放" class="headerlink" title="图片/视频自动缩放"></a><strong>图片/视频自动缩放</strong></h2><p>对于大多数浏览器，只需要向css中写入一行代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img, object &#123; max-width: 100%;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>windows平台可能出现失真现象，解决方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img &#123; -ms-interpolation-mode: bicubic; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>欢迎您的指导！</p>
+<p>参考资料：<br><a href="http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html</a><br><a href="http://www.iteye.com/topic/1135393" target="_blank" rel="external">http://www.iteye.com/topic/1135393</a></p>
 
     </article>
     <button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
@@ -218,7 +207,7 @@
 
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="null" data-title="判断PC端和网页端的方法" data-url="http://wangjiajing.com/2016/03/10/判断PC端和网页端的方法/"></div>
+<div class="ds-thread" data-thread-key="null" data-title="响应式设计学习（一）" data-url="http://wangjiajing.com/2016/03/11/响应式设计学习（一）/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

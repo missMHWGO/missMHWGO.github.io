@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
 
-<title>谈谈对网络爬虫的理解</title>
+<title>解决用脚本修改不了微信菜单的问题</title>
 <meta name="author" content="wangjiajing">
 
-<meta name="keywords" content="网络爬虫">
+<meta name="keywords" content="微信 菜单 服务器 php">
 
-<meta name="description " content="本文主要讲述自己对网络爬虫学习的认识。">
+<meta name="description " content="本文讲述的是如何解决用脚本修改不了微信菜单的问题。">
 
 <link rel="icon" href="/images/favicon.png">
 
@@ -136,20 +136,17 @@
     <div id="post">
       <div id="pjax">
         <article id="post__content">
-  <h1 id="post__title" data-identifier="2016-03-18">谈谈对网络爬虫的理解</h1>
-  <p>网络爬虫是按照一定规则，自动抓取万维网上信息的程序或脚本，主要目的是将互联网上的网页下载到本地形成一个互联网内容的镜像备份。讲人话呢，其实就是从网站某一个页面（通常是首页）开始，读取网页的内容，找到在该网页中的其它链接地址，然后通过这些链接地址寻找下一个网页，这样一直循环下去，直到把这个网站中所有的网页都抓取完为止。因此，网络爬虫的基本操作就是抓取网页。</p>
-<h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a><strong>基本原理</strong></h2><p>一个通用的网络爬虫的框架如图所示：<br> <img src="http://7xqw4a.com1.z0.glb.clouddn.com/~LBKJNOF4K%60LW22KOHIKM8P.png" alt="网络爬虫框架"></p>
-<p>网络爬虫的基本工作流程如下：</p>
-<ol>
-<li>首先选取一部分精心挑选的种子URL；</li>
-<li>将这些URL放入待抓取URL队列；</li>
-<li>从待抓取URL队列中读取URL，解析DNS，并且得到主机的ip，并将URL对应的网页下载下来，存储进已下载网页库中。此外，将这些URL放进已抓取URL队列。</li>
-<li>分析已抓取URL队列中的URL，分析其中的其他URL，并且将URL放入待抓取URL队列，从而进入下一个循环。</li>
+  <h1 id="post__title" data-identifier="2016-04-11">解决用脚本修改不了微信菜单的问题</h1>
+  <p><code>微信</code> <code>菜单</code> <code>php</code><br>今天参考微信官方文档用php写了一个微信菜单，发现自己根本修改不了菜单的东西。用<a href="http://mp.weixin.qq.com/debug" target="_blank" rel="external">接口调试工具</a>报错：<code>invalid sub button key size</code>。官网上写的是菜单最多3个，子菜单5个。我很认真地数了一下我的菜单个数——2个，自菜单个数——5个，这超了。。。吗？我读书少你不要欺负我啊= =</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a><strong>解决方法</strong></h3><p>发现那个菜单里要跳转到链接本来应该这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;type&quot;:&quot;view&quot;,</span><br><span class="line">&quot;name&quot;:&quot;装逼&quot;,</span><br><span class="line">&quot;url&quot;:&quot;http://wangjiajing.com&quot;</span><br></pre></td></tr></table></figure></p>
+<p>而我把<code>type</code>的类型写成了<code>click</code>。。。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><ol>
+<li><code>click</code>是和<code>key</code>匹配的，在微信里的效果就是点击一下菜单，跳出一条消息，显示<strong><code>点击菜单：（你的 key 里的内容）</code></strong>；<code>view</code>和<code>url</code>搭配，效果是点击菜单直接跳转到url那个页面。</li>
+<li>测试过程还发现如果你的代码有bug，那么代码是post不过去的，所以微信的效果还是之前的效果，不会改变。</li>
+<li>代码改变了之后，有的时候要取消关注再关注才会看到效果，特别是改变了菜单内容的时候，有的时候则不需要这样做就能看到效果。</li>
+<li>测试号一天修改菜单的接口调用次数上限是100次，100次，真的只有100次= =所以要节约使用啊~</li>
 </ol>
-<h2 id="搜索策略"><a href="#搜索策略" class="headerlink" title="搜索策略"></a><strong>搜索策略</strong></h2><p><strong>1. 广度优先搜索</strong><br>广度优先搜索的基本思路是，将新下载网页中发现的链接直接插入待抓取URL队列的末尾，也就是指网络爬虫会先抓取起始网页中链接的所有网页，然后再选择其中的一个链接网页，继续抓取在此网页中链接的所有网页。这种方法的缺点在于，随着抓取网页的增多，大量的无关网页被下载，算法的效率将变低。<br><strong>2. 最佳优先搜索</strong><br>最佳优先搜索策略按照一定的网页分析算法，预测候选URL与目标网页的相似度，或与主题的相关性，并选取评价最好的一个或几个URL进行抓取。它只访问经过网页分析算法预测为“有用”的网页。存在的一个问题是，在爬虫抓取路径上的很多相关网页可能被忽略，因为最佳优先策略是一种局部最优搜索算法。因此需要将最佳优先结合具体的应用进行改进，以跳出局部最优点。<br><strong>3. 深度优先搜索</strong><br>深度优先搜索是指网络爬虫会从起始页开始，一个链接一个链接跟踪下去，处理完这条线路之后再转入下一个起始页，继续跟踪链接。</p>
-<p>由于深度优先在很多情况下会导致爬虫的陷入(trapped)问题，目前常见的是广度优先和最佳优先方法。</p>
-<p>欢迎您的指导！</p>
-<p>参考资料：<br><a href="http://baike.baidu.com/view/284853.htm?fromtitle=%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E8%9C%98%E8%9B%9B&amp;fromid=9781549&amp;type=syn" target="_blank" rel="external">百度百科——网络爬虫</a><br><a href="http://www.cnblogs.com/wawlian/archive/2012/06/18/2553061.html" target="_blank" rel="external">http://www.cnblogs.com/wawlian/archive/2012/06/18/2553061.html</a></p>
+<p>欢迎你的指导！</p>
 
 </article>
 <button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
@@ -167,7 +164,7 @@
 
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="null" data-title="谈谈对网络爬虫的理解" data-url="http://wangjiajing.com/2016/03/18/谈谈对网络爬虫的理解/"></div>
+<div class="ds-thread" data-thread-key="null" data-title="解决用脚本修改不了微信菜单的问题" data-url="http://wangjiajing.com/2016/04/11/解决用脚本修改不了微信菜单的问题/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

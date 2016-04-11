@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-04-10T12:02:43.801Z</updated>
+  <updated>2016-04-11T15:35:43.687Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决用脚本修改不了微信菜单的问题</title>
+    <link href="http://wangjiajing.com/2016/04/11/%E8%A7%A3%E5%86%B3%E7%94%A8%E8%84%9A%E6%9C%AC%E4%BF%AE%E6%94%B9%E4%B8%8D%E4%BA%86%E5%BE%AE%E4%BF%A1%E8%8F%9C%E5%8D%95%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://wangjiajing.com/2016/04/11/解决用脚本修改不了微信菜单的问题/</id>
+    <published>2016-04-11T14:24:31.000Z</published>
+    <updated>2016-04-11T15:35:43.687Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;微信&lt;/code&gt; &lt;code&gt;菜单&lt;/code&gt; &lt;code&gt;php&lt;/code&gt;&lt;br&gt;今天参考微信官方文档用php写了一个微信菜单，发现自己根本修改不了菜单的东西。用&lt;a href=&quot;http://mp.weixin.qq.com/debug&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;接口调试工具&lt;/a&gt;报错：&lt;code&gt;invalid sub button key size&lt;/code&gt;。官网上写的是菜单最多3个，子菜单5个。我很认真地数了一下我的菜单个数——2个，自菜单个数——5个，这超了。。。吗？我读书少你不要欺负我啊= =&lt;/p&gt;
+&lt;h3 id=&quot;解决方法&quot;&gt;&lt;a href=&quot;#解决方法&quot; class=&quot;headerlink&quot; title=&quot;解决方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;解决方法&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;发现那个菜单里要跳转到链接本来应该这样写：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;type&amp;quot;:&amp;quot;view&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;name&amp;quot;:&amp;quot;装逼&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;url&amp;quot;:&amp;quot;http://wangjiajing.com&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;而我把&lt;code&gt;type&lt;/code&gt;的类型写成了&lt;code&gt;click&lt;/code&gt;。。。&lt;/p&gt;
+&lt;h3 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;&lt;strong&gt;总结&lt;/strong&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;click&lt;/code&gt;是和&lt;code&gt;key&lt;/code&gt;匹配的，在微信里的效果就是点击一下菜单，跳出一条消息，显示&lt;strong&gt;&lt;code&gt;点击菜单：（你的 key 里的内容）&lt;/code&gt;&lt;/strong&gt;；&lt;code&gt;view&lt;/code&gt;和&lt;code&gt;url&lt;/code&gt;搭配，效果是点击菜单直接跳转到url那个页面。&lt;/li&gt;
+&lt;li&gt;测试过程还发现如果你的代码有bug，那么代码是post不过去的，所以微信的效果还是之前的效果，不会改变。&lt;/li&gt;
+&lt;li&gt;代码改变了之后，有的时候要取消关注再关注才会看到效果，特别是改变了菜单内容的时候，有的时候则不需要这样做就能看到效果。&lt;/li&gt;
+&lt;li&gt;测试号一天修改菜单的接口调用次数上限是100次，100次，真的只有100次= =所以要节约使用啊~&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;欢迎你的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      本文讲述的是如何解决用脚本修改不了微信菜单的问题。
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://wangjiajing.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="微信 菜单 服务器 php" scheme="http://wangjiajing.com/tags/%E5%BE%AE%E4%BF%A1-%E8%8F%9C%E5%8D%95-%E6%9C%8D%E5%8A%A1%E5%99%A8-php/"/>
+    
+  </entry>
   
   <entry>
     <title>解决ssh连接不上远程服务器的问题</title>
