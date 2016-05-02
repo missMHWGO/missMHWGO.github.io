@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-05-02T09:04:20.164Z</updated>
+  <updated>2016-05-02T09:22:11.706Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>裁剪图像神器photoClip</title>
+    <link href="http://wangjiajing.com/2016/05/02/%E8%A3%81%E5%89%AA%E5%9B%BE%E5%83%8F%E7%A5%9E%E5%99%A8photoClip/"/>
+    <id>http://wangjiajing.com/2016/05/02/裁剪图像神器photoClip/</id>
+    <published>2016-05-02T09:14:42.000Z</published>
+    <updated>2016-05-02T09:22:11.706Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;photoClip&lt;/code&gt; &lt;code&gt;裁剪&lt;/code&gt;&lt;br&gt;力荐一款裁剪图片的工具——jQuery-photoClip，源码请看&lt;a href=&quot;https://github.com/baijunjie/jQuery-photoClip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;支持手势&lt;ul&gt;
+&lt;li&gt;缩放&lt;/li&gt;
+&lt;li&gt;拖动&lt;/li&gt;
+&lt;li&gt;旋转&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;操作简单&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;作者已经写得很清楚明白啦，我只是打打广告=。=&lt;/p&gt;
+&lt;p&gt;欢迎你的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      本文推荐裁剪图像神器photoClip。
+    
+    </summary>
+    
+      <category term="javaScript" scheme="http://wangjiajing.com/categories/javaScript/"/>
+    
+    
+      <category term="photoClip 裁剪" scheme="http://wangjiajing.com/tags/photoClip-%E8%A3%81%E5%89%AA/"/>
+    
+  </entry>
   
   <entry>
     <title>canvas实现彩色图像变灰度图像</title>
@@ -874,45 +908,6 @@
     
     
       <category term="http协议 网络性能" scheme="http://wangjiajing.com/tags/http%E5%8D%8F%E8%AE%AE-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>html页面加载解析流程</title>
-    <link href="http://wangjiajing.com/2016/03/07/html%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/"/>
-    <id>http://wangjiajing.com/2016/03/07/html页面加载解析流程/</id>
-    <published>2016-03-07T12:37:19.000Z</published>
-    <updated>2016-03-14T06:48:52.988Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;code&gt;html&lt;/code&gt; &lt;code&gt;加载流程&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&quot;今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈-就记录下来啦&quot;&gt;&lt;a href=&quot;#今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈-就记录下来啦&quot; class=&quot;headerlink&quot; title=&quot;今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈~就记录下来啦~&quot;&gt;&lt;/a&gt;今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈~就记录下来啦~&lt;/h4&gt;&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;用户输入网址（假设是个html页面，并且是第一次访问），浏览器向服务器发出请求，服务器返回html文件；&lt;/li&gt;
-&lt;li&gt;浏览器开始载入html代码，发现&lt;code&gt;＜head＞&lt;/code&gt;标签内有一个&lt;code&gt;＜link＞&lt;/code&gt;标签引用外部CSS文件；&lt;/li&gt;
-&lt;li&gt;浏览器又发出CSS文件的请求，服务器返回这个CSS文件；&lt;br&gt;浏览器继续载入html中&lt;code&gt;＜body＞&lt;/code&gt;部分的代码，并且CSS文件已经拿到手了，可以开始渲染页面了；&lt;/li&gt;
-&lt;li&gt;浏览器在代码中发现一个&lt;code&gt;＜img＞&lt;/code&gt;标签引用了一张图片，向服务器发出请求。此时浏览器不会等到图片下载完，而是继续渲染后面的代码；&lt;br&gt;服务器返回图片文件，由于图片占用了一定面积，影响了后面段落的排布，因此浏览器需要回过头来重新渲染这部分代码；&lt;/li&gt;
-&lt;li&gt;浏览器发现了一个包含一行Javascript代码的&lt;code&gt;＜script＞&lt;/code&gt;标签，赶快运行它；&lt;/li&gt;
-&lt;li&gt;Javascript脚本执行了这条语句，它命令浏览器隐藏掉代码中的某个&lt;code&gt;＜div＞&lt;/code&gt;（style.display=”none”）。杯具啊，突然就少了这么一个元素，浏览器不得不重新渲染这部分代码；&lt;/li&gt;
-&lt;li&gt;终于等到了＜/html＞的到来，浏览器泪流满面……&lt;/li&gt;
-&lt;li&gt;等等，还没完，用户点了一下界面中的“换肤”按钮，Javascript让浏览器换了一下＜link＞标签的CSS路径；&lt;/li&gt;
-&lt;li&gt;浏览器召集了在座的各位&lt;code&gt;＜div＞&lt;/code&gt; &lt;code&gt;＜span＞&lt;/code&gt; &lt;code&gt;＜ul＞&lt;/code&gt; &lt;code&gt;＜li＞&lt;/code&gt;们，“大伙儿收拾收拾行李，咱得重新来过……”，浏览器向服务器请求了新的CSS文件，重新渲染页面。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;不过第一个步骤中写的貌似是以前服务器与浏览器传递数据的方式，现在一般不会直接返回一个html文件给前端，而是返回json格式的文本，将数据直接插入前端的DOM树中，在前端构成一个html文本。&lt;/p&gt;
-&lt;p&gt;欢迎您的指导！&lt;/p&gt;
-&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://developer.51cto.com/art/201311/418084.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://developer.51cto.com/art/201311/418084.htm&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      今天看到一篇超级幽默的文章，讲的是html的加载渲染过程，语言生动风趣，真真是我的菜哈哈~就记录下来啦~
-    
-    </summary>
-    
-      <category term="html" scheme="http://wangjiajing.com/categories/html/"/>
-    
-    
-      <category term="html 加载流程" scheme="http://wangjiajing.com/tags/html-%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B/"/>
     
   </entry>
   
