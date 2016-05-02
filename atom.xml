@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-05-02T09:30:38.578Z</updated>
+  <updated>2016-05-02T10:28:06.497Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>canvas实现彩色图像变灰度图像(一)</title>
+    <link href="http://wangjiajing.com/2016/05/02/canvas%E5%AE%9E%E7%8E%B0%E5%BD%A9%E8%89%B2%E5%9B%BE%E5%83%8F%E5%8F%98%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F(%E4%B8%80)/"/>
+    <id>http://wangjiajing.com/2016/05/02/canvas实现彩色图像变灰度图像(一)/</id>
+    <published>2016-05-02T09:39:21.000Z</published>
+    <updated>2016-05-02T10:28:06.497Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;html5&lt;/code&gt; &lt;code&gt;canvas&lt;/code&gt; &lt;code&gt;微信&lt;/code&gt;&lt;br&gt;先谈谈图片来源。&lt;br&gt;一开始太年轻，就用微信的sdk调用手机摄像头或本地相册获取照片。待我经历九九八十一难之后，终于可以获取一张照片的时候，我发现无论怎样都不能获取这张照片的像素点。&lt;br&gt;&lt;strong&gt;“Unable to get image data from canvas because the canvas has been tainted by cross-origin data.”&lt;/strong&gt;&lt;br&gt;类似的提示层出不穷。。。&lt;br&gt;我发现微信返回的localId是&lt;strong&gt;“wx://resource……”&lt;/strong&gt;这样形式的，所以很明显跨域了= =所以只好转战&lt;code&gt;&amp;lt;input type=&amp;quot;file&amp;quot;&amp;gt;&lt;/code&gt;。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;#file&#39;&lt;/span&gt;).change(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;e&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; file = e.target.files[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    imageType = &lt;span class=&quot;regexp&quot;&gt;/image.*/&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!file.type.match(imageType)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        alert(&lt;span class=&quot;string&quot;&gt;&#39;请选择一张图片！&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; url = URL.createObjectURL(file);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; img = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Image();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    img.src = url;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    img.onload = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; imgData = ctx.getImageData(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, canvas.width, canvas.height);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;欢迎你的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      本文讲述canvas实现彩色图像变灰度图像。
+    
+    </summary>
+    
+      <category term="javaScript" scheme="http://wangjiajing.com/categories/javaScript/"/>
+    
+    
+      <category term="html5 canvas 微信" scheme="http://wangjiajing.com/tags/html5-canvas-%E5%BE%AE%E4%BF%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>裁剪图像神器photoClip</title>
@@ -52,8 +76,8 @@
   
   <entry>
     <title>canvas实现彩色图像变灰度图像</title>
-    <link href="http://wangjiajing.com/2016/05/02/canvas%E5%AE%9E%E7%8E%B0%E5%BD%A9%E8%89%B2%E5%9B%BE%E5%83%8F%E5%8F%98%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F/"/>
-    <id>http://wangjiajing.com/2016/05/02/canvas实现彩色图像变灰度图像/</id>
+    <link href="http://wangjiajing.com/2016/05/02/canvas%E5%AE%9E%E7%8E%B0%E5%BD%A9%E8%89%B2%E5%9B%BE%E5%83%8F%E5%8F%98%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F(%E4%BA%8C)/"/>
+    <id>http://wangjiajing.com/2016/05/02/canvas实现彩色图像变灰度图像(二)/</id>
     <published>2016-05-02T08:30:21.000Z</published>
     <updated>2016-05-02T09:04:20.164Z</updated>
     
@@ -856,59 +880,6 @@
     
     
       <category term="gzip Apache" scheme="http://wangjiajing.com/tags/gzip-Apache/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>web性能优化（一）：内容优化</title>
-    <link href="http://wangjiajing.com/2016/03/08/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%86%85%E5%AE%B9%E4%BC%98%E5%8C%96/"/>
-    <id>http://wangjiajing.com/2016/03/08/web性能优化（一）：内容优化/</id>
-    <published>2016-03-08T12:45:18.000Z</published>
-    <updated>2016-03-15T09:00:01.314Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;code&gt;http协议&lt;/code&gt; &lt;code&gt;网络性能&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1秒钟能够加载出来的网页，如果你花了1.1秒，那么，对不起，you lose!&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&quot;1-压缩源码。&quot;&gt;&lt;a href=&quot;#1-压缩源码。&quot; class=&quot;headerlink&quot; title=&quot;1. 压缩源码。&quot;&gt;&lt;/a&gt;&lt;strong&gt;1. 压缩源码。&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;所有代码删除不必要的注释、跳格符号、换行符号及无用的空格。js文件可以采用混淆（经过编码将变量和函数原命名改为毫无意义的命名，以防止他人窥视和窃取js源代码）压缩的方式，html、css文件进行普通压缩。&lt;br&gt;举个栗子：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/*示例代码*/		&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function echo(stringA,stringB)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	var hello=&amp;quot;你好&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	alert(&amp;quot;hello world&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;经过普通压缩后就变成了：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function echo(stringA,stringB)&amp;#123;var hello=&amp;quot;你好&amp;quot;;alert(&amp;quot;hello world&amp;quot;)&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;这只是清除了一些冗余字符，但是如果经过Base62编码混淆压缩：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;eval(function(p,a,c,k,e,r)&amp;#123;e=String;if(!&amp;apos;&amp;apos;.replace(/^/,String))&amp;#123;while(c--)r[c]=k[c]||c;k=[function(e)&amp;#123;return r[e]&amp;#125;];e=function()&amp;#123;return&amp;apos;\\w+&amp;apos;&amp;#125;;c=1&amp;#125;;while(c--)if(k[c])p=p.replace(new RegExp(&amp;apos;\\b&amp;apos;+e(c)+&amp;apos;\\b&amp;apos;,&amp;apos;g&amp;apos;),k[c]);return p&amp;#125;(&amp;apos;1 2(3,4)&amp;#123;5 0=&amp;quot;你好&amp;quot;;6(&amp;quot;0 7&amp;quot;)&amp;#125;&amp;apos;,8,8,&amp;apos;hello|function|echo|stringA|stringB|var|alert|world&amp;apos;.split(&amp;apos;|&amp;apos;),0,&amp;#123;&amp;#125;))&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;真是连亲妈都不认识了= =&lt;/p&gt;
-&lt;h4 id=&quot;介绍一下Javascript主流压缩混淆工具：&quot;&gt;&lt;a href=&quot;#介绍一下Javascript主流压缩混淆工具：&quot; class=&quot;headerlink&quot; title=&quot;介绍一下Javascript主流压缩混淆工具：&quot;&gt;&lt;/a&gt;介绍一下Javascript主流压缩混淆工具：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;UglifyJS&lt;/li&gt;
-&lt;li&gt;Google Closure Compiler&lt;/li&gt;
-&lt;li&gt;Dean Edwards’ JS Packer&lt;/li&gt;
-&lt;li&gt;Douglas Crawford’s JS Min&lt;/li&gt;
-&lt;li&gt;YUI Compressor&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;据数据统计：&lt;br&gt;在压缩后的文件大小上，Closure Compiler压缩过的文件最小，JS Packer第二小；在压缩后代码的运行效率上，Google Closure Compiler在Advanced模式下运行效率优势非常明显，简直就是轻轻松松毫无压力碾压群雄，而且除了它，几乎任何压缩工具压缩后的代码的运行效率都比未压缩的代码要差。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/pandamicro/Javascript-Compressors-Analyse&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;数据统计来源&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;2-图片处理。&quot;&gt;&lt;a href=&quot;#2-图片处理。&quot; class=&quot;headerlink&quot; title=&quot;2. 图片处理。&quot;&gt;&lt;/a&gt;&lt;strong&gt;2. 图片处理。&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;图片格式&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;如果图片颜色数较多则使用jpg格式，较少则使用png格式，如果能够通过服务器端判断浏览器支持WebP就使用&lt;a href=&quot;https://zh.wikipedia.org/wiki/WebP&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;WebP&lt;/a&gt;格式或SVG（矢量图）格式。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;图片压缩&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;3-合并静态资源，减少文件数量。&quot;&gt;&lt;a href=&quot;#3-合并静态资源，减少文件数量。&quot; class=&quot;headerlink&quot; title=&quot;3. 合并静态资源，减少文件数量。&quot;&gt;&lt;/a&gt;&lt;strong&gt;3. 合并静态资源，减少文件数量。&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;合并css、js文件，可以减少http连接请求数。有时使用 文本+css 可以代替纯文本图片，也可以减少http请求次数。&lt;/p&gt;
-&lt;h3 id=&quot;4-开启服务器端的Gzip压缩。&quot;&gt;&lt;a href=&quot;#4-开启服务器端的Gzip压缩。&quot; class=&quot;headerlink&quot; title=&quot;4. 开启服务器端的Gzip压缩。&quot;&gt;&lt;/a&gt;&lt;strong&gt;4. 开启服务器端的Gzip压缩。&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;文本资源压缩比率非常大。如何开启服务器端的Gzip压缩请看&lt;a href=&quot;http://wangjiajing.com/2016/03/09/%E5%90%AF%E7%94%A8Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84Gzip%E5%8E%8B%E7%BC%A9/&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
-&lt;h3 id=&quot;5-使用CDN。&quot;&gt;&lt;a href=&quot;#5-使用CDN。&quot; class=&quot;headerlink&quot; title=&quot;5. 使用CDN。&quot;&gt;&lt;/a&gt;&lt;strong&gt;5. 使用CDN。&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;或者使用第三方提供的静态资源地址。一方面增加并发下载量，另一方面能够和其他网站共享缓存。&lt;/p&gt;
-&lt;h3 id=&quot;6-使用缓存。&quot;&gt;&lt;a href=&quot;#6-使用缓存。&quot; class=&quot;headerlink&quot; title=&quot;6. 使用缓存。&quot;&gt;&lt;/a&gt;&lt;strong&gt;6. 使用缓存。&lt;/strong&gt;&lt;/h3&gt;&lt;h3 id=&quot;7-优化页面元素的加载顺序。&quot;&gt;&lt;a href=&quot;#7-优化页面元素的加载顺序。&quot; class=&quot;headerlink&quot; title=&quot;7. 优化页面元素的加载顺序。&quot;&gt;&lt;/a&gt;&lt;strong&gt;7. 优化页面元素的加载顺序。&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;将css放在页面头部，js放在页面底部，这样不会阻塞页面渲染，让页面出现长时间的空白。&lt;/p&gt;
-&lt;h3 id=&quot;8-使用合法的标签。&quot;&gt;&lt;a href=&quot;#8-使用合法的标签。&quot; class=&quot;headerlink&quot; title=&quot;8. 使用合法的标签。&quot;&gt;&lt;/a&gt;&lt;strong&gt;8. 使用合法的标签。&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;避免浏览器解析时做错误的操作，浪费时间。&lt;/p&gt;
-&lt;p&gt;欢迎您的指导！&lt;/p&gt;
-&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://developer.51cto.com/art/201311/418084.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://developer.51cto.com/art/201311/418084.htm&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://book.douban.com/subject/26598045/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Web全栈工程师的自我修养&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      本文主要介绍如何通过对web内容进行优化达到优化整个网页性能的目的。
-    
-    </summary>
-    
-      <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
-    
-    
-      <category term="http协议 网络性能" scheme="http://wangjiajing.com/tags/http%E5%8D%8F%E8%AE%AE-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD/"/>
     
   </entry>
   

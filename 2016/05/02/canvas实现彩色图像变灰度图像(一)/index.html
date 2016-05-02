@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
 
-<title>Archives: 2016</title>
+<title>canvas实现彩色图像变灰度图像(一)</title>
 <meta name="author" content="wangjiajing">
 
-<meta name="keywords" content="undefined">
+<meta name="keywords" content="html5 canvas 微信">
 
-<meta name="description " content="null">
+<meta name="description " content="本文讲述canvas实现彩色图像变灰度图像。">
 
 <link rel="icon" href="/images/favicon.png">
 
@@ -167,7 +167,42 @@
 
     <div id="post">
       <div id="pjax">
-        
+        <article id="post__content">
+  <h1 id="post__title" data-identifier="2016-05-02">canvas实现彩色图像变灰度图像(一)</h1>
+  <p><code>html5</code> <code>canvas</code> <code>微信</code><br>先谈谈图片来源。<br>一开始太年轻，就用微信的sdk调用手机摄像头或本地相册获取照片。待我经历九九八十一难之后，终于可以获取一张照片的时候，我发现无论怎样都不能获取这张照片的像素点。<br><strong>“Unable to get image data from canvas because the canvas has been tainted by cross-origin data.”</strong><br>类似的提示层出不穷。。。<br>我发现微信返回的localId是<strong>“wx://resource……”</strong>这样形式的，所以很明显跨域了= =所以只好转战<code>&lt;input type=&quot;file&quot;&gt;</code>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#file'</span>).change(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> file = e.target.files[<span class="number">0</span>],</span><br><span class="line">    imageType = <span class="regexp">/image.*/</span>;</span><br><span class="line">    <span class="keyword">if</span> (!file.type.match(imageType)) &#123;</span><br><span class="line">        alert(<span class="string">'请选择一张图片！'</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> url = URL.createObjectURL(file);</span><br><span class="line">    <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">    img.src = url;</span><br><span class="line">    img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> imgData = ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>欢迎你的指导！</p>
+
+</article>
+<button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+<script src="/js/js-lib.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/codeStyle/xcode.css" />
+  <script src="/js/highlight.pack.js" type="text/javascript"></script>
+
+
+  <div id="post__action">
+      <a id="icon-heart" class="fontello" href="javascript:donate();"></a>
+  </div>
+  <script src="/layer/layer.js" type="text/javascript"></script>
+  <script src="/layer/extend/layer.ext.js" type="text/javascript"></script>
+
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="null" data-title="canvas实现彩色图像变灰度图像(一)" data-url="http://wangjiajing.com/2016/05/02/canvas实现彩色图像变灰度图像(一)/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shuoit"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
 
         <p id="copyright">Copyright © 2016 WangJiajing</p>
 <!-- 百度统计 -->
