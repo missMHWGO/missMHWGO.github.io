@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-05-02T10:28:06.497Z</updated>
+  <updated>2016-05-02T11:14:17.195Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在服务器端把base64加密的字符串合成图片</title>
+    <link href="http://wangjiajing.com/2016/05/02/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%8A%8Abase64%E5%8A%A0%E5%AF%86%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%90%88%E6%88%90%E5%9B%BE%E7%89%87/"/>
+    <id>http://wangjiajing.com/2016/05/02/在服务器端把base64加密的字符串合成图片/</id>
+    <published>2016-05-02T10:41:02.000Z</published>
+    <updated>2016-05-02T11:14:17.195Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;base64&lt;/code&gt; &lt;code&gt;ajax&lt;/code&gt; &lt;code&gt;file_put_contents&lt;/code&gt; &lt;code&gt;storage&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;&lt;strong&gt;需求&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;现在我有一串base64压缩的字符串，需要把它变成真正的图片。&lt;/p&gt;
+&lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;&lt;strong&gt;背景&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;用canvas的toDataURL函数返回的就是base64压缩的字符串，如果把它放在img.src里可以在网页上显示图片，但是保存在本地会显示失败。&lt;/p&gt;
+&lt;h3 id=&quot;解决方法&quot;&gt;&lt;a href=&quot;#解决方法&quot; class=&quot;headerlink&quot; title=&quot;解决方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;解决方法&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;将字符串用ajax请求发送到后台，在后台写进文件里变成真正的图片。&lt;br&gt;&lt;strong&gt;前端&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; image = canvas.toDataURL();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$.post(&lt;span class=&quot;string&quot;&gt;&quot;./img.php&quot;&lt;/span&gt;, &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&#39;image&#39;&lt;/span&gt;: image&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;).done(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;data&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    alert(data);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;后台&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;?php&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$image = $_POST[&amp;apos;image&amp;apos;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$image = str_replace(&amp;apos;data:image/png;base64,&amp;apos;, &amp;apos;&amp;apos;, $image);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$data = base64_decode($image);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$filename = time().&amp;apos;.png&amp;apos;;//以当前的时间戳命名，保证每张图片都能被保存，不会被覆盖&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$success = file_put_contents($filename, $data);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;echo $success ? $filename : &amp;apos;fail&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;宝宝当时用的是SAE，这样写居然跪了。。。后来查资料发现SAE不支持文件写入。。。于是改用&lt;code&gt;storage&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$stor = new SaeStorage();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$bucket = &amp;apos;image&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$filename = time().&amp;apos;.png&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$stor-&amp;gt;write($bucket , $filename , $data);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;echo($stor-&amp;gt;getUrl($bucket,$filename));//获取文件的绝对地址&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;欢迎你的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      本文讲述如何在服务器端把base64加密的字符串合成图片。
+    
+    </summary>
+    
+      <category term="javaScript" scheme="http://wangjiajing.com/categories/javaScript/"/>
+    
+    
+      <category term="base64 ajax file_put_contents storage" scheme="http://wangjiajing.com/tags/base64-ajax-file-put-contents-storage/"/>
+    
+  </entry>
   
   <entry>
     <title>canvas实现彩色图像变灰度图像(一)</title>
@@ -818,68 +847,6 @@
     
     
       <category term="javaScript PC和移动端判断" scheme="http://wangjiajing.com/tags/javaScript-PC%E5%92%8C%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%88%A4%E6%96%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>启用Apache服务器的Gzip压缩</title>
-    <link href="http://wangjiajing.com/2016/03/09/%E5%90%AF%E7%94%A8Apache%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84Gzip%E5%8E%8B%E7%BC%A9/"/>
-    <id>http://wangjiajing.com/2016/03/09/启用Apache服务器的Gzip压缩/</id>
-    <published>2016-03-09T08:37:32.000Z</published>
-    <updated>2016-03-14T06:53:29.255Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;code&gt;gzip&lt;/code&gt; &lt;code&gt;Apache&lt;/code&gt;&lt;br&gt;http压缩，其实就是一种http编码方式，在编码的同时去除了一些冗余，降低了网络传输的字节数，加快了网页加载速度。&lt;/p&gt;
-&lt;h3 id=&quot;http压缩过程&quot;&gt;&lt;a href=&quot;#http压缩过程&quot; class=&quot;headerlink&quot; title=&quot;http压缩过程&quot;&gt;&lt;/a&gt;http压缩过程&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Web服务器接收到浏览器的HTTP请求后，检查浏览器是否支持HTTP压缩；&lt;/li&gt;
-&lt;li&gt;如果支持，Web服务器检查请求文件的后缀名;&lt;/li&gt;
-&lt;li&gt;如果请求文件是HTML、CSS等静态文件，Web服务器到压缩缓冲目录中检查是否已经存在请求文件的最新压缩文件；&lt;/li&gt;
-&lt;li&gt;如果请求文件的压缩文件不存在，Web服务器向浏览器返回未压缩的请求文件，并在压缩缓冲目录中存放请求文件的压缩文件；&lt;/li&gt;
-&lt;li&gt;如果请求文件的最新压缩文件已经存在，则直接返回请求文件的压缩文件。&lt;/li&gt;
-&lt;li&gt;如果请求文件是动态文件，Web服务器动态压缩内容并返回浏览器，压缩内容不存放到压缩缓存目录中。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;开启gzip压缩&quot;&gt;&lt;a href=&quot;#开启gzip压缩&quot; class=&quot;headerlink&quot; title=&quot;开启gzip压缩&quot;&gt;&lt;/a&gt;开启gzip压缩&lt;/h3&gt;&lt;p&gt;首先抓个包，判断浏览器是否支持gzip压缩。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/LWZNQSF7LV14%7D%5BVL%7D36T6AG.png&quot; alt=&quot;抓包&quot;&gt;&lt;/p&gt;
-&lt;p&gt;可以看出，浏览器支持gzip和&lt;a href=&quot;https://zh.wikipedia.org/wiki/DEFLATE&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;deflate&lt;/a&gt;压缩。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;gzip和deflate压缩的区别：&lt;br&gt;两者都是使用Gzip压缩算法，运作原理是类似的，但还是有些差别。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;安装它们的Apache Web服务器版本。Apache 1.x系列没有内建网页压缩技术，所以才去用额外的第三方mod_gzip 模块来执行压缩。而Apache 2.x官方在开发的时候，就把网页压缩考虑进去，内建了mod_deflate 这个模块，用以取代mod_gzip。&lt;/li&gt;
-&lt;li&gt;第二个区别是压缩质量。mod_deflate 压缩速度略快而mod_gzip 的压缩比略高。一般默认情况下，mod_gzip 会比mod_deflate 多出4%~6％的压缩量。 &lt;/li&gt;
-&lt;li&gt;对服务器资源的占用。 一般来说mod_gzip 对服务器CPU的占用要高一些。mod_deflate 是专门为确保服务器的性能而使用的一个压缩模块，mod_deflate 需要较少的资源来压缩文件。这意味着在高流量的服务器，使用mod_deflate 可能会比mod_gzip 加载速度更快。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;好，下面就是如何开启啦~&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;首先，进入apache目录\bin\apache\apache2.4.9\modules,看是否有mod_deflate.so文件。若没有，则用 &lt;code&gt;/usr/local/apache2/bin/apxs -i -c -a mod_deflate.c&lt;/code&gt; 命令安装并编译生成mod_deflate.so文件。&lt;/li&gt;
-&lt;li&gt;打开httpd.conf文件，我的路径为\bin\apache\apache2.4.9\conf\httpd.conf，找到&lt;code&gt;LoadModule deflate_module modules/mod_deflate.so&lt;/code&gt;这一行，如果前面有&lt;code&gt;#&lt;/code&gt;号注释，干掉它！（如果你在第1步的时候安装使用参数&lt;code&gt;-a&lt;/code&gt;是没有注释的，如果你用&lt;code&gt;-A&lt;/code&gt;就是以注释的形式自动写入httpd.conf文件中）&lt;/li&gt;
-&lt;li&gt;现在我们可以对文件压缩规则进行配置啦~&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;mod_gzip方式&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;ifModule mod_gzip.c&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mod_gzip_on Yes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mod_gzip_dechunk Yes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mod_gzip_item_include file \.(html?|txt|css|js|php|pl)$&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mod_gzip_item_include handler ^cgi-script$&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mod_gzip_item_include mime ^text/.*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mod_gzip_item_include mime ^application/x-javascript.*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;ifModule&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;mod_deflate方式&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;严格匹配文件类型：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;ifmodule mod_deflate.c&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DeflateCompressionLevel 6 #压缩率, 6是建议值.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE text/plain&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE text/html&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE text/php&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE text/xml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE text/css&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE text/javascript&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE application/xhtml+xml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE application/xml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE application/rss+xml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE application/atom_xml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE application/x-javascript&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE application/x-httpd-php&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE image/svg+xml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AddOutputFilterByType DEFLATE image/gif image/png  image/jpe image/swf image/jpeg image/bmp&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# Don’t compress images and other  #排除不需要压缩的文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;BrowserMatch ^Mozilla/4 gzip-only-text/html&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;BrowserMatch ^Mozilla/4\.0[678] no-gzip&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;BrowserMatch \bMSIE !no-gzip !gzip-only-text/html&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SetEnvIfNoCase Request_URI .(?:html|htm)$ no-gzip dont-varySetEnvIfNoCase &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#SetEnvIfNoCase Request_URI .(?:gif|jpe?g|png)$ no-gzip dont-vary&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SetEnvIfNoCase Request_URI .(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SetEnvIfNoCase Request_URI .(?:pdf|doc)$ no-gzip dont-vary&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/ifmodule&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;过滤文件类型:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;ifmodule mod_deflate.c&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DeflateCompressionLevel 6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SetOutputFilter DEFLATE    #压缩所有文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#Don’t compress images and other  #过滤不需要压缩文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#SetEnvIfNoCase Request_URI .(?:gif|jpe?g|png)$ no-gzip dont-vary&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SetEnvIfNoCase Request_URI .(?:html|htm)$ no-gzip dont-vary&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SetEnvIfNoCase Request_URI .(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SetEnvIfNoCase Request_URI .(?:pdf|doc)$ no-gzip dont-vary&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/IfModule&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;现在我们来看看是否开启成功&lt;/strong&gt;&lt;br&gt;抓包：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/%7DIWDSIHDKXIDCVQLK105%5DN7.png&quot; alt=&quot;抓包&quot;&gt;&lt;/p&gt;
-&lt;p&gt;发现内容是进行的gzip编码，成功啦~&lt;/p&gt;
-&lt;p&gt;欢迎您的指导！&lt;/p&gt;
-&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://my.oschina.net/rasine/blog/343769#OSC_h1_5&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://my.oschina.net/rasine/blog/343769#OSC_h1_5&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.chinaunix.net/uid-25266990-id-3479069.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.chinaunix.net/uid-25266990-id-3479069.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/TankXiao/archive/2012/11/13/2749055.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/TankXiao/archive/2012/11/13/2749055.html&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      http压缩，其实就是一种http编码方式，在编码的同时去除了一些冗余，降低了网络传输的字节数，加快了网页加载速度。
-    
-    </summary>
-    
-      <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
-    
-    
-      <category term="gzip Apache" scheme="http://wangjiajing.com/tags/gzip-Apache/"/>
     
   </entry>
   
