@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
 
-<title>Tag: hexo deploy ssh</title>
+<title>canvas实现彩色图像变灰度图像</title>
 <meta name="author" content="wangjiajing">
 
-<meta name="keywords" content="undefined">
+<meta name="keywords" content="html5 canvas 灰度图">
 
 <meta name="description " content="null">
 
@@ -159,7 +159,58 @@
 
     <div id="post">
       <div id="pjax">
-        
+        <article id="post__content">
+  <h1 id="post__title" data-identifier="2016-05-02">canvas实现彩色图像变灰度图像</h1>
+  <p><code>html5</code> <code>canvas</code> <code>灰度图</code><br>将一幅彩色图像变灰最直接的方法就是加一层filter，css搞定，都不用劳烦js出场。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.gray</span> &#123; </span><br><span class="line">    <span class="attribute">-webkit-filter</span>: <span class="built_in">grayscale</span>(100%);</span><br><span class="line">    <span class="attribute">-moz-filter</span>: <span class="built_in">grayscale</span>(100%);</span><br><span class="line">    <span class="attribute">-ms-filter</span>: <span class="built_in">grayscale</span>(100%);</span><br><span class="line">    <span class="attribute">-o-filter</span>: <span class="built_in">grayscale</span>(100%);</span><br><span class="line">    <span class="attribute">filter</span>: <span class="built_in">grayscale</span>(100%);</span><br><span class="line">    <span class="attribute">filter</span>: gray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>filter的功能极其强大，一行代码就能达到ps滤镜的效果，ps哭晕在Adobe。。。具体参数有：</p>
+<ul>
+<li>grayscale灰度</li>
+<li>sepia复古</li>
+<li>saturate饱和度</li>
+<li>hue-rotate色相旋转</li>
+<li>invert反色</li>
+<li>opacity透明度</li>
+<li>brightness亮度</li>
+<li>contrast对比度</li>
+<li>blur模糊</li>
+<li>drop-shadow阴影</li>
+</ul>
+<p>等等。。。<br>如果上述代码不加100%,效果也是一样的，因为默认是100%渲染。</p>
+<p>那么问题来了,我要在canvas上变灰呢。。。<br>所谓“魔高一尺，道高一丈”，canvas有一个极其强大的函数 <strong><code>getImageData</code></strong>，可以获取画布上每个像素点的rgb以及alpha值（透明度），并以数组形式按顺序保存。举个例子吧：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                        ctx.drawImage(<span class="keyword">this</span>, <span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">                        <span class="keyword">var</span> imgData = ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">var</span> y = <span class="number">0</span>; y &lt; imgData.height; y++) &#123;</span><br><span class="line">                            <span class="keyword">for</span> (<span class="keyword">var</span> x = <span class="number">0</span>; x &lt; imgData.width; x++) &#123;</span><br><span class="line">                                <span class="keyword">var</span> i = (y * <span class="number">4</span>) * imgData.width + x * <span class="number">4</span>;</span><br><span class="line">                                <span class="keyword">var</span> avg = (imgData.data[i] + imgData.data[i + <span class="number">1</span>] + imgData.data[i + <span class="number">2</span>]) / <span class="number">3</span>;</span><br><span class="line">                                imgData.data[i] = avg;</span><br><span class="line">                                imgData.data[i + <span class="number">1</span>] = avg;</span><br><span class="line">                                imgData.data[i + <span class="number">2</span>] = avg;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                        ctx.putImageData(imgData, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, imgData.width, imgData.height);</span><br><span class="line">                        &#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中，图片被加载后我们把它画到canvas上，然后用getImageData、putImageData这一对函数将其处理成灰度图。<br>imgData就是上面提到的getImageData的返回值，是一个数组，imgData[0]是第一个像素点红色通道的值，imgData[0]是第一个像素点绿色通道的值，imgData[4]是第二个像素点红色通道的值。<br>上面函数的算法就是将一个像素点的r、g、b值加起来取平均再赋给这三个值，就变灰了=。=是不是很神奇呢~<br>(ps:一定要把代码丢到服务器上，否则你会看到<strong>“Unable to get image data from canvas because the canvas has been tainted by<br>cross-origin data.”</strong>，相信我这一系列跨域图片污染画布的问题会把人搞崩溃的。。。)</p>
+<p>欢迎你的指导！</p>
+
+</article>
+<button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+<script src="/js/js-lib.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/codeStyle/xcode.css" />
+  <script src="/js/highlight.pack.js" type="text/javascript"></script>
+
+
+  <div id="post__action">
+      <a id="icon-heart" class="fontello" href="javascript:donate();"></a>
+  </div>
+  <script src="/layer/layer.js" type="text/javascript"></script>
+  <script src="/layer/extend/layer.ext.js" type="text/javascript"></script>
+
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="null" data-title="canvas实现彩色图像变灰度图像" data-url="http://wangjiajing.com/2016/05/02/canvas实现彩色图像变灰度图像/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shuoit"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
 
         <p id="copyright">Copyright © 2016 WangJiajing</p>
 <!-- 百度统计 -->
