@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-04-11T16:10:31.630Z</updated>
+  <updated>2016-05-02T05:39:16.878Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>改变placeholder的样式</title>
+    <link href="http://wangjiajing.com/2016/05/02/%E6%94%B9%E5%8F%98placeholder%E7%9A%84%E6%A0%B7%E5%BC%8F/"/>
+    <id>http://wangjiajing.com/2016/05/02/改变placeholder的样式/</id>
+    <published>2016-05-02T05:17:45.000Z</published>
+    <updated>2016-05-02T05:39:16.878Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;css&lt;/code&gt; &lt;code&gt;placeholder&lt;/code&gt;&lt;br&gt;做表单的时候需要用&lt;code&gt;placeholder&lt;/code&gt;提示，捣鼓了好久才知道怎么修改它的样式= =&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.profile::-webkit-input-placeholder {
+    color: #f00;
+    font-family: YGYDF;
+    font-size: 1.3rem;
+    letter-spacing: 0.3rem;       
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中，&lt;code&gt;.profile&lt;/code&gt;为选择器，后面接的&lt;code&gt;::-webkit-input-placeholder&lt;/code&gt;为伪元素选择器。(如果有考虑兼容性的必要的话，我用的是google，所以用&lt;code&gt;webkit&lt;/code&gt;，不同的浏览器内核请相应作出修改。)&lt;br&gt;然后你就可以对&lt;code&gt;placeholder&lt;/code&gt;为所欲为啦~&lt;/p&gt;
+&lt;p&gt;欢迎您的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      本文介绍怎么修改placeholder的样式。
+    
+    </summary>
+    
+      <category term="css" scheme="http://wangjiajing.com/categories/css/"/>
+    
+    
+      <category term="css placeholder" scheme="http://wangjiajing.com/tags/css-placeholder/"/>
+    
+  </entry>
   
   <entry>
     <title>解决使用微信jssdk报域名不合法的错误</title>

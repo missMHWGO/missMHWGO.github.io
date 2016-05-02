@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
 
-<title>Archives: 2016</title>
+<title>改变placeholder的样式</title>
 <meta name="author" content="wangjiajing">
 
-<meta name="keywords" content="undefined">
+<meta name="keywords" content="css placeholder">
 
-<meta name="description " content="null">
+<meta name="description " content="本文介绍怎么修改placeholder的样式。">
 
 <link rel="icon" href="/images/favicon.png">
 
@@ -147,7 +147,49 @@
 
     <div id="post">
       <div id="pjax">
-        
+        <article id="post__content">
+  <h1 id="post__title" data-identifier="2016-05-02">改变placeholder的样式</h1>
+  <p><code>css</code> <code>placeholder</code><br>做表单的时候需要用<code>placeholder</code>提示，捣鼓了好久才知道怎么修改它的样式= =</p>
+<pre><code>.profile::-webkit-input-placeholder {
+    color: #f00;
+    font-family: YGYDF;
+    font-size: 1.3rem;
+    letter-spacing: 0.3rem;       
+}
+</code></pre><p>其中，<code>.profile</code>为选择器，后面接的<code>::-webkit-input-placeholder</code>为伪元素选择器。(如果有考虑兼容性的必要的话，我用的是google，所以用<code>webkit</code>，不同的浏览器内核请相应作出修改。)<br>然后你就可以对<code>placeholder</code>为所欲为啦~</p>
+<p>欢迎您的指导！</p>
+
+</article>
+<button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+<script src="/js/js-lib.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/codeStyle/xcode.css" />
+  <script src="/js/highlight.pack.js" type="text/javascript"></script>
+
+
+  <div id="post__action">
+      <a id="icon-heart" class="fontello" href="javascript:donate();"></a>
+  </div>
+  <script src="/layer/layer.js" type="text/javascript"></script>
+  <script src="/layer/extend/layer.ext.js" type="text/javascript"></script>
+
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="null" data-title="改变placeholder的样式" data-url="http://wangjiajing.com/2016/05/02/改变placeholder的样式/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shuoit"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
 
         <p id="copyright">Copyright © 2016 WangJiajing</p>
 <!-- 百度统计 -->
