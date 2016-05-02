@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
 
-<title>Tag: css placeholder</title>
+<title>如何在canvas上画线画图画文本</title>
 <meta name="author" content="wangjiajing">
 
-<meta name="keywords" content="undefined">
+<meta name="keywords" content="html5 canvas">
 
-<meta name="description " content="null">
+<meta name="description " content="本文介绍如何在canvas上画线画图画文本。">
 
 <link rel="icon" href="/images/favicon.png">
 
@@ -155,7 +155,43 @@
 
     <div id="post">
       <div id="pjax">
-        
+        <article id="post__content">
+  <h1 id="post__title" data-identifier="2016-05-02">如何在canvas上画线画图画文本</h1>
+  <p><code>html5</code> <code>canvas</code><br>总结一下在canvas上画直线、写文本、绘图片的标准（最简单）写法。<br>首先定义画布：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>);</span><br><span class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line">canvas.width = <span class="built_in">window</span>.innerWidth;</span><br><span class="line">canvas.height = <span class="built_in">window</span>.innerHeight;</span><br></pre></td></tr></table></figure></p>
+<p>如果图片是背景图，则先画背景图，之后所有的东西都在背景图画完之后画，不然之前画的会被背景覆盖：（人家优先级就是这么高，不服你咬我啊~）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//画图</span></span><br><span class="line"><span class="keyword">var</span> image = <span class="keyword">new</span> Image();</span><br><span class="line">image.src = <span class="string">'static/img/zhuangbi.png'</span>;</span><br><span class="line">image.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    ctx.drawImage(<span class="keyword">this</span>, <span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);<span class="comment">//drawImage是一个无比强大的函数，通过设置参数可以直接把裁剪功能给做了~</span></span><br><span class="line">    <span class="comment">//画两条直线,画的是啥我也不知道= =</span></span><br><span class="line">    ctx.strokeStyle = <span class="string">'#f00'</span>;</span><br><span class="line">    ctx.beginPath();<span class="comment">//设置起点</span></span><br><span class="line">    ctx.moveTo(<span class="number">0</span>, <span class="number">10</span>);<span class="comment">//数字都是坐标</span></span><br><span class="line">    ctx.lineTo(<span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">    ctx.moveTo(<span class="number">0</span>, <span class="number">30</span>);</span><br><span class="line">    ctx.lineTo(<span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">    ctx.stroke();</span><br><span class="line">    <span class="comment">//绘文字</span></span><br><span class="line">    ctx.fillStyle = <span class="string">'#0f0'</span>;</span><br><span class="line">    ctx.font = <span class="string">'50px SimHei'</span>;</span><br><span class="line">    ctx.textBaseline = <span class="string">'bottom'</span>;</span><br><span class="line">    ctx.fillText(<span class="string">'一天不装逼我浑身难受=。='</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>欢迎你的指导！</p>
+
+</article>
+<button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+<script src="/js/js-lib.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/codeStyle/xcode.css" />
+  <script src="/js/highlight.pack.js" type="text/javascript"></script>
+
+
+  <div id="post__action">
+      <a id="icon-heart" class="fontello" href="javascript:donate();"></a>
+  </div>
+  <script src="/layer/layer.js" type="text/javascript"></script>
+  <script src="/layer/extend/layer.ext.js" type="text/javascript"></script>
+
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="null" data-title="如何在canvas上画线画图画文本" data-url="http://wangjiajing.com/2016/05/02/如何在canvas上画线画图画文本/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shuoit"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
 
         <p id="copyright">Copyright © 2016 WangJiajing</p>
 <!-- 百度统计 -->

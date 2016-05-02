@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-05-02T07:52:14.422Z</updated>
+  <updated>2016-05-02T08:16:53.366Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何在canvas上画线画图画文本</title>
+    <link href="http://wangjiajing.com/2016/05/02/%E5%A6%82%E4%BD%95%E5%9C%A8canvas%E4%B8%8A%E7%94%BB%E7%BA%BF%E7%94%BB%E5%9B%BE%E7%94%BB%E6%96%87%E6%9C%AC/"/>
+    <id>http://wangjiajing.com/2016/05/02/如何在canvas上画线画图画文本/</id>
+    <published>2016-05-02T08:01:41.000Z</published>
+    <updated>2016-05-02T08:16:53.366Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;html5&lt;/code&gt; &lt;code&gt;canvas&lt;/code&gt;&lt;br&gt;总结一下在canvas上画直线、写文本、绘图片的标准（最简单）写法。&lt;br&gt;首先定义画布：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; canvas = &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.getElementById(&lt;span class=&quot;string&quot;&gt;&#39;canvas&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; ctx = canvas.getContext(&lt;span class=&quot;string&quot;&gt;&#39;2d&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;canvas.width = &lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.innerWidth;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;canvas.height = &lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.innerHeight;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如果图片是背景图，则先画背景图，之后所有的东西都在背景图画完之后画，不然之前画的会被背景覆盖：（人家优先级就是这么高，不服你咬我啊~）&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//画图&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; image = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Image();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;image.src = &lt;span class=&quot;string&quot;&gt;&#39;static/img/zhuangbi.png&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;image.onload = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ctx.drawImage(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, canvas.width, canvas.height);&lt;span class=&quot;comment&quot;&gt;//drawImage是一个无比强大的函数，通过设置参数可以直接把裁剪功能给做了~&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//画两条直线,画的是啥我也不知道= =&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ctx.strokeStyle = &lt;span class=&quot;string&quot;&gt;&#39;#f00&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ctx.beginPath();&lt;span class=&quot;comment&quot;&gt;//设置起点&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ctx.moveTo(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//数字都是坐标&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ctx.lineTo(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ctx.moveTo(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;30&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ctx.lineTo(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ctx.stroke();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//绘文字&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ctx.fillStyle = &lt;span class=&quot;string&quot;&gt;&#39;#0f0&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ctx.font = &lt;span class=&quot;string&quot;&gt;&#39;50px SimHei&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ctx.textBaseline = &lt;span class=&quot;string&quot;&gt;&#39;bottom&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ctx.fillText(&lt;span class=&quot;string&quot;&gt;&#39;一天不装逼我浑身难受=。=&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;欢迎你的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      本文介绍如何在canvas上画线画图画文本。
+    
+    </summary>
+    
+      <category term="javaScript" scheme="http://wangjiajing.com/categories/javaScript/"/>
+    
+    
+      <category term="html5 canvas" scheme="http://wangjiajing.com/tags/html5-canvas/"/>
+    
+  </entry>
   
   <entry>
     <title>解决canvas自定义字体失败的问题</title>
@@ -886,61 +911,6 @@
     
     
       <category term="js 加载顺序" scheme="http://wangjiajing.com/tags/js-%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo</title>
-    <link href="http://wangjiajing.com/2016/03/05/hexo/"/>
-    <id>http://wangjiajing.com/2016/03/05/hexo/</id>
-    <published>2016-03-04T17:32:57.000Z</published>
-    <updated>2016-03-14T06:47:27.301Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;code&gt;hexo&lt;/code&gt; &lt;code&gt;deploy&lt;/code&gt; &lt;code&gt;ssh&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;hexo这种博客神器，不用简直对不起我强烈的&lt;strong&gt;装逼&lt;/strong&gt;欲望=。=&lt;/p&gt;
-&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;已经有前辈的blog将hexo的安装配置过程写得很详细了,我也是站在巨人的肩膀上享受着他人辛勤劳动的成果，十分&lt;strong&gt;感谢&lt;/strong&gt;^_^&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://augustus.wang/2016/02/28/hexo-experience/#more&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://augustus.wang/2016/02/28/hexo-experience/#more&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.isetsuna.com/categories/Hexo/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.isetsuna.com/categories/Hexo/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://ibruce.info/2013/11/22/hexo-your-blog/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://ibruce.info/2013/11/22/hexo-your-blog/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;如果以上资料还不能解决问题的话，请移步&lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo官方文档&lt;/a&gt;。&lt;/p&gt;
-&lt;h2 id=&quot;部署&quot;&gt;&lt;a href=&quot;#部署&quot; class=&quot;headerlink&quot; title=&quot;部署&quot;&gt;&lt;/a&gt;部署&lt;/h2&gt;&lt;p&gt;之前的安装一路都是顺风顺水,可是部署到GitHub上时出bug了= =&lt;br&gt;我输完&lt;code&gt;hexo d&lt;/code&gt;后，弹出了一个错误框：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/RT3I7(14V8T5(4I%24L%7DS_YIR.png&quot; alt=&quot;错误框&quot;&gt;&lt;/p&gt;
-&lt;p&gt;看上面的提示信息我以为是公钥出了问题，用&lt;code&gt;ssh -T git@github.com&lt;/code&gt;命令测试提示：&lt;br&gt;&lt;strong&gt;&lt;em&gt;Hi username! You’ve successfully authenticated, but GitHub does not provide shell access Connection to github.com closed.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;到github上看，发现公钥是使用过的（钥匙图标左边有一个小绿点，如下图~）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/N98%40504Y8%25%7D~S~KQ6~\&quot; alt=&quot;公钥&quot;&gt;)M6T.png)&lt;/p&gt;
-&lt;p&gt;查找资料后，万能的网友说可能是ssh密钥的问题，解决方法是：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;鼠标右键 &amp;gt; Set TortoiseGit &amp;gt; Settings &amp;gt; Network &amp;gt; SSH Client 改为 C:\Program Files (x86)\Git\bin\ssh.exe&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;或(主要看你的git装在哪个目录下)&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;鼠标右键 &amp;gt; Set TortoiseGit &amp;gt; Settings &amp;gt; Network &amp;gt; SSH Client 改为 C:\Program Files\Git\usr\bin\ssh.exe&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;即：将&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/%7BHL7492S5VNK9%60%24L%60Z97%40LJ.png&quot; alt=&quot;修改前&quot;&gt;&lt;/p&gt;
-&lt;p&gt;修改成：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/%60NR7BBJ32%24XS1RM30%7DKVWLF.png&quot; alt=&quot;修改后&quot;&gt;&lt;/p&gt;
-&lt;p&gt;但是修改后依旧报错= =&lt;/p&gt;
-&lt;p&gt;这时候万能的网友又说啦：可能是环境变量&lt;code&gt;GIT_SSH&lt;/code&gt;的问题，可以通过设置环境变量&lt;code&gt;GIT_SSH&lt;/code&gt;使得git找到你的ssh client，具体做法为：&lt;br&gt;在根目录&lt;code&gt;C:\Users\[user]&lt;/code&gt;下创建一个文件&lt;code&gt;.profile&lt;/code&gt;（有人的是&lt;code&gt;.bash_profile&lt;/code&gt;，因机器而异= =），里面写一句话：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;GIT_SSH=&amp;quot;/usr/bin/ssh.exe&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;保存后重新执行&lt;code&gt;hexo d&lt;/code&gt;命令部署，好，下面就是见证奇迹的时刻，你会发现不报错啦~=。=~&lt;/p&gt;
-&lt;p&gt;欢迎您的指导！&lt;/p&gt;
-&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://stackoverflow.com/questions/3431314/github-no-supported-authentication-methods-available&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github: No supported authentication methods available&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      本文主要介绍使用hexo搭建个人博客时遇到的问题及解决过程。
-    
-    </summary>
-    
-      <category term="hexo" scheme="http://wangjiajing.com/categories/hexo/"/>
-    
-    
-      <category term="hexo deploy ssh" scheme="http://wangjiajing.com/tags/hexo-deploy-ssh/"/>
     
   </entry>
   

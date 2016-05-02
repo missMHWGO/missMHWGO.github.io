@@ -24,9 +24,9 @@
     <ul id="tags__ul">
       <li id="pl__all" class="tags__li tags-btn active">All</li>
       
-      <li id="hexo" class="tags__li tags-btn">hexo</li>
-      
       <li id="html" class="tags__li tags-btn">html</li>
+      
+      <li id="hexo" class="tags__li tags-btn">hexo</li>
       
       <li id="javaScript" class="tags__li tags-btn">javaScript</li>
       
@@ -52,14 +52,14 @@
     <nav id="pl__container">
       
             
-                <a class="hexo pl__all" href="/2016/03/05/hexo/" title="hexo">
-                  <span class="pl__circle"></span><span class="pl__title">hexo</span><span class="pl__date">2016-03-05</span>
+                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
+                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
                 </a>
             
       
             
-                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
-                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
+                <a class="hexo pl__all" href="/2016/03/05/hexo/" title="hexo">
+                  <span class="pl__circle"></span><span class="pl__title">hexo</span><span class="pl__date">2016-03-05</span>
                 </a>
             
       
@@ -70,6 +70,10 @@
             
                 <a class="javaScript pl__all" href="/2016/03/06/js文档加载顺序/" title="js文档加载顺序">
                   <span class="pl__circle"></span><span class="pl__title">js文档加载顺序</span><span class="pl__date">2016-03-06</span>
+                </a>
+            
+                <a class="javaScript pl__all" href="/2016/05/02/如何在canvas上画线画图画文本/" title="如何在canvas上画线画图画文本">
+                  <span class="pl__circle"></span><span class="pl__title">如何在canvas上画线画图画文本</span><span class="pl__date">2016-05-02</span>
                 </a>
             
                 <a class="javaScript pl__all" href="/2016/05/02/解决canvas自定义字体失败的问题/" title="解决canvas自定义字体失败的问题">
@@ -153,24 +157,20 @@
       <div id="pjax">
         
     <article id="post__content">
-      <h1 id="post__title" data-identifier="2016-03-17">uri与url</h1>
-      <p><code>http</code> <code>uri</code> <code>url</code><br>URI和URL只差一个字母，很多时候都发现用URI的地方貌似也可以用URL= =，所以以前一直都很困惑他两有啥区别，现在有空就记录下来啦~</p>
-<h2 id="URI"><a href="#URI" class="headerlink" title="URI"></a><strong>URI</strong></h2><ul>
-<li><strong>定义</strong><br><code>URI</code>，Uniform Resource Identifier，翻译成中文是<code>统一资源标识符</code>，用于标识某一互联网资源名称的字符串，该种标识允许用户对网络中（一般指万维网）的资源通过特定的协议进行交互操作。<br>讲人话呢，其实就是每个Web服务器资源都有一个名字，这样客户端就可以准确找到它们了，而uri就是这些名字。</li>
-<li><strong>类型</strong><br>URI包括<code>URL</code>和<code>URN</code>。</li>
-</ul>
-<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a><strong>URL</strong></h2><ul>
-<li><strong>定义</strong><br>URL，Uniform Resource Locator，翻译成中文是<code>统一资源定位符</code>，是URI最常见的形式。URL 描述了一台特定服务器上某资源的特定位置，它们可以明确说明如何从一个精确、固定的位置获取资源。</li>
-<li><strong>语法</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>其中：<br><code>scheme</code>：<code>方案</code>，一般指协议，有http、https、ftp、mailto、telnet等等。<br><code>user</code>、<code>password</code>：<code>用户名</code>、<code>密码</code>，一些服务器需要用户输入用户名和密码才允许访问。如ftp协议。<br><code>host</code>、<code>port</code>：<code>主机</code>、<code>端口</code>，主机标识了因特网上能够访问资源的宿主机器，可用主机名（域名）或IP地址表示；端口标识了服务器正在监听的网络端口。<br><code>path</code>：<code>路径</code>，说明了资源位于服务器的什么地方，通常像一个分级的文件系统路径。<br><code>params</code>：<code>参数</code>，向应用程序提供它们所需的输入参数，以便正确地与服务器进行交互，形式为key-value键值对，由“;”将其与URL其余部分分隔开来。例子：ftp://prep.ai.mit.edu/pub/gnu;graphics=true<br><code>query</code>：<code>查询字符串</code>，可以通过查询字符串来缩小所请求资源的范围，形式同样为key-value对，之间用字符“&amp;”分隔，由“?”将其与URL其余部分分隔开来。例子：<a href="http://localhost/test?id=123&amp;show=false" target="_blank" rel="external">http://localhost/test?id=123&amp;show=false</a><br><code>frag</code>：<code>片段</code>，表示一个资源内部的片段，通常用于在页面中设置“书签”并实现页内跳转。片段出现在URL的最右边，前面有一个字符“#”。注意客户端不会将片段发送到服务器，浏览器从服务器获得整个资源后，会根据片段在页内跳转到指定的位置。</p>
-<h2 id="URN"><a href="#URN" class="headerlink" title="URN"></a><strong>URN</strong></h2><ul>
-<li><strong>定义</strong><br><code>统一资源名</code>，作为特定内容的唯一名称使用，与目前的资源所在地无关。使用这些与位置无关的URN，就可以将资源四处搬移。通过URN，还可以用同一个名字通过多种网络访问协议来访问资源。为了更有效地工作， URN 需要一个支撑架构来解析资源的位置，而此类架构的缺乏也延缓了其被采用的进度。所以URN仍然处于试验阶段，还未大范围使用。 </li>
-<li><strong>示例</strong><br>可以<code>urn:ietf:rfc:2141</code>来命名因特网标准文档RFC2141，无论它位于何处。</li>
-</ul>
+      <h1 id="post__title" data-identifier="2016-03-18">谈谈对网络爬虫的理解</h1>
+      <p>网络爬虫是按照一定规则，自动抓取万维网上信息的程序或脚本，主要目的是将互联网上的网页下载到本地形成一个互联网内容的镜像备份。讲人话呢，其实就是从网站某一个页面（通常是首页）开始，读取网页的内容，找到在该网页中的其它链接地址，然后通过这些链接地址寻找下一个网页，这样一直循环下去，直到把这个网站中所有的网页都抓取完为止。因此，网络爬虫的基本操作就是抓取网页。</p>
+<h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a><strong>基本原理</strong></h2><p>一个通用的网络爬虫的框架如图所示：<br> <img src="http://7xqw4a.com1.z0.glb.clouddn.com/~LBKJNOF4K%60LW22KOHIKM8P.png" alt="网络爬虫框架"></p>
+<p>网络爬虫的基本工作流程如下：</p>
+<ol>
+<li>首先选取一部分精心挑选的种子URL；</li>
+<li>将这些URL放入待抓取URL队列；</li>
+<li>从待抓取URL队列中读取URL，解析DNS，并且得到主机的ip，并将URL对应的网页下载下来，存储进已下载网页库中。此外，将这些URL放进已抓取URL队列。</li>
+<li>分析已抓取URL队列中的URL，分析其中的其他URL，并且将URL放入待抓取URL队列，从而进入下一个循环。</li>
+</ol>
+<h2 id="搜索策略"><a href="#搜索策略" class="headerlink" title="搜索策略"></a><strong>搜索策略</strong></h2><p><strong>1. 广度优先搜索</strong><br>广度优先搜索的基本思路是，将新下载网页中发现的链接直接插入待抓取URL队列的末尾，也就是指网络爬虫会先抓取起始网页中链接的所有网页，然后再选择其中的一个链接网页，继续抓取在此网页中链接的所有网页。这种方法的缺点在于，随着抓取网页的增多，大量的无关网页被下载，算法的效率将变低。<br><strong>2. 最佳优先搜索</strong><br>最佳优先搜索策略按照一定的网页分析算法，预测候选URL与目标网页的相似度，或与主题的相关性，并选取评价最好的一个或几个URL进行抓取。它只访问经过网页分析算法预测为“有用”的网页。存在的一个问题是，在爬虫抓取路径上的很多相关网页可能被忽略，因为最佳优先策略是一种局部最优搜索算法。因此需要将最佳优先结合具体的应用进行改进，以跳出局部最优点。<br><strong>3. 深度优先搜索</strong><br>深度优先搜索是指网络爬虫会从起始页开始，一个链接一个链接跟踪下去，处理完这条线路之后再转入下一个起始页，继续跟踪链接。</p>
+<p>由于深度优先在很多情况下会导致爬虫的陷入(trapped)问题，目前常见的是广度优先和最佳优先方法。</p>
 <p>欢迎您的指导！</p>
-<p>参考资料：<br>《HTTP权威指南》</p>
+<p>参考资料：<br><a href="http://baike.baidu.com/view/284853.htm?fromtitle=%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E8%9C%98%E8%9B%9B&amp;fromid=9781549&amp;type=syn" target="_blank" rel="external">百度百科——网络爬虫</a><br><a href="http://www.cnblogs.com/wawlian/archive/2012/06/18/2553061.html" target="_blank" rel="external">http://www.cnblogs.com/wawlian/archive/2012/06/18/2553061.html</a></p>
 
     </article>
     <button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
@@ -188,7 +188,7 @@
 
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="null" data-title="uri与url" data-url="http://wangjiajing.com/2016/03/17/uri与url/"></div>
+<div class="ds-thread" data-thread-key="null" data-title="谈谈对网络爬虫的理解" data-url="http://wangjiajing.com/2016/03/18/谈谈对网络爬虫的理解/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
