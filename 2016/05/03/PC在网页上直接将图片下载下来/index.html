@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
 
-<title>Category: css</title>
+<title>PC在网页上直接将图片下载下来</title>
 <meta name="author" content="wangjiajing">
 
-<meta name="keywords" content="undefined">
+<meta name="keywords" content="html javaScript 下载图片">
 
-<meta name="description " content="null">
+<meta name="description " content="本文讲述如何PC在网页上直接将图片下载下来。">
 
 <link rel="icon" href="/images/favicon.png">
 
@@ -175,7 +175,46 @@
 
     <div id="post">
       <div id="pjax">
-        
+        <article id="post__content">
+  <h1 id="post__title" data-identifier="2016-05-03">PC在网页上直接将图片下载下来</h1>
+  <p><code>html</code> <code>javaScript</code> <code>下载图片</code></p>
+<h3 id="html实现"><a href="#html实现" class="headerlink" title="html实现"></a><strong>html实现</strong></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"要下载的链接"</span> <span class="attr">download</span>&gt;</span>这里可以放文字也可以放图片，点击这里自动下载<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="js实现"><a href="#js实现" class="headerlink" title="js实现"></a><strong>js实现</strong></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> saveFile = <span class="function"><span class="keyword">function</span>(<span class="params">data, filename</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> save_link = <span class="built_in">document</span>.createElementNS(<span class="string">'http://www.w3.org/1999/xhtml'</span>, <span class="string">'a'</span>);</span><br><span class="line">    save_link.href = data;</span><br><span class="line">    save_link.download = filename;</span><br><span class="line">    <span class="keyword">var</span> event = <span class="built_in">document</span>.createEvent(<span class="string">'MouseEvents'</span>);</span><br><span class="line">    event.initMouseEvent(<span class="string">'click'</span>, <span class="literal">true</span>, <span class="literal">false</span>, <span class="built_in">window</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="number">0</span>, <span class="literal">null</span>);</span><br><span class="line">    save_link.dispatchEvent(event);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> filename = (<span class="keyword">new</span> <span class="built_in">Date</span>()).getTime() + <span class="string">'.png'</span>;</span><br><span class="line">saveFile(image, filename);</span><br></pre></td></tr></table></figure>
+<p>如果是canvas的话：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> image = canvas.toDataURL(<span class="string">"image/png"</span>).replace(<span class="string">'image/png'</span>, <span class="string">'image/octet-stream'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>但是这样不能将图片保存为常见的图片格式。</p>
+<p>欢迎你的指导！</p>
+
+</article>
+<button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+<script src="/js/js-lib.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/codeStyle/xcode.css" />
+  <script src="/js/highlight.pack.js" type="text/javascript"></script>
+
+
+  <div id="post__action">
+      <a id="icon-heart" class="fontello" href="javascript:donate();"></a>
+  </div>
+  <script src="/layer/layer.js" type="text/javascript"></script>
+  <script src="/layer/extend/layer.ext.js" type="text/javascript"></script>
+
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="null" data-title="PC在网页上直接将图片下载下来" data-url="http://wangjiajing.com/2016/05/03/PC在网页上直接将图片下载下来/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shuoit"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
 
         <p id="copyright">Copyright © 2016 WangJiajing</p>
 <!-- 百度统计 -->

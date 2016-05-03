@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-05-02T11:16:41.197Z</updated>
+  <updated>2016-05-03T11:31:42.526Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PC在网页上直接将图片下载下来</title>
+    <link href="http://wangjiajing.com/2016/05/03/PC%E5%9C%A8%E7%BD%91%E9%A1%B5%E4%B8%8A%E7%9B%B4%E6%8E%A5%E5%B0%86%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD%E4%B8%8B%E6%9D%A5/"/>
+    <id>http://wangjiajing.com/2016/05/03/PC在网页上直接将图片下载下来/</id>
+    <published>2016-05-03T11:14:25.000Z</published>
+    <updated>2016-05-03T11:31:42.526Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;html&lt;/code&gt; &lt;code&gt;javaScript&lt;/code&gt; &lt;code&gt;下载图片&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;html实现&quot;&gt;&lt;a href=&quot;#html实现&quot; class=&quot;headerlink&quot; title=&quot;html实现&quot;&gt;&lt;/a&gt;&lt;strong&gt;html实现&lt;/strong&gt;&lt;/h3&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;要下载的链接&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;download&lt;/span&gt;&amp;gt;&lt;/span&gt;这里可以放文字也可以放图片，点击这里自动下载&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;js实现&quot;&gt;&lt;a href=&quot;#js实现&quot; class=&quot;headerlink&quot; title=&quot;js实现&quot;&gt;&lt;/a&gt;&lt;strong&gt;js实现&lt;/strong&gt;&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; saveFile = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;data, filename&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; save_link = &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.createElementNS(&lt;span class=&quot;string&quot;&gt;&#39;http://www.w3.org/1999/xhtml&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    save_link.href = data;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    save_link.download = filename;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; event = &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.createEvent(&lt;span class=&quot;string&quot;&gt;&#39;MouseEvents&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    event.initMouseEvent(&lt;span class=&quot;string&quot;&gt;&#39;click&#39;&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    save_link.dispatchEvent(event);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; filename = (&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;()).getTime() + &lt;span class=&quot;string&quot;&gt;&#39;.png&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;saveFile(image, filename);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果是canvas的话：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; image = canvas.toDataURL(&lt;span class=&quot;string&quot;&gt;&quot;image/png&quot;&lt;/span&gt;).replace(&lt;span class=&quot;string&quot;&gt;&#39;image/png&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;image/octet-stream&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;但是这样不能将图片保存为常见的图片格式。&lt;/p&gt;
+&lt;p&gt;欢迎你的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      本文讲述如何PC在网页上直接将图片下载下来。
+    
+    </summary>
+    
+      <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
+    
+    
+      <category term="html javaScript 下载图片" scheme="http://wangjiajing.com/tags/html-javaScript-%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87/"/>
+    
+  </entry>
   
   <entry>
     <title>在服务器端把base64加密的字符串合成图片</title>
@@ -758,95 +786,6 @@
     
     
       <category term="响应式设计 屏幕适配" scheme="http://wangjiajing.com/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1-%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>判断PC端和网页端的方法</title>
-    <link href="http://wangjiajing.com/2016/03/10/%E5%88%A4%E6%96%ADPC%E7%AB%AF%E5%92%8C%E7%BD%91%E9%A1%B5%E7%AB%AF%E7%9A%84%E6%96%B9%E6%B3%95/"/>
-    <id>http://wangjiajing.com/2016/03/10/判断PC端和网页端的方法/</id>
-    <published>2016-03-10T15:18:35.000Z</published>
-    <updated>2016-03-14T06:52:52.853Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;code&gt;javaScript&lt;/code&gt; &lt;code&gt;PC和移动端判断&lt;/code&gt;&lt;br&gt;网页在PC端和在移动端的显示效果肯定是不一样的，至少在目前来看，再大的手机屏幕貌似也拼不过PC吧~如果你想让自己的网页在移动端和PC端都能畅行无阻，首先肯定得把他两识别出来吧~&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			function IsPC()  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   var userAgentInfo = navigator.userAgent;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   var Agents = new Array(&amp;quot;Android&amp;quot;, &amp;quot;iPhone&amp;quot;, &amp;quot;SymbianOS&amp;quot;, &amp;quot;Windows Phone&amp;quot;, &amp;quot;iPad&amp;quot;, &amp;quot;iPod&amp;quot;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   var flag = true;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   for (var v = 0; v &amp;lt; Agents.length; v++) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				   if (userAgentInfo.indexOf(Agents[v]) &amp;gt; 0) &amp;#123;                           flag = false; break;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				   &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			   return flag;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#125;            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			if (IsPC()== false)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			window.location.href=&amp;quot;./mobile_simple/index.html&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;其中，navigator对象包含所有浏览器的信息：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;属性&lt;/th&gt;
-&lt;th&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;appCodeName&lt;/td&gt;
-&lt;td&gt;返回浏览器的代码名。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;appMinorVersion&lt;/td&gt;
-&lt;td&gt;返回浏览器的次级版本。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;appName&lt;/td&gt;
-&lt;td&gt;返回浏览器的名称。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;appVersion&lt;/td&gt;
-&lt;td&gt;返回浏览器的平台和版本信息。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;browserLanguage&lt;/td&gt;
-&lt;td&gt;返回当前浏览器的语言。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;cookieEnabled&lt;/td&gt;
-&lt;td&gt;返回指明浏览器中是否启用 cookie 的布尔值。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;cpuClass&lt;/td&gt;
-&lt;td&gt;返回浏览器系统的 CPU 等级。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;onLine&lt;/td&gt;
-&lt;td&gt;返回指明系统是否处于脱机模式的布尔值。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;platform&lt;/td&gt;
-&lt;td&gt;返回运行浏览器的操作系统平台。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;systemLanguage&lt;/td&gt;
-&lt;td&gt;返回 OS 使用的默认语言。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;userAgent&lt;/td&gt;
-&lt;td&gt;返回由客户机发送服务器的 user-agent 头部的值。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;userLanguage&lt;/td&gt;
-&lt;td&gt;返回 OS 的自然语言设置。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;举个例子：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(&amp;quot;&amp;lt;p&amp;gt;浏览器：&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(navigator.appName + &amp;quot;&amp;lt;/p&amp;gt;&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(&amp;quot;&amp;lt;p&amp;gt;浏览器版本：&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(navigator.appVersion + &amp;quot;&amp;lt;/p&amp;gt;&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(&amp;quot;&amp;lt;p&amp;gt;代码：&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(navigator.appCodeName + &amp;quot;&amp;lt;/p&amp;gt;&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(&amp;quot;&amp;lt;p&amp;gt;平台：&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(navigator.platform + &amp;quot;&amp;lt;/p&amp;gt;&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(&amp;quot;&amp;lt;p&amp;gt;Cookies 启用：&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(navigator.cookieEnabled + &amp;quot;&amp;lt;/p&amp;gt;&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(&amp;quot;&amp;lt;p&amp;gt;浏览器的用户代理报头：&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.write(navigator.userAgent + &amp;quot;&amp;lt;/p&amp;gt;&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;结果为：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;浏览器：Netscape&lt;br&gt;浏览器版本：5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36&lt;br&gt;代码：Mozilla&lt;br&gt;平台：Win32&lt;br&gt;Cookies 启用：true&lt;br&gt;浏览器的用户代理报头：Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;讲道理的话，酱紫的处理方法其实并不是很好，所以接下来我开始了响应式设计的学习~=。=~&lt;br&gt;欢迎您的指导！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      如果你想让自己的网页在移动端和PC端都能畅行无阻，首先肯定得把他两识别出来吧~
-    
-    </summary>
-    
-      <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
-    
-    
-      <category term="javaScript PC和移动端判断" scheme="http://wangjiajing.com/tags/javaScript-PC%E5%92%8C%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%88%A4%E6%96%AD/"/>
     
   </entry>
   
