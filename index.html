@@ -84,6 +84,10 @@
                   <span class="pl__circle"></span><span class="pl__title">响应式设计学习（一）</span><span class="pl__date">2016-03-11</span>
                 </a>
             
+                <a class="Web pl__all" href="/2016/05/07/怎么让输入框的光标一直闪动/" title="Web杂记">
+                  <span class="pl__circle"></span><span class="pl__title">Web杂记</span><span class="pl__date">2016-05-07</span>
+                </a>
+            
                 <a class="Web pl__all" href="/2016/03/18/谈谈对网络爬虫的理解/" title="谈谈对网络爬虫的理解">
                   <span class="pl__circle"></span><span class="pl__title">谈谈对网络爬虫的理解</span><span class="pl__date">2016-03-18</span>
                 </a>
@@ -106,10 +110,6 @@
                   <span class="pl__circle"></span><span class="pl__title">js文档加载顺序</span><span class="pl__date">2016-03-06</span>
                 </a>
             
-                <a class="javaScript pl__all" href="/2016/05/02/在服务器端把base64加密的字符串合成图片/" title="在服务器端把base64加密的字符串合成图片">
-                  <span class="pl__circle"></span><span class="pl__title">在服务器端把base64加密的字符串合成图片</span><span class="pl__date">2016-05-02</span>
-                </a>
-            
                 <a class="javaScript pl__all" href="/2016/05/02/如何在canvas上画线画图画文本/" title="如何在canvas上画线画图画文本">
                   <span class="pl__circle"></span><span class="pl__title">如何在canvas上画线画图画文本</span><span class="pl__date">2016-05-02</span>
                 </a>
@@ -120,6 +120,10 @@
             
                 <a class="javaScript pl__all" href="/2016/05/02/解决canvas自定义字体失败的问题/" title="解决canvas自定义字体失败的问题">
                   <span class="pl__circle"></span><span class="pl__title">解决canvas自定义字体失败的问题</span><span class="pl__date">2016-05-02</span>
+                </a>
+            
+                <a class="javaScript pl__all" href="/2016/05/02/在服务器端把base64加密的字符串合成图片/" title="在服务器端把base64加密的字符串合成图片">
+                  <span class="pl__circle"></span><span class="pl__title">在服务器端把base64加密的字符串合成图片</span><span class="pl__date">2016-05-02</span>
                 </a>
             
       
@@ -177,12 +181,11 @@
       <div id="pjax">
         
     <article id="post__content">
-      <h1 id="post__title" data-identifier="2016-05-03">PC在网页上直接将图片下载下来</h1>
-      <p><code>html</code> <code>javaScript</code> <code>下载图片</code></p>
-<h3 id="html实现"><a href="#html实现" class="headerlink" title="html实现"></a><strong>html实现</strong></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"要下载的链接"</span> <span class="attr">download</span>&gt;</span>这里可以放文字也可以放图片，点击这里自动下载<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="js实现"><a href="#js实现" class="headerlink" title="js实现"></a><strong>js实现</strong></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> saveFile = <span class="function"><span class="keyword">function</span>(<span class="params">data, filename</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> save_link = <span class="built_in">document</span>.createElementNS(<span class="string">'http://www.w3.org/1999/xhtml'</span>, <span class="string">'a'</span>);</span><br><span class="line">    save_link.href = data;</span><br><span class="line">    save_link.download = filename;</span><br><span class="line">    <span class="keyword">var</span> event = <span class="built_in">document</span>.createEvent(<span class="string">'MouseEvents'</span>);</span><br><span class="line">    event.initMouseEvent(<span class="string">'click'</span>, <span class="literal">true</span>, <span class="literal">false</span>, <span class="built_in">window</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="number">0</span>, <span class="literal">null</span>);</span><br><span class="line">    save_link.dispatchEvent(event);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> filename = (<span class="keyword">new</span> <span class="built_in">Date</span>()).getTime() + <span class="string">'.png'</span>;</span><br><span class="line">saveFile(image, filename);</span><br></pre></td></tr></table></figure>
-<p>如果是canvas的话：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> image = canvas.toDataURL(<span class="string">"image/png"</span>).replace(<span class="string">'image/png'</span>, <span class="string">'image/octet-stream'</span>);</span><br></pre></td></tr></table></figure></p>
-<p>但是这样不能将图片保存为常见的图片格式。</p>
+      <h1 id="post__title" data-identifier="2016-05-07">Web杂记</h1>
+      <p><code>canvas</code> <code>输入框</code> <code>display</code></p>
+<p>###<strong>1.解决点击canvas没反应的问题</strong><br><strong>预期结果</strong><br>点击后跳出选取相册<br><strong>调试结果</strong><br>发现没进去绑定的函数<br><strong>发现问题</strong><br>在前面定义的时候让canvas.height是一个字符串“%d px”,所以乘上一个小数后变成了<code>NaN</code>,结果就挂了。<br><strong>解决方法</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas_height_len = canvas.style.height.length;</span><br><span class="line"><span class="built_in">parseInt</span>(canvas.style.height.substring(<span class="number">0</span>,canvas_height_len<span class="number">-2</span>)) * <span class="number">0.7</span> + <span class="string">'px'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>###<strong>2.让输入框光标一直闪动</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"profile"</span>).focus();</span><br></pre></td></tr></table></figure></p>
+<p>###<strong>3.swith(display)</strong><br>case block: 块，可正常使用；break;<br>case none:相当于不存在，不可使用，如给它绑定事件；break;<br>有一个很像的东西——<code>visibility</code>，值为<code>hidden</code>的时候<code>不可见</code>，但存在；为<code>visible</code>的时候为<code>可见</code>，存在；默认<code>visible</code>。</p>
 <p>欢迎你的指导！</p>
 
     </article>
@@ -201,7 +204,7 @@
 
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="null" data-title="PC在网页上直接将图片下载下来" data-url="http://wangjiajing.com/2016/05/03/PC在网页上直接将图片下载下来/"></div>
+<div class="ds-thread" data-thread-key="null" data-title="Web杂记" data-url="http://wangjiajing.com/2016/05/07/怎么让输入框的光标一直闪动/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
 
-<title>Category: javaScript</title>
+<title>Web杂记</title>
 <meta name="author" content="wangjiajing">
 
-<meta name="keywords" content="undefined">
+<meta name="keywords" content="canvas 输入框 display">
 
-<meta name="description " content="null">
+<meta name="description " content="本文记述Web杂记、小技巧。">
 
 <link rel="icon" href="/images/favicon.png">
 
@@ -179,7 +179,45 @@
 
     <div id="post">
       <div id="pjax">
-        
+        <article id="post__content">
+  <h1 id="post__title" data-identifier="2016-05-07">Web杂记</h1>
+  <p><code>canvas</code> <code>输入框</code> <code>display</code></p>
+<p>###<strong>1.解决点击canvas没反应的问题</strong><br><strong>预期结果</strong><br>点击后跳出选取相册<br><strong>调试结果</strong><br>发现没进去绑定的函数<br><strong>发现问题</strong><br>在前面定义的时候让canvas.height是一个字符串“%d px”,所以乘上一个小数后变成了<code>NaN</code>,结果就挂了。<br><strong>解决方法</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas_height_len = canvas.style.height.length;</span><br><span class="line"><span class="built_in">parseInt</span>(canvas.style.height.substring(<span class="number">0</span>,canvas_height_len<span class="number">-2</span>)) * <span class="number">0.7</span> + <span class="string">'px'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>###<strong>2.让输入框光标一直闪动</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"profile"</span>).focus();</span><br></pre></td></tr></table></figure></p>
+<p>###<strong>3.swith(display)</strong><br>case block: 块，可正常使用；break;<br>case none:相当于不存在，不可使用，如给它绑定事件；break;<br>有一个很像的东西——<code>visibility</code>，值为<code>hidden</code>的时候<code>不可见</code>，但存在；为<code>visible</code>的时候为<code>可见</code>，存在；默认<code>visible</code>。</p>
+<p>欢迎你的指导！</p>
+
+</article>
+<button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+<script src="/js/js-lib.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" type="text/css" href="/css/codeStyle/xcode.css" />
+  <script src="/js/highlight.pack.js" type="text/javascript"></script>
+
+
+  <div id="post__action">
+      <a id="icon-heart" class="fontello" href="javascript:donate();"></a>
+  </div>
+  <script src="/layer/layer.js" type="text/javascript"></script>
+  <script src="/layer/extend/layer.ext.js" type="text/javascript"></script>
+
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="null" data-title="Web杂记" data-url="http://wangjiajing.com/2016/05/07/怎么让输入框的光标一直闪动/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shuoit"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
 
         <p id="copyright">Copyright © 2016 WangJiajing</p>
 <!-- 百度统计 -->

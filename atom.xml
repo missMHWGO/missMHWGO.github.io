@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-05-03T11:31:42.526Z</updated>
+  <updated>2016-05-06T19:31:41.063Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Web杂记</title>
+    <link href="http://wangjiajing.com/2016/05/07/%E6%80%8E%E4%B9%88%E8%AE%A9%E8%BE%93%E5%85%A5%E6%A1%86%E7%9A%84%E5%85%89%E6%A0%87%E4%B8%80%E7%9B%B4%E9%97%AA%E5%8A%A8/"/>
+    <id>http://wangjiajing.com/2016/05/07/怎么让输入框的光标一直闪动/</id>
+    <published>2016-05-06T19:09:20.000Z</published>
+    <updated>2016-05-06T19:31:41.063Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;canvas&lt;/code&gt; &lt;code&gt;输入框&lt;/code&gt; &lt;code&gt;display&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;###&lt;strong&gt;1.解决点击canvas没反应的问题&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;预期结果&lt;/strong&gt;&lt;br&gt;点击后跳出选取相册&lt;br&gt;&lt;strong&gt;调试结果&lt;/strong&gt;&lt;br&gt;发现没进去绑定的函数&lt;br&gt;&lt;strong&gt;发现问题&lt;/strong&gt;&lt;br&gt;在前面定义的时候让canvas.height是一个字符串“%d px”,所以乘上一个小数后变成了&lt;code&gt;NaN&lt;/code&gt;,结果就挂了。&lt;br&gt;&lt;strong&gt;解决方法&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; canvas_height_len = canvas.style.height.length;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;parseInt&lt;/span&gt;(canvas.style.height.substring(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,canvas_height_len&lt;span class=&quot;number&quot;&gt;-2&lt;/span&gt;)) * &lt;span class=&quot;number&quot;&gt;0.7&lt;/span&gt; + &lt;span class=&quot;string&quot;&gt;&#39;px&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;###&lt;strong&gt;2.让输入框光标一直闪动&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.getElementById(&lt;span class=&quot;string&quot;&gt;&quot;profile&quot;&lt;/span&gt;).focus();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;###&lt;strong&gt;3.swith(display)&lt;/strong&gt;&lt;br&gt;case block: 块，可正常使用；break;&lt;br&gt;case none:相当于不存在，不可使用，如给它绑定事件；break;&lt;br&gt;有一个很像的东西——&lt;code&gt;visibility&lt;/code&gt;，值为&lt;code&gt;hidden&lt;/code&gt;的时候&lt;code&gt;不可见&lt;/code&gt;，但存在；为&lt;code&gt;visible&lt;/code&gt;的时候为&lt;code&gt;可见&lt;/code&gt;，存在；默认&lt;code&gt;visible&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;欢迎你的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      本文记述Web杂记、小技巧。
+    
+    </summary>
+    
+      <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
+    
+    
+      <category term="canvas 输入框 display" scheme="http://wangjiajing.com/tags/canvas-%E8%BE%93%E5%85%A5%E6%A1%86-display/"/>
+    
+  </entry>
   
   <entry>
     <title>PC在网页上直接将图片下载下来</title>
@@ -712,80 +739,6 @@
     
     
       <category term="网络性能 CDN HTTP TCP" scheme="http://wangjiajing.com/tags/%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD-CDN-HTTP-TCP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>响应式设计学习（一）</title>
-    <link href="http://wangjiajing.com/2016/03/11/%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>http://wangjiajing.com/2016/03/11/响应式设计学习（一）/</id>
-    <published>2016-03-11T07:10:47.000Z</published>
-    <updated>2016-03-14T06:54:13.551Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;code&gt;响应式设计&lt;/code&gt; &lt;code&gt;屏幕适配&lt;/code&gt;&lt;br&gt;之前我写过一篇通过识别PC端和移动端跳转到不同的页面来解决显示问题，可是这样就要同时维护好多个版本，既不能偷懒又不能装逼。那么问题来了，到底如何在不同终端设备上显示效果理想的网页？&lt;strong&gt;&lt;code&gt;响应式设计&lt;/code&gt;&lt;/strong&gt;就应运而生了~&lt;br&gt;其实讲人话嘛，就是让不同的网页能够根据设备大大小小的屏幕自动调整显示的样子，而没有做屏幕适配的网页需要通过自由缩放来看到整个页面的内容。阮一峰举了个&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《福尔摩斯历险记》六个主人公的头像&lt;/a&gt;的例子，十分生动形象，我就不赘述了。&lt;/p&gt;
-&lt;h2 id=&quot;移动端的viewport-视区&quot;&gt;&lt;a href=&quot;#移动端的viewport-视区&quot; class=&quot;headerlink&quot; title=&quot;移动端的viewport(视区)&quot;&gt;&lt;/a&gt;&lt;strong&gt;移动端的viewport(视区)&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;为了避免破坏没有针对手机浏览器优化的网页的布局，手机浏览器把页面放在一个虚拟的“窗口”中，通常这个虚拟的“窗口”比屏幕宽，用户可以通过平移和缩放来看网页的不同部分。这个“窗口”就叫&lt;code&gt;viewport&lt;/code&gt;。&lt;/p&gt;
-&lt;h3 id=&quot;做法：&quot;&gt;&lt;a href=&quot;#做法：&quot; class=&quot;headerlink&quot; title=&quot;做法：&quot;&gt;&lt;/a&gt;&lt;strong&gt;做法：&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;步骤1.在头部加入如下代码：&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;上面这行代码的意思是，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1，即网页初始大小占屏幕面积的100%。用户缩放到的最大比例为1，即用户不能通过手势将屏幕放大。&lt;br&gt;还有其他的一些属性可供选择：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;属性&lt;/th&gt;
-&lt;th&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;height&lt;/td&gt;
-&lt;td&gt;和 width 相对应，指定高度&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;initial-scale&lt;/td&gt;
-&lt;td&gt;初始缩放比例，也即是当页面第一次 load 的时候缩放比例&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;maximum-scale&lt;/td&gt;
-&lt;td&gt;允许用户缩放到的最大比例&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;minimum-scale&lt;/td&gt;
-&lt;td&gt;允许用户缩放到的最小比例&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;user-scalable&lt;/td&gt;
-&lt;td&gt;用户是否可以手动缩放&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;步骤2. 布局上的注意事项&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;不能使用像素指定绝对宽度，只能指定百分比或auto;&lt;/li&gt;
-&lt;li&gt;字体也不能使用绝对大小（px），只能使用相对大小（em），em可以理解为一个倍数关系。&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;body &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　font: normal 1em Helvetica, Arial, sans-serif;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;然而并不是所有浏览器都生而平等，在没人疼没人爱的IE下，1em会破坏弹性布局，解决方案为：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;body &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　font: normal 100% Helvetica, Arial, sans-serif;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;上面的代码指定，body字体大小是1em，而所有浏览器默认的字体大小都是16px，因此1em=16px。&lt;br&gt;如果你写：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;　h1 &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　font-size: 1.5em; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;酱紫你就指定了&lt;code&gt;h1&lt;/code&gt;的大小为24px(16*1.5=24)。&lt;/p&gt;
-&lt;p&gt;可是，这样实现的效果并不是太好呢~所以绝大多数网站是用&lt;code&gt;Media Queries&lt;/code&gt;（媒体查询）做的。&lt;/p&gt;
-&lt;h2 id=&quot;Media-Queries（媒体查询）&quot;&gt;&lt;a href=&quot;#Media-Queries（媒体查询）&quot; class=&quot;headerlink&quot; title=&quot;Media Queries（媒体查询）&quot;&gt;&lt;/a&gt;&lt;strong&gt;Media Queries（媒体查询）&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Media Queries的意思就是自动探测查询浏览器屏幕的宽度，然后选择性地加载对应的文件。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1. 在html中用Media Queries&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    media=&amp;quot;screen and (max-device-width: 400px)&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　href=&amp;quot;tinyScreen.css&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;意思是，如果屏幕宽度小于400px，就加载tinyScreen.css文件。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　media=&amp;quot;screen and (min-width: 400px) and (max-device-width: 600px)&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　href=&amp;quot;smallScreen.css&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;意思是，如果屏幕宽度介于400px和600px之间，就加载smallScreen.css文件。&lt;br&gt;&lt;strong&gt;2. 在css中用Media Queries&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@media screen and (max-width : 320px)&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　.column &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　　　float: none;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　　　width:auto;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　#sidebar &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　　　display:none;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　　　　&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@media screen and (min-width: 800px) and (max-width: 1024px)&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;body&amp;#123;...&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h2 id=&quot;图片-视频自动缩放&quot;&gt;&lt;a href=&quot;#图片-视频自动缩放&quot; class=&quot;headerlink&quot; title=&quot;图片/视频自动缩放&quot;&gt;&lt;/a&gt;&lt;strong&gt;图片/视频自动缩放&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;对于大多数浏览器，只需要向css中写入一行代码：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;img, object &amp;#123; max-width: 100%;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;windows平台可能出现失真现象，解决方法：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;img &amp;#123; -ms-interpolation-mode: bicubic; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;欢迎您的指导！&lt;/p&gt;
-&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.iteye.com/topic/1135393&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.iteye.com/topic/1135393&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      到底如何在不同终端设备上显示效果理想的网页？**`响应式设计`**就应运而生了~
-    
-    </summary>
-    
-      <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
-    
-    
-      <category term="响应式设计 屏幕适配" scheme="http://wangjiajing.com/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1-%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D/"/>
     
   </entry>
   
