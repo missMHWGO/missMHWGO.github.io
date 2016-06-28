@@ -28,9 +28,9 @@
       
       <li id="javaScript" class="tags__li tags-btn">javaScript</li>
       
-      <li id="html" class="tags__li tags-btn">html</li>
-      
       <li id="hexo" class="tags__li tags-btn">hexo</li>
+      
+      <li id="html" class="tags__li tags-btn">html</li>
       
       <li id="others" class="tags__li tags-btn">others</li>
       
@@ -102,12 +102,12 @@
                   <span class="pl__circle"></span><span class="pl__title">canvas实现彩色图像变灰度图像(二)</span><span class="pl__date">2016-05-02</span>
                 </a>
             
-                <a class="javaScript pl__all" href="/2016/04/01/json与js数据的接收问题/" title="json与js数据的接收问题">
-                  <span class="pl__circle"></span><span class="pl__title">json与js数据的接收问题</span><span class="pl__date">2016-04-01</span>
-                </a>
-            
                 <a class="javaScript pl__all" href="/2016/03/06/js文档加载顺序/" title="js文档加载顺序">
                   <span class="pl__circle"></span><span class="pl__title">js文档加载顺序</span><span class="pl__date">2016-03-06</span>
+                </a>
+            
+                <a class="javaScript pl__all" href="/2016/04/01/json与js数据的接收问题/" title="json与js数据的接收问题">
+                  <span class="pl__circle"></span><span class="pl__title">json与js数据的接收问题</span><span class="pl__date">2016-04-01</span>
                 </a>
             
                 <a class="javaScript pl__all" href="/2016/05/02/在服务器端把base64加密的字符串合成图片/" title="在服务器端把base64加密的字符串合成图片">
@@ -128,12 +128,6 @@
             
       
             
-                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
-                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
-                </a>
-            
-      
-            
                 <a class="hexo pl__all" href="/2016/03/05/hexo/" title="hexo">
                   <span class="pl__circle"></span><span class="pl__title">hexo</span><span class="pl__date">2016-03-05</span>
                 </a>
@@ -144,16 +138,22 @@
             
       
             
+                <a class="html pl__all" href="/2016/03/07/html页面加载解析流程/" title="html页面加载解析流程">
+                  <span class="pl__circle"></span><span class="pl__title">html页面加载解析流程</span><span class="pl__date">2016-03-07</span>
+                </a>
+            
+      
+            
                 <a class="others pl__all" href="/2016/06/22/web杂记（一）/" title="web杂记(一)">
                   <span class="pl__circle"></span><span class="pl__title">web杂记(一)</span><span class="pl__date">2016-06-22</span>
                 </a>
             
-                <a class="others pl__all" href="/2016/06/28/使用php的mail-发邮件/" title="使用php的mail()发邮件">
-                  <span class="pl__circle"></span><span class="pl__title">使用php的mail()发邮件</span><span class="pl__date">2016-06-28</span>
+                <a class="others pl__all" href="/2016/06/28/我的发邮件之路(一)——mail/" title="我的发邮件之路(一)——mail">
+                  <span class="pl__circle"></span><span class="pl__title">我的发邮件之路(一)——mail</span><span class="pl__date">2016-06-28</span>
                 </a>
             
-                <a class="others pl__all" href="/2016/06/28/用PHPMailer发邮件/" title="用PHPMailer发邮件">
-                  <span class="pl__circle"></span><span class="pl__title">用PHPMailer发邮件</span><span class="pl__date">2016-06-28</span>
+                <a class="others pl__all" href="/2016/06/28/我的发邮件之路(二)——PHPMailer/" title="我的发邮件之路(二)——PHPMailer">
+                  <span class="pl__circle"></span><span class="pl__title">我的发邮件之路(二)——PHPMailer</span><span class="pl__date">2016-06-28</span>
                 </a>
             
                 <a class="others pl__all" href="/2016/03/28/谈谈字符编码/" title="谈谈字符编码">
@@ -197,7 +197,7 @@
       <div id="pjax">
         
     <article id="post__content">
-      <h1 id="post__title" data-identifier="2016-06-28">使用php的mail()发邮件</h1>
+      <h1 id="post__title" data-identifier="2016-06-28">我的发邮件之路(一)——mail</h1>
       <p><code>php</code> <code>mail</code><br>最近想发发邮件玩玩，听说php自带了mail()函数，于是天真无邪的我认为那应该很快就可以搞定啦~=。=~</p>
 <h2 id="sendmail"><a href="#sendmail" class="headerlink" title="sendmail"></a>sendmail</h2><p>首先，我用的是windows，本地的服务器并不支持mail这个函数，于是我们得去下一个叫sendmail的东东，它原本是类unix系统下的软件，在LAMP体系中有着良好的使用性。但是这个世界是不缺大神的，大神帮我们把这玩意弄到了windows平台上。当然如果你是XAMPP(X(支持跨平台)+Apache+MySQL/MariaDB+PHP+Perl)，就已经有sendmail文件夹了。</p>
 <p>1.到<a href="http://glob.com.au/sendmail/" target="_blank" rel="external">这里</a>下载sendmail.<br>2.解压后该文件根目录下有个<code>sendmail.exe</code>和<code>sendmail.ini</code>.</p>
@@ -226,7 +226,7 @@
 
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="null" data-title="使用php的mail()发邮件" data-url="http://wangjiajing.com/2016/06/28/使用php的mail-发邮件/"></div>
+<div class="ds-thread" data-thread-key="null" data-title="我的发邮件之路(一)——mail" data-url="http://wangjiajing.com/2016/06/28/我的发邮件之路(一)——mail/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
