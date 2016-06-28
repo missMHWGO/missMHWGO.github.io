@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-06-22T14:33:16.111Z</updated>
+  <updated>2016-06-28T06:48:18.568Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决hexo上传不到github上的问题</title>
+    <link href="http://wangjiajing.com/2016/06/28/%E8%A7%A3%E5%86%B3hexo%E4%B8%8A%E4%BC%A0%E4%B8%8D%E5%88%B0github%E4%B8%8A%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://wangjiajing.com/2016/06/28/解决hexo上传不到github上的问题/</id>
+    <published>2016-06-28T05:49:22.000Z</published>
+    <updated>2016-06-28T06:48:18.568Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;hexo&lt;/code&gt; &lt;code&gt;disconnected&lt;/code&gt; &lt;code&gt;github&lt;/code&gt;&lt;br&gt;大概两个星期前我又遇到了刚开始使用hexo的问题，课余时间慢慢捣鼓终于解决了这个问题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;disconnected:No supported authentication methods available (server sent:publickey)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;一开始我还暗自庆幸，哈哈，这个问题我当时解决了并且记录了。然而当我用老方法的时候。。。不管用了！！！&lt;br&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/%E4%B8%8B%E8%BD%BD.jpg&quot; alt=&quot;懵逼&quot;&gt;&lt;br&gt;看起来应该是key的问题，于是：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.跑去打开&lt;code&gt;C:\Program Files\TortoiseGit\bin\puttygen.exe&lt;/code&gt;生成一个key.&lt;br&gt;2.跑去打开&lt;code&gt;C:\Program Files\TortoiseGit\bin\pageant.exe&lt;/code&gt;，添加之前生成的private key.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然后就是见证奇迹的时刻！！！奇迹就是——&lt;code&gt;disconnected&lt;/code&gt;不见了，但是新出来一个问题——&lt;br&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/S%60J%29HXKJ~UD35%60I5%5BP091%7DH.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;哭晕。。。&lt;br&gt;这个问题感觉是网络的问题，但是我的电脑是连着网的，不仅连着网还翻着墙。。。&lt;br&gt;为保证刚刚的操作没有把自己给坑了，于是决定重新生成一个key。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.进入&lt;code&gt;~/.ssh&lt;/code&gt;目录，发现里面居然只有&lt;code&gt;known_hosts&lt;/code&gt;。。。我的&lt;code&gt;id_rsa&lt;/code&gt;呢呢呢呢呢呢！！！你还我的&lt;code&gt;id_rsa&lt;/code&gt;！！！&lt;br&gt;2.输入&lt;code&gt;ssh-keygen -t rsa -C &amp;quot;wangjiajing@missMHWGO.com&amp;quot;(引号里是github的注册邮箱)&lt;/code&gt;重新生成key，其中会提醒输入存储这个key的路径以及passphrase，全部默认回车就好，酱紫key就存在了&lt;code&gt;~/.ssh/id_rsa&lt;/code&gt;里并且passphrase为空。&lt;br&gt;3.输入&lt;code&gt;ssh-agent -s&lt;/code&gt;&lt;br&gt;4.输入&lt;code&gt;ssh-add ~/.ssh/id_rsa&lt;/code&gt;,然后就出错了= =&lt;br&gt;&lt;code&gt;could not open a connection to your authentication agent.&lt;/code&gt;&lt;br&gt;5.输入 eval `ssh-agent -s`&lt;br&gt;6.输入&lt;code&gt;ssh-add&lt;/code&gt;&lt;br&gt;7.输入&lt;code&gt;clip &amp;lt; ~/.ssh/id_rsa.pub&lt;/code&gt;拷贝&lt;br&gt;8.将这个key粘贴到github里。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然而。。。还是不行！！！&lt;br&gt;就在这时，聪明机智美丽善良的我灵机一动，忽然想到了一件事——&lt;br&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/WK166TJGNG$%7B~$V~%28G@ZJA8.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;于是我修改了hexo根目录下的&lt;code&gt;_config.yml&lt;/code&gt;文件 ——&lt;br&gt;原来部署的地方是酱的：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;deploy:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  type: git&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  repo: &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    github: git@github.com:missMHWGO/missMHWGO.github.io.git,master&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    gitcafe: git@gitcafe.com:missMHWGO/missMHWGO.git,gitcafe-pages&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;把gitcafe那句去掉。&lt;br&gt;结果出人意料——好了。&lt;br&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/%E4%B8%8B%E8%BD%BD.jpg&quot; alt=&quot;懵逼&quot;&gt;&lt;/p&gt;
+&lt;p&gt;欢迎您的指导！&lt;br&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://blog.sina.com.cn/s/blog_4c44643f0102vuju.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.sina.com.cn/s/blog_4c44643f0102vuju.html&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      hexo disconnected github
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://wangjiajing.com/categories/hexo/"/>
+    
+    
+      <category term="hexo disconnected github" scheme="http://wangjiajing.com/tags/hexo-disconnected-github/"/>
+    
+  </entry>
   
   <entry>
     <title>web杂记(一)</title>
@@ -638,98 +675,6 @@
     
     
       <category term="http url uri" scheme="http://wangjiajing.com/tags/http-url-uri/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>web性能优化（三）：SEO</title>
-    <link href="http://wangjiajing.com/2016/03/14/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ASEO/"/>
-    <id>http://wangjiajing.com/2016/03/14/web性能优化（三）：SEO/</id>
-    <published>2016-03-14T15:53:49.000Z</published>
-    <updated>2016-03-15T08:56:36.706Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;code&gt;web性能&lt;/code&gt; &lt;code&gt;SEO&lt;/code&gt; &lt;code&gt;搜索引擎优化&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&quot;什么是SEO&quot;&gt;&lt;a href=&quot;#什么是SEO&quot; class=&quot;headerlink&quot; title=&quot;什么是SEO&quot;&gt;&lt;/a&gt;&lt;strong&gt;什么是SEO&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;SEO，Search Engine Optimization，中文意译为“搜索引擎优化”，指在了解搜索引擎自然排名机制的基础上，对网站进行内部及外部的调整优化，改进网站在搜索引擎中关键词的自然排名，获得更多的展现量，吸引更多目标客户点击访问网站，从而达到网络营销及品牌建设的目标。&lt;/p&gt;
-&lt;p&gt;站长应该将优化的重心和出发点主要放在用户体验上,因为用户才是网站内容的受众，是他们通过搜索引擎找到了这个网站。过度专注于用特定的技巧获取搜索引擎自然搜索结果的排名不一定能够达到期望的结果。讲人话，SEO就是让网站以最理想的姿态出现在搜索引擎的结果中，但是您的最终的服务对象是您的用户而不是搜索引擎。&lt;/p&gt;
-&lt;h2 id=&quot;没有经过搜索引擎优化的网站有以下特征：&quot;&gt;&lt;a href=&quot;#没有经过搜索引擎优化的网站有以下特征：&quot; class=&quot;headerlink&quot; title=&quot;没有经过搜索引擎优化的网站有以下特征：&quot;&gt;&lt;/a&gt;&lt;strong&gt;没有经过搜索引擎优化的网站有以下特征：&lt;/strong&gt;&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;网页中大量采用图片或者Flash等富媒体（Rich Media）形式，没有可以检索的文本信息，而SEO最基本的就是文章SEO和图片SEO；&lt;/li&gt;
-&lt;li&gt;网页没有标题，或者标题中没有包含有效的关键词；&lt;/li&gt;
-&lt;li&gt;网页正文中有效关键词比较少（最好自然而重点分布，不需要特别的堆砌关键词）；&lt;/li&gt;
-&lt;li&gt;网站导航系统让搜索引擎“看不懂”；&lt;/li&gt;
-&lt;li&gt;大量动态网页影响搜索引擎检索；&lt;/li&gt;
-&lt;li&gt;没有其他被搜索引擎已经收录的网站提供的链接；&lt;/li&gt;
-&lt;li&gt;网站中充斥大量欺骗搜索引擎的垃圾信息，如“桥页（也叫门页，过渡页）”、颜色与背景色相同的文字；&lt;/li&gt;
-&lt;li&gt;网站中缺少原创的内容，完全照搬硬抄别人的内容等。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;如何进行SEO&quot;&gt;&lt;a href=&quot;#如何进行SEO&quot; class=&quot;headerlink&quot; title=&quot;如何进行SEO&quot;&gt;&lt;/a&gt;&lt;strong&gt;如何进行SEO&lt;/strong&gt;&lt;/h2&gt;&lt;h3 id=&quot;1-SEO基础&quot;&gt;&lt;a href=&quot;#1-SEO基础&quot; class=&quot;headerlink&quot; title=&quot;1. SEO基础&quot;&gt;&lt;/a&gt;&lt;strong&gt;1. SEO基础&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;1.1 创建独特、准确的页面标题&lt;/strong&gt;&lt;br&gt;我们都造呢，html文件的&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;标签中可以有&lt;code&gt;&amp;lt;title&amp;gt;&lt;/code&gt;标签，一个页面的标题概括了这个页面的主题和主要内容，title中的内容不仅会紧跟着该页面的icon显示，而且会显示在浏览器的搜索结果中。我们应该为每个页面创建一个简短、具有概括性的标题。&lt;br&gt;&lt;strong&gt;1.2 恰当地使用描述元标签&lt;/strong&gt;&lt;br&gt;某些浏览器可能会使用描述元标签来生成网页的摘要。&lt;br&gt;描述元标签如下所示：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;meta name=“description” content=“Brandon’s Baseball Cards provides a&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;large selection of vintage and modern baseball cards for sale. We also offer&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;daily baseball news and events in”&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;正确使用描述元标签：&lt;br&gt;准确概括一个网页的内容，避免与网页内容无关的语句、用宽泛的语言对网页进行描述、关键词的堆砌等。&lt;/p&gt;
-&lt;h3 id=&quot;2-优化网站结构&quot;&gt;&lt;a href=&quot;#2-优化网站结构&quot; class=&quot;headerlink&quot; title=&quot;2. 优化网站结构&quot;&gt;&lt;/a&gt;&lt;strong&gt;2. 优化网站结构&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;2.1 优化url的结构&lt;/strong&gt;&lt;br&gt;使用简单易懂的url表达网页信息，这有助于:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;站长自己组织管理网站&lt;/li&gt;
-&lt;li&gt;搜索引擎有效地抓取文件&lt;/li&gt;
-&lt;li&gt;相比于url中的ID，网站浏览者会对文字更感兴趣，感兴趣程度也决定他们是否点击该链接&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;正确使用url：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;使用文字&lt;/li&gt;
-&lt;li&gt;使用简单的目录结构，避免多层嵌套的子目录&lt;/li&gt;
-&lt;li&gt;为同一文档提供统一的url，若有多个url，可用重定向到所期望的url或使用首选域URL或rel=“canonical”的链接元素。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;2.2 让自己的网站更易于检索和浏览&lt;/strong&gt;&lt;br&gt;网站的导航功能对于搜索引擎而言是非常重要的，虽然Google的搜索结果都是指向每一个特定的页面，但Google同时也会智能地去理解这一页到底在整个网站结构中处于什么地位。&lt;br&gt;正确使用导航功能：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;基于主页来规划网站的导航功能，整个网页的文件相当于一个文件系统，主页相当于一个根目录，所有页面都可以从主页出发找到&lt;/li&gt;
-&lt;li&gt;通过“面包屑导航”给用户带来更多便捷。面包屑导航可以让访客清晰地看到当前页面所处网站位置，目录结构清晰明了，方便访客访问网站任意位置&lt;/li&gt;
-&lt;li&gt;预先考虑到用户可能截取部分URL的情况，访客可能凭借自己的主观推测某些url可能显现的网页，尽可能考虑这些情况避免出现404&lt;/li&gt;
-&lt;li&gt;导航中尽量使用文字链接&lt;/li&gt;
-&lt;li&gt;创建自然的层叠结构，不要过于细分网站结构而创建复杂的导航链接&lt;/li&gt;
-&lt;li&gt;可以创建有意义的404网页&lt;/li&gt;
-&lt;li&gt;准备好两份网站地图 : 针对用户的以及针对搜索引擎的。给用户的应该是以层级式列表的方式而给浏览器的是以XML网站地图文档方式。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;给用户的网站地图示例：&lt;br&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/~%40VX0%5D7ZWDBH27\&quot; alt=&quot;给用户的网站地图&quot;&gt;LXS7Z%24WQ.png)&lt;/p&gt;
-&lt;p&gt;给浏览器的网站地图示例：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;?xml version=“1.0” encoding=“UTF-8”?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;urlset xmlns=“http://www.sitemaps.org/schemas/sitemap/0.9”&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;loc&amp;gt;http://www.brandonsbaseballcards.com/&amp;lt;/loc&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;changefreq&amp;gt;daily&amp;lt;/changefreq&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;priority&amp;gt;0.8&amp;lt;/priority&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;loc&amp;gt;http://www.brandonsbaseballcards.com/news/&amp;lt;/loc&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;loc&amp;gt;http://www.brandonsbaseballcards.com/news/2008/&amp;lt;/loc&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;loc&amp;gt;http://www.brandonsbaseballcards.com/news/2009/&amp;lt;/loc&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;loc&amp;gt;http://www.brandonsbaseballcards.com/news/2010/&amp;lt;/loc&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/urlset&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;3-优化内容&quot;&gt;&lt;a href=&quot;#3-优化内容&quot; class=&quot;headerlink&quot; title=&quot;3. 优化内容&quot;&gt;&lt;/a&gt;&lt;strong&gt;3. 优化内容&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;我之前有些过关于网站内容的优化，这里作一点补充。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3.1 网站提供高质量的内容和服务&lt;/strong&gt;&lt;br&gt;毋庸置疑，高质量的内容和服务会吸引大量的访客，得到认可的网站会提高在用户和搜索引擎中的声望，为网站带来更多的流量，造成良性循环。&lt;/p&gt;
-&lt;p&gt;在撰写网站内容时，预先考虑到一种事物的多种名称叫法，通过综合使用各种具有潜在搜索可能性的关键词，兼顾到不同用户的搜索习惯，那么将会收到更好的效果。&lt;br&gt;提供高质量的内容和服务的参考方法：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;撰写容易阅读的文字&lt;/li&gt;
-&lt;li&gt;围绕内容有条理地组织内容&lt;/li&gt;
-&lt;li&gt;提供新颖、原创的内容&lt;/li&gt;
-&lt;li&gt;为用户负责，不要欺骗浏览器&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;3.2 写好锚文本&lt;/strong&gt;&lt;br&gt;合适的锚文本会使用户明白文本链接的内容，更倾向于点击链接。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3.3 优化图片的使用&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;学会使用&lt;code&gt;alt&lt;/code&gt;属性，使得浏览器由于某些原因无法显示图片时，让用户对此处显示的图片有一个大致的了解&lt;/li&gt;
-&lt;li&gt;将图片保存在一个特定的目录下，便于管理&lt;/li&gt;
-&lt;li&gt;使用常见的图片格式&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;4-处理页面的抓取&quot;&gt;&lt;a href=&quot;#4-处理页面的抓取&quot; class=&quot;headerlink&quot; title=&quot;4. 处理页面的抓取&quot;&gt;&lt;/a&gt;&lt;strong&gt;4. 处理页面的抓取&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;4.1 防止搜索引擎抓取某些页面&lt;/strong&gt;&lt;br&gt;&lt;code&gt;robots.txt&lt;/code&gt;文件主要用来告知搜索引擎它们是否有权抓取您网站的特定部分。该文件一定要严格的命名为&lt;code&gt;“robots.txt”&lt;/code&gt;，并被放置在网站的根目录下。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;生成&lt;code&gt;robots.txt&lt;/code&gt;文件&lt;/li&gt;
-&lt;li&gt;给robots元标签加上&lt;code&gt;NOINDEX&lt;/code&gt;标识&lt;/li&gt;
-&lt;li&gt;使用&lt;code&gt;.htaccess&lt;/code&gt;文件对需要保护的目录加密&lt;/li&gt;
-&lt;li&gt;使用网站站长工具将已经被抓取的网页从搜索结果中移除&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;4.2 使用&lt;code&gt;rel=“nofollow”&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;如果把某一链接的“rel”属性设置成“nofollow”表示不希望Google继续跟踪抓取这些特定链接所指向的页面。&lt;br&gt;应用场景：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;垃圾留言。比如，您网站上的某条留言中有个链接，您并不明白该链接指向什么内容，如果是指向某些垃圾信息，您的网站声誉将会受到影响。如果使用了nofollow属性，则不会损坏您网站的声誉。&lt;/li&gt;
-&lt;li&gt;引用链接。您在某个地方引用了一个链接，那么您会将自己的pr传递给链接所指向的页面。如果您需要引用一个垃圾页面，使用nofollow属性则不会将您网站的声誉值传递给引用的页面。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;5-用正确的手段推广网站&quot;&gt;&lt;a href=&quot;#5-用正确的手段推广网站&quot; class=&quot;headerlink&quot; title=&quot;5. 用正确的手段推广网站&quot;&gt;&lt;/a&gt;&lt;strong&gt;5. 用正确的手段推广网站&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;5.1 通过增加反向链接&lt;/strong&gt;&lt;br&gt;链向您网站的链接需要逐渐积累，因为人们总是通过搜索或者其他途径认识到了您的网站，之后才会链接向它。&lt;br&gt;&lt;strong&gt;5.2 学会使用社交网络&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;5.3 充分利用网站站长工具&lt;/strong&gt;&lt;br&gt;利用网站站长工具可以让Googlebot的抓取更加顺利。您还可以获取分析服务的数据包，对访问者如何与您的网站进行互动得出更详尽的分析，获取访问者主要是通过哪些关键词访问到自己的网站。&lt;/p&gt;
-&lt;p&gt;欢迎您的指导！&lt;/p&gt;
-&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://baike.baidu.com/view/1047.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;百度百科——SEO&lt;/a&gt;&lt;br&gt;google搜索引擎优化初学者指南&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      本文主要介绍搜索引擎优化（SEO）的方法。
-    
-    </summary>
-    
-      <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
-    
-    
-      <category term="web性能 SEO 搜索引擎优化" scheme="http://wangjiajing.com/tags/web%E6%80%A7%E8%83%BD-SEO-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BC%98%E5%8C%96/"/>
     
   </entry>
   
