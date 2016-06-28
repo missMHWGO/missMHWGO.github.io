@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
 
-<title>web杂记(一)</title>
+<title>Web杂记(一)</title>
 <meta name="author" content="wangjiajing">
 
-<meta name="keywords" content="web window">
+<meta name="keywords" content="canvas 输入框 display">
 
-<meta name="description " content="web window">
+<meta name="description " content="本文记述Web杂记、小技巧。">
 
 <link rel="icon" href="/images/favicon.png">
 
@@ -56,6 +56,10 @@
                   <span class="pl__circle"></span><span class="pl__title">PC在网页上直接将图片下载下来</span><span class="pl__date">2016-05-03</span>
                 </a>
             
+                <a class="Web pl__all" href="/2016/05/07/Web杂记(一)/" title="Web杂记(一)">
+                  <span class="pl__circle"></span><span class="pl__title">Web杂记(一)</span><span class="pl__date">2016-05-07</span>
+                </a>
+            
                 <a class="Web pl__all" href="/2016/03/17/uri与url/" title="uri与url">
                   <span class="pl__circle"></span><span class="pl__title">uri与url</span><span class="pl__date">2016-03-17</span>
                 </a>
@@ -72,8 +76,8 @@
                   <span class="pl__circle"></span><span class="pl__title">web性能优化（二）：CDN加速&amp;传输协议优化</span><span class="pl__date">2016-03-14</span>
                 </a>
             
-                <a class="Web pl__all" href="/2016/06/22/web杂记(一)/" title="web杂记(一)">
-                  <span class="pl__circle"></span><span class="pl__title">web杂记(一)</span><span class="pl__date">2016-06-22</span>
+                <a class="Web pl__all" href="/2016/06/22/web杂记(二)/" title="web杂记(二)">
+                  <span class="pl__circle"></span><span class="pl__title">web杂记(二)</span><span class="pl__date">2016-06-22</span>
                 </a>
             
                 <a class="Web pl__all" href="/2016/03/10/判断PC端和网页端的方法/" title="判断PC端和网页端的方法">
@@ -86,10 +90,6 @@
             
                 <a class="Web pl__all" href="/2016/03/11/响应式设计学习（一）/" title="响应式设计学习（一）">
                   <span class="pl__circle"></span><span class="pl__title">响应式设计学习（一）</span><span class="pl__date">2016-03-11</span>
-                </a>
-            
-                <a class="Web pl__all" href="/2016/05/07/怎么让输入框的光标一直闪动/" title="Web杂记">
-                  <span class="pl__circle"></span><span class="pl__title">Web杂记</span><span class="pl__date">2016-05-07</span>
                 </a>
             
                 <a class="Web pl__all" href="/2016/03/18/谈谈对网络爬虫的理解/" title="谈谈对网络爬虫的理解">
@@ -114,12 +114,12 @@
                   <span class="pl__circle"></span><span class="pl__title">js文档加载顺序</span><span class="pl__date">2016-03-06</span>
                 </a>
             
-                <a class="javaScript pl__all" href="/2016/05/02/在服务器端把base64加密的字符串合成图片/" title="在服务器端把base64加密的字符串合成图片">
-                  <span class="pl__circle"></span><span class="pl__title">在服务器端把base64加密的字符串合成图片</span><span class="pl__date">2016-05-02</span>
-                </a>
-            
                 <a class="javaScript pl__all" href="/2016/05/02/如何在canvas上画线画图画文本/" title="如何在canvas上画线画图画文本">
                   <span class="pl__circle"></span><span class="pl__title">如何在canvas上画线画图画文本</span><span class="pl__date">2016-05-02</span>
+                </a>
+            
+                <a class="javaScript pl__all" href="/2016/05/02/在服务器端把base64加密的字符串合成图片/" title="在服务器端把base64加密的字符串合成图片">
+                  <span class="pl__circle"></span><span class="pl__title">在服务器端把base64加密的字符串合成图片</span><span class="pl__date">2016-05-02</span>
                 </a>
             
                 <a class="javaScript pl__all" href="/2016/05/02/裁剪图像神器photoClip/" title="裁剪图像神器photoClip">
@@ -196,13 +196,12 @@
     <div id="post">
       <div id="pjax">
         <article id="post__content">
-  <h1 id="post__title" data-identifier="2016-06-22">web杂记(一)</h1>
-  <p><code>web</code> <code>window</code><br>为什么要在函数定义时将<code>window</code>作为参数传递到函数中去:</p>
-<ul>
-<li>javascript的<code>scope chain</code>作用域链，在当前作用域中如果没有该属性（局部变量）则向上一层作用域中寻找，一直到最上层，也就是window。也就是说全局变量和下级作用域都是window的一个属性。</li>
-<li>通过传入window变量，使得window由全局变量变为局部变量，访问window时，不需要将作用域链回退到顶层作用域，这样可以更快的访问window，提高程序效率。</li>
-<li>将 window 作为参数传入，可以在压缩代码时进行优化。</li>
-</ul>
+  <h1 id="post__title" data-identifier="2016-05-07">Web杂记(一)</h1>
+  <p><code>canvas</code> <code>输入框</code> <code>display</code></p>
+<p>###<strong>1.解决点击canvas没反应的问题</strong><br><strong>预期结果</strong><br>点击后跳出选取相册<br><strong>调试结果</strong><br>发现没进去绑定的函数<br><strong>发现问题</strong><br>在前面定义的时候让canvas.height是一个字符串“%d px”,所以乘上一个小数后变成了<code>NaN</code>,结果就挂了。<br><strong>解决方法</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas_height_len = canvas.style.height.length;</span><br><span class="line"><span class="built_in">parseInt</span>(canvas.style.height.substring(<span class="number">0</span>,canvas_height_len<span class="number">-2</span>)) * <span class="number">0.7</span> + <span class="string">'px'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>###<strong>2.让输入框光标一直闪动</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"profile"</span>).focus();</span><br></pre></td></tr></table></figure></p>
+<p>###<strong>3.swith(display)</strong><br>case block: 块，可正常使用；break;<br>case none:相当于不存在，不可使用，如给它绑定事件；break;<br>有一个很像的东西——<code>visibility</code>，值为<code>hidden</code>的时候<code>不可见</code>，但存在；为<code>visible</code>的时候为<code>可见</code>，存在；默认<code>visible</code>。</p>
+<p>欢迎你的指导！</p>
 
 </article>
 <button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
@@ -220,7 +219,7 @@
 
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="null" data-title="web杂记(一)" data-url="http://wangjiajing.com/2016/06/22/web杂记(一)/"></div>
+<div class="ds-thread" data-thread-key="null" data-title="Web杂记(一)" data-url="http://wangjiajing.com/2016/05/07/Web杂记(一)/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
