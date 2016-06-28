@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-06-28T11:19:04.230Z</updated>
+  <updated>2016-06-28T12:42:25.915Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用php的mail()发邮件</title>
+    <link href="http://wangjiajing.com/2016/06/28/%E4%BD%BF%E7%94%A8php%E7%9A%84mail-%E5%8F%91%E9%82%AE%E4%BB%B6/"/>
+    <id>http://wangjiajing.com/2016/06/28/使用php的mail-发邮件/</id>
+    <published>2016-06-28T11:32:17.000Z</published>
+    <updated>2016-06-28T12:42:25.915Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;php&lt;/code&gt; &lt;code&gt;mail&lt;/code&gt;&lt;br&gt;最近想发发邮件玩玩，听说php自带了mail()函数，于是天真无邪的我认为那应该很快就可以搞定啦~=。=~&lt;/p&gt;
+&lt;h2 id=&quot;sendmail&quot;&gt;&lt;a href=&quot;#sendmail&quot; class=&quot;headerlink&quot; title=&quot;sendmail&quot;&gt;&lt;/a&gt;sendmail&lt;/h2&gt;&lt;p&gt;首先，我用的是windows，本地的服务器并不支持mail这个函数，于是我们得去下一个叫sendmail的东东，它原本是类unix系统下的软件，在LAMP体系中有着良好的使用性。但是这个世界是不缺大神的，大神帮我们把这玩意弄到了windows平台上。当然如果你是XAMPP(X(支持跨平台)+Apache+MySQL/MariaDB+PHP+Perl)，就已经有sendmail文件夹了。&lt;/p&gt;
+&lt;p&gt;1.到&lt;a href=&quot;http://glob.com.au/sendmail/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;下载sendmail.&lt;br&gt;2.解压后该文件根目录下有个&lt;code&gt;sendmail.exe&lt;/code&gt;和&lt;code&gt;sendmail.ini&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;php-ini&quot;&gt;&lt;a href=&quot;#php-ini&quot; class=&quot;headerlink&quot; title=&quot;php.ini&quot;&gt;&lt;/a&gt;php.ini&lt;/h2&gt;&lt;p&gt;接下来开始跳坑。&lt;br&gt;&lt;strong&gt;我&lt;/strong&gt;开始配置&lt;strong&gt;php.ini&lt;/strong&gt;文件：&lt;br&gt;进入&lt;code&gt;E:\wamp\bin\php\php5.5.12\php.ini&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[mail &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;title&quot;&gt;SMTP&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;smtp&lt;/span&gt;.163.&lt;span class=&quot;title&quot;&gt;com&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;title&quot;&gt;smtp_port&lt;/span&gt; = 25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;title&quot;&gt;sendmail_from&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;wangjiajing&lt;/span&gt;@163.&lt;span class=&quot;title&quot;&gt;com&lt;/span&gt; //填写自己的邮箱地址，不填也没啥关系&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;title&quot;&gt;sendmail_path&lt;/span&gt; = &quot;&lt;span class=&quot;title&quot;&gt;D&lt;/span&gt;:\&lt;span class=&quot;title&quot;&gt;sendmail&lt;/span&gt;\&lt;span class=&quot;title&quot;&gt;sendmail&lt;/span&gt;.&lt;span class=&quot;title&quot;&gt;exe&lt;/span&gt; -&lt;span class=&quot;title&quot;&gt;t&lt;/span&gt;&quot;//重要，刚刚说的地址&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;title&quot;&gt;mail&lt;/span&gt;.&lt;span class=&quot;title&quot;&gt;add_x_header&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;On&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;我&lt;/strong&gt;开始配置&lt;strong&gt;sendmail.ini&lt;/strong&gt;文件：&lt;br&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[sendmail]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;smtp_server=smtp&lt;span class=&quot;number&quot;&gt;.163&lt;/span&gt;.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;smtp_port=&lt;span class=&quot;number&quot;&gt;25&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;error_logfile=error.log&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;debug_logfile=debug.log&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;auth_username=wangjiajing@&lt;span class=&quot;number&quot;&gt;163.&lt;/span&gt;com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;auth_password=wangjiajingshiyigehaoren&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;force_sender=wangjiajing@&lt;span class=&quot;number&quot;&gt;163.&lt;/span&gt;com&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;php代码&quot;&gt;&lt;a href=&quot;#php代码&quot; class=&quot;headerlink&quot; title=&quot;php代码&quot;&gt;&lt;/a&gt;php代码&lt;/h2&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;lt;?php&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$to = &lt;span class=&quot;string&quot;&gt;&quot;wangjiajing@163.com&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$subject = &lt;span class=&quot;string&quot;&gt;&quot;Test mail&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$message = &lt;span class=&quot;string&quot;&gt;&quot;Hello! This is a simple email message.--by wangjiajig&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$from = &lt;span class=&quot;string&quot;&gt;&quot;wangjiajing@163.com&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$headers = &lt;span class=&quot;string&quot;&gt;&quot;From: $from&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(mail($to,$subject,$message,$headers))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;Mail Sent&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;fail&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;万事俱备，只欠东风~激动人心的时刻终于到啦~&lt;br&gt;然而并没有成功= =提示说可能没有开启SMTP服务啥的。。。&lt;br&gt;后来纠结了巨久巨久，终于发现这个错哪来的了！！！&lt;br&gt;用&lt;strong&gt;&lt;code&gt;echo phpinfo();&lt;/code&gt;&lt;/strong&gt;打印php信息：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/G4Y6%7D%29~QCT2QM9AQ%5DN%600%60%28Q.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;原来搞了半天根本改错了文件。。。&lt;br&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/%E5%90%90%E8%A1%80.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;也就是说应该修改apche目录下的php.ini，我却修改成了php目录下的php.ini了。。。&lt;br&gt;改对文件后，那个错果然不见了=.=&lt;br&gt;但是史上最纠结的问题也粗线了。。。结果显示的是&lt;code&gt;Mail Sent&lt;/code&gt;,也就是说mail这个函数使用成功了，然而我实际上并没有收到邮件。。。有没有人来救救我。。。。&lt;/p&gt;
+&lt;p&gt;至今依然不造问题出在了哪里，欢迎您的指导，如果知道一定要告诉我哦~&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/lqminn/p/3468357.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/lqminn/p/3468357.html&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      php mail
+    
+    </summary>
+    
+      <category term="others" scheme="http://wangjiajing.com/categories/others/"/>
+    
+    
+      <category term="php mail" scheme="http://wangjiajing.com/tags/php-mail/"/>
+    
+  </entry>
   
   <entry>
     <title>用PHPMailer发邮件</title>
@@ -624,41 +657,6 @@
     
     
       <category term="字符编码 ASCII码 Unicode UTF-8" scheme="http://wangjiajing.com/tags/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81-ASCII%E7%A0%81-Unicode-UTF-8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>谈谈对网络爬虫的理解</title>
-    <link href="http://wangjiajing.com/2016/03/18/%E8%B0%88%E8%B0%88%E5%AF%B9%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%9A%84%E7%90%86%E8%A7%A3/"/>
-    <id>http://wangjiajing.com/2016/03/18/谈谈对网络爬虫的理解/</id>
-    <published>2016-03-18T07:47:24.000Z</published>
-    <updated>2016-03-19T18:37:53.449Z</updated>
-    
-    <content type="html">&lt;p&gt;网络爬虫是按照一定规则，自动抓取万维网上信息的程序或脚本，主要目的是将互联网上的网页下载到本地形成一个互联网内容的镜像备份。讲人话呢，其实就是从网站某一个页面（通常是首页）开始，读取网页的内容，找到在该网页中的其它链接地址，然后通过这些链接地址寻找下一个网页，这样一直循环下去，直到把这个网站中所有的网页都抓取完为止。因此，网络爬虫的基本操作就是抓取网页。&lt;/p&gt;
-&lt;h2 id=&quot;基本原理&quot;&gt;&lt;a href=&quot;#基本原理&quot; class=&quot;headerlink&quot; title=&quot;基本原理&quot;&gt;&lt;/a&gt;&lt;strong&gt;基本原理&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;一个通用的网络爬虫的框架如图所示：&lt;br&gt; &lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/~LBKJNOF4K%60LW22KOHIKM8P.png&quot; alt=&quot;网络爬虫框架&quot;&gt;&lt;/p&gt;
-&lt;p&gt;网络爬虫的基本工作流程如下：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;首先选取一部分精心挑选的种子URL；&lt;/li&gt;
-&lt;li&gt;将这些URL放入待抓取URL队列；&lt;/li&gt;
-&lt;li&gt;从待抓取URL队列中读取URL，解析DNS，并且得到主机的ip，并将URL对应的网页下载下来，存储进已下载网页库中。此外，将这些URL放进已抓取URL队列。&lt;/li&gt;
-&lt;li&gt;分析已抓取URL队列中的URL，分析其中的其他URL，并且将URL放入待抓取URL队列，从而进入下一个循环。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;搜索策略&quot;&gt;&lt;a href=&quot;#搜索策略&quot; class=&quot;headerlink&quot; title=&quot;搜索策略&quot;&gt;&lt;/a&gt;&lt;strong&gt;搜索策略&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;1. 广度优先搜索&lt;/strong&gt;&lt;br&gt;广度优先搜索的基本思路是，将新下载网页中发现的链接直接插入待抓取URL队列的末尾，也就是指网络爬虫会先抓取起始网页中链接的所有网页，然后再选择其中的一个链接网页，继续抓取在此网页中链接的所有网页。这种方法的缺点在于，随着抓取网页的增多，大量的无关网页被下载，算法的效率将变低。&lt;br&gt;&lt;strong&gt;2. 最佳优先搜索&lt;/strong&gt;&lt;br&gt;最佳优先搜索策略按照一定的网页分析算法，预测候选URL与目标网页的相似度，或与主题的相关性，并选取评价最好的一个或几个URL进行抓取。它只访问经过网页分析算法预测为“有用”的网页。存在的一个问题是，在爬虫抓取路径上的很多相关网页可能被忽略，因为最佳优先策略是一种局部最优搜索算法。因此需要将最佳优先结合具体的应用进行改进，以跳出局部最优点。&lt;br&gt;&lt;strong&gt;3. 深度优先搜索&lt;/strong&gt;&lt;br&gt;深度优先搜索是指网络爬虫会从起始页开始，一个链接一个链接跟踪下去，处理完这条线路之后再转入下一个起始页，继续跟踪链接。&lt;/p&gt;
-&lt;p&gt;由于深度优先在很多情况下会导致爬虫的陷入(trapped)问题，目前常见的是广度优先和最佳优先方法。&lt;/p&gt;
-&lt;p&gt;欢迎您的指导！&lt;/p&gt;
-&lt;p&gt;参考资料：&lt;br&gt;&lt;a href=&quot;http://baike.baidu.com/view/284853.htm?fromtitle=%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E8%9C%98%E8%9B%9B&amp;amp;fromid=9781549&amp;amp;type=syn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;百度百科——网络爬虫&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/wawlian/archive/2012/06/18/2553061.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/wawlian/archive/2012/06/18/2553061.html&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      本文主要讲述自己对网络爬虫学习的认识。
-    
-    </summary>
-    
-      <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
-    
-    
-      <category term="网络爬虫" scheme="http://wangjiajing.com/tags/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/"/>
     
   </entry>
   

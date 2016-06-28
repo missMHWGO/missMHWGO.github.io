@@ -72,12 +72,12 @@
                   <span class="pl__circle"></span><span class="pl__title">web性能优化（二）：CDN加速&amp;传输协议优化</span><span class="pl__date">2016-03-14</span>
                 </a>
             
-                <a class="Web pl__all" href="/2016/03/09/启用Apache服务器的Gzip压缩/" title="启用Apache服务器的Gzip压缩">
-                  <span class="pl__circle"></span><span class="pl__title">启用Apache服务器的Gzip压缩</span><span class="pl__date">2016-03-09</span>
-                </a>
-            
                 <a class="Web pl__all" href="/2016/03/10/判断PC端和网页端的方法/" title="判断PC端和网页端的方法">
                   <span class="pl__circle"></span><span class="pl__title">判断PC端和网页端的方法</span><span class="pl__date">2016-03-10</span>
+                </a>
+            
+                <a class="Web pl__all" href="/2016/03/09/启用Apache服务器的Gzip压缩/" title="启用Apache服务器的Gzip压缩">
+                  <span class="pl__circle"></span><span class="pl__title">启用Apache服务器的Gzip压缩</span><span class="pl__date">2016-03-09</span>
                 </a>
             
                 <a class="Web pl__all" href="/2016/03/11/响应式设计学习（一）/" title="响应式设计学习（一）">
@@ -94,12 +94,12 @@
             
       
             
-                <a class="javaScript pl__all" href="/2016/05/02/canvas实现彩色图像变灰度图像(二)/" title="canvas实现彩色图像变灰度图像(二)">
-                  <span class="pl__circle"></span><span class="pl__title">canvas实现彩色图像变灰度图像(二)</span><span class="pl__date">2016-05-02</span>
-                </a>
-            
                 <a class="javaScript pl__all" href="/2016/05/02/canvas实现彩色图像变灰度图像(一)/" title="canvas实现彩色图像变灰度图像(一)">
                   <span class="pl__circle"></span><span class="pl__title">canvas实现彩色图像变灰度图像(一)</span><span class="pl__date">2016-05-02</span>
+                </a>
+            
+                <a class="javaScript pl__all" href="/2016/05/02/canvas实现彩色图像变灰度图像(二)/" title="canvas实现彩色图像变灰度图像(二)">
+                  <span class="pl__circle"></span><span class="pl__title">canvas实现彩色图像变灰度图像(二)</span><span class="pl__date">2016-05-02</span>
                 </a>
             
                 <a class="javaScript pl__all" href="/2016/04/01/json与js数据的接收问题/" title="json与js数据的接收问题">
@@ -148,6 +148,10 @@
                   <span class="pl__circle"></span><span class="pl__title">web杂记(一)</span><span class="pl__date">2016-06-22</span>
                 </a>
             
+                <a class="others pl__all" href="/2016/06/28/使用php的mail-发邮件/" title="使用php的mail()发邮件">
+                  <span class="pl__circle"></span><span class="pl__title">使用php的mail()发邮件</span><span class="pl__date">2016-06-28</span>
+                </a>
+            
                 <a class="others pl__all" href="/2016/06/28/用PHPMailer发邮件/" title="用PHPMailer发邮件">
                   <span class="pl__circle"></span><span class="pl__title">用PHPMailer发邮件</span><span class="pl__date">2016-06-28</span>
                 </a>
@@ -193,8 +197,18 @@
       <div id="pjax">
         
     <article id="post__content">
-      <h1 id="post__title" data-identifier="2016-06-28">用PHPMailer发邮件</h1>
-      <p><code>PHPMailer</code> <code>发邮件</code></p>
+      <h1 id="post__title" data-identifier="2016-06-28">使用php的mail()发邮件</h1>
+      <p><code>php</code> <code>mail</code><br>最近想发发邮件玩玩，听说php自带了mail()函数，于是天真无邪的我认为那应该很快就可以搞定啦~=。=~</p>
+<h2 id="sendmail"><a href="#sendmail" class="headerlink" title="sendmail"></a>sendmail</h2><p>首先，我用的是windows，本地的服务器并不支持mail这个函数，于是我们得去下一个叫sendmail的东东，它原本是类unix系统下的软件，在LAMP体系中有着良好的使用性。但是这个世界是不缺大神的，大神帮我们把这玩意弄到了windows平台上。当然如果你是XAMPP(X(支持跨平台)+Apache+MySQL/MariaDB+PHP+Perl)，就已经有sendmail文件夹了。</p>
+<p>1.到<a href="http://glob.com.au/sendmail/" target="_blank" rel="external">这里</a>下载sendmail.<br>2.解压后该文件根目录下有个<code>sendmail.exe</code>和<code>sendmail.ini</code>.</p>
+<h2 id="php-ini"><a href="#php-ini" class="headerlink" title="php.ini"></a>php.ini</h2><p>接下来开始跳坑。<br><strong>我</strong>开始配置<strong>php.ini</strong>文件：<br>进入<code>E:\wamp\bin\php\php5.5.12\php.ini</code><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[mail <span class="function"><span class="keyword">function</span>]</span><br><span class="line"><span class="title">SMTP</span> = <span class="title">smtp</span>.163.<span class="title">com</span></span><br><span class="line"><span class="title">smtp_port</span> = 25</span><br><span class="line"><span class="title">sendmail_from</span> = <span class="title">wangjiajing</span>@163.<span class="title">com</span> //填写自己的邮箱地址，不填也没啥关系</span><br><span class="line"><span class="title">sendmail_path</span> = "<span class="title">D</span>:\<span class="title">sendmail</span>\<span class="title">sendmail</span>.<span class="title">exe</span> -<span class="title">t</span>"//重要，刚刚说的地址</span><br><span class="line"><span class="title">mail</span>.<span class="title">add_x_header</span> = <span class="title">On</span></span></span><br></pre></td></tr></table></figure></p>
+<p><strong>我</strong>开始配置<strong>sendmail.ini</strong>文件：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[sendmail]</span><br><span class="line">smtp_server=smtp<span class="number">.163</span>.com</span><br><span class="line">smtp_port=<span class="number">25</span></span><br><span class="line">error_logfile=error.log</span><br><span class="line">debug_logfile=debug.log</span><br><span class="line">auth_username=wangjiajing@<span class="number">163.</span>com</span><br><span class="line">auth_password=wangjiajingshiyigehaoren</span><br><span class="line">force_sender=wangjiajing@<span class="number">163.</span>com</span><br></pre></td></tr></table></figure></p>
+<h2 id="php代码"><a href="#php代码" class="headerlink" title="php代码"></a>php代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$to = <span class="string">"wangjiajing@163.com"</span>;</span><br><span class="line">$subject = <span class="string">"Test mail"</span>;</span><br><span class="line">$message = <span class="string">"Hello! This is a simple email message.--by wangjiajig"</span>;</span><br><span class="line">$from = <span class="string">"wangjiajing@163.com"</span>;</span><br><span class="line">$headers = <span class="string">"From: $from"</span>;</span><br><span class="line"><span class="keyword">if</span>(mail($to,$subject,$message,$headers))&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"Mail Sent"</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"fail"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>万事俱备，只欠东风~激动人心的时刻终于到啦~<br>然而并没有成功= =提示说可能没有开启SMTP服务啥的。。。<br>后来纠结了巨久巨久，终于发现这个错哪来的了！！！<br>用<strong><code>echo phpinfo();</code></strong>打印php信息：</p>
+<p><img src="http://7xqw4a.com1.z0.glb.clouddn.com/G4Y6%7D%29~QCT2QM9AQ%5DN%600%60%28Q.png" alt=""></p>
+<p>原来搞了半天根本改错了文件。。。<br><img src="http://7xqw4a.com1.z0.glb.clouddn.com/%E5%90%90%E8%A1%80.jpg" alt=""><br>也就是说应该修改apche目录下的php.ini，我却修改成了php目录下的php.ini了。。。<br>改对文件后，那个错果然不见了=.=<br>但是史上最纠结的问题也粗线了。。。结果显示的是<code>Mail Sent</code>,也就是说mail这个函数使用成功了，然而我实际上并没有收到邮件。。。有没有人来救救我。。。。</p>
+<p>至今依然不造问题出在了哪里，欢迎您的指导，如果知道一定要告诉我哦~</p>
+<p>参考资料：<br><a href="http://www.cnblogs.com/lqminn/p/3468357.html" target="_blank" rel="external">http://www.cnblogs.com/lqminn/p/3468357.html</a></p>
 
     </article>
     <button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
@@ -212,7 +226,7 @@
 
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="null" data-title="用PHPMailer发邮件" data-url="http://wangjiajing.com/2016/06/28/用PHPMailer发邮件/"></div>
+<div class="ds-thread" data-thread-key="null" data-title="使用php的mail()发邮件" data-url="http://wangjiajing.com/2016/06/28/使用php的mail-发邮件/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
