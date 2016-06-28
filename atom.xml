@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-06-28T06:48:18.568Z</updated>
+  <updated>2016-06-28T11:19:04.230Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用PHPMailer发邮件</title>
+    <link href="http://wangjiajing.com/2016/06/28/%E7%94%A8PHPMailer%E5%8F%91%E9%82%AE%E4%BB%B6/"/>
+    <id>http://wangjiajing.com/2016/06/28/用PHPMailer发邮件/</id>
+    <published>2016-06-28T11:17:16.000Z</published>
+    <updated>2016-06-28T11:19:04.230Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;PHPMailer&lt;/code&gt; &lt;code&gt;发邮件&lt;/code&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      PHPMailer 发邮件
+    
+    </summary>
+    
+      <category term="others" scheme="http://wangjiajing.com/categories/others/"/>
+    
+    
+      <category term="PHPMailer 发邮件" scheme="http://wangjiajing.com/tags/PHPMailer-%E5%8F%91%E9%82%AE%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>解决hexo上传不到github上的问题</title>
@@ -362,7 +385,7 @@
     <link href="http://wangjiajing.com/2016/04/11/%E8%A7%A3%E5%86%B3%E4%BD%BF%E7%94%A8%E5%BE%AE%E4%BF%A1jssdk%E6%8A%A5%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%88%E6%B3%95%E7%9A%84%E9%94%99%E8%AF%AF/"/>
     <id>http://wangjiajing.com/2016/04/11/解决使用微信jssdk报域名不合法的错误/</id>
     <published>2016-04-11T15:40:05.000Z</published>
-    <updated>2016-04-11T16:10:31.630Z</updated>
+    <updated>2016-06-28T11:21:11.332Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;微信&lt;/code&gt; &lt;code&gt;jssdk&lt;/code&gt;&lt;br&gt;今天使用微信jssdk时，报&lt;code&gt;invalid url domain&lt;/code&gt;，然后发现微信官方文档最常见的错误第一个就是这个，还说明了可能的错误原因，真是要感动哭了~&lt;br&gt;官方给出的原因是&lt;strong&gt;&lt;code&gt;当前页面所在域名与使用的appid没有绑定&lt;/code&gt;&lt;/strong&gt;，然后我就郁闷了。。。我明明就有绑定啊。。。最终各种修改JS接口安全域名，终于解决这个坑。&lt;/p&gt;
 &lt;h3 id=&quot;解决方法&quot;&gt;&lt;a href=&quot;#解决方法&quot; class=&quot;headerlink&quot; title=&quot;解决方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;解决方法&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;去掉JS接口安全域名里的&lt;strong&gt;&lt;code&gt;http://&lt;/code&gt;&lt;/strong&gt; 。。。= =&lt;br&gt;微信专业坑爹一万年= =&lt;/p&gt;
@@ -376,7 +399,7 @@
     
     </summary>
     
-      <category term="服务器" scheme="http://wangjiajing.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <category term="Server" scheme="http://wangjiajing.com/categories/Server/"/>
     
     
       <category term="微信 服务器 jssdk 域名 不合法" scheme="http://wangjiajing.com/tags/%E5%BE%AE%E4%BF%A1-%E6%9C%8D%E5%8A%A1%E5%99%A8-jssdk-%E5%9F%9F%E5%90%8D-%E4%B8%8D%E5%90%88%E6%B3%95/"/>
@@ -388,7 +411,7 @@
     <link href="http://wangjiajing.com/2016/04/11/%E8%A7%A3%E5%86%B3%E7%94%A8%E8%84%9A%E6%9C%AC%E4%BF%AE%E6%94%B9%E4%B8%8D%E4%BA%86%E5%BE%AE%E4%BF%A1%E8%8F%9C%E5%8D%95%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>http://wangjiajing.com/2016/04/11/解决用脚本修改不了微信菜单的问题/</id>
     <published>2016-04-11T14:24:31.000Z</published>
-    <updated>2016-04-11T15:35:43.687Z</updated>
+    <updated>2016-06-28T11:21:45.122Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;微信&lt;/code&gt; &lt;code&gt;菜单&lt;/code&gt; &lt;code&gt;php&lt;/code&gt;&lt;br&gt;今天参考微信官方文档用php写了一个微信菜单，发现自己根本修改不了菜单的东西。用&lt;a href=&quot;http://mp.weixin.qq.com/debug&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;接口调试工具&lt;/a&gt;报错：&lt;code&gt;invalid sub button key size&lt;/code&gt;。官网上写的是菜单最多3个，子菜单5个。我很认真地数了一下我的菜单个数——2个，自菜单个数——5个，这超了。。。吗？我读书少你不要欺负我啊= =&lt;/p&gt;
 &lt;h3 id=&quot;解决方法&quot;&gt;&lt;a href=&quot;#解决方法&quot; class=&quot;headerlink&quot; title=&quot;解决方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;解决方法&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;发现那个菜单里要跳转到链接本来应该这样写：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;type&amp;quot;:&amp;quot;view&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;name&amp;quot;:&amp;quot;装逼&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;url&amp;quot;:&amp;quot;http://wangjiajing.com&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
@@ -408,7 +431,7 @@
     
     </summary>
     
-      <category term="服务器" scheme="http://wangjiajing.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <category term="Server" scheme="http://wangjiajing.com/categories/Server/"/>
     
     
       <category term="微信 菜单 服务器 php" scheme="http://wangjiajing.com/tags/%E5%BE%AE%E4%BF%A1-%E8%8F%9C%E5%8D%95-%E6%9C%8D%E5%8A%A1%E5%99%A8-php/"/>
@@ -420,7 +443,7 @@
     <link href="http://wangjiajing.com/2016/04/10/%E8%A7%A3%E5%86%B3ssh%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8A%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>http://wangjiajing.com/2016/04/10/解决ssh连接不上远程服务器的问题/</id>
     <published>2016-04-10T11:30:56.000Z</published>
-    <updated>2016-04-10T12:02:43.801Z</updated>
+    <updated>2016-06-28T11:20:50.599Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;putty&lt;/code&gt; &lt;code&gt;ssh&lt;/code&gt; &lt;code&gt;密钥&lt;/code&gt;&lt;br&gt;头几次登服务器都是在线编辑，想想怎么能这么low呢~不装逼的事情我从来不干，向来都是怎么装逼怎么来~&lt;/p&gt;
 &lt;h3 id=&quot;putty&quot;&gt;&lt;a href=&quot;#putty&quot; class=&quot;headerlink&quot; title=&quot;putty&quot;&gt;&lt;/a&gt;&lt;strong&gt;putty&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;万万没想到有一天用putty都会出错…………&lt;br&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/%E6%8D%95%E8%8E%B7.PNG&quot; alt=&quot;putty连接出错提示&quot;&gt;&lt;/p&gt;
@@ -445,7 +468,7 @@
     
     </summary>
     
-      <category term="服务器" scheme="http://wangjiajing.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <category term="Server" scheme="http://wangjiajing.com/categories/Server/"/>
     
     
       <category term="putty ssh 远程主机 密钥 ppk" scheme="http://wangjiajing.com/tags/putty-ssh-%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA-%E5%AF%86%E9%92%A5-ppk/"/>
@@ -457,7 +480,7 @@
     <link href="http://wangjiajing.com/2016/04/10/%E8%A7%A3%E5%86%B3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%96%E7%BD%91%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>http://wangjiajing.com/2016/04/10/解决浏览器访问不了云服务器外网的问题/</id>
     <published>2016-04-10T10:55:11.000Z</published>
-    <updated>2016-04-10T11:27:14.960Z</updated>
+    <updated>2016-06-28T11:21:28.076Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;nginx&lt;/code&gt; &lt;code&gt;云服务器&lt;/code&gt; &lt;code&gt;安全组&lt;/code&gt;&lt;br&gt;听说最近腾讯云推出了1块钱买服务器，域名免费的活动，真是心动不已啊~为了鼓励这样的良心商家，我也决定去买一个~=。=~&lt;br&gt;买完下了nginx，但是在服务器访问不了= =&lt;/p&gt;
 &lt;h3 id=&quot;探索过程&quot;&gt;&lt;a href=&quot;#探索过程&quot; class=&quot;headerlink&quot; title=&quot;探索过程&quot;&gt;&lt;/a&gt;&lt;strong&gt;探索过程&lt;/strong&gt;&lt;/h3&gt;&lt;ol&gt;
@@ -478,7 +501,7 @@
     
     </summary>
     
-      <category term="服务器" scheme="http://wangjiajing.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <category term="Server" scheme="http://wangjiajing.com/categories/Server/"/>
     
     
       <category term="nginx 腾讯云 云服务器 安全组 ssh 浏览器" scheme="http://wangjiajing.com/tags/nginx-%E8%85%BE%E8%AE%AF%E4%BA%91-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E5%AE%89%E5%85%A8%E7%BB%84-ssh-%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
@@ -490,7 +513,7 @@
     <link href="http://wangjiajing.com/2016/04/10/%E8%A7%A3%E5%86%B3%E4%BD%BF%E7%94%A8SAE%E9%85%8D%E7%BD%AE%E5%BE%AE%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/"/>
     <id>http://wangjiajing.com/2016/04/10/解决使用SAE配置微信接口失败问题/</id>
     <published>2016-04-10T10:23:36.000Z</published>
-    <updated>2016-04-10T11:27:35.973Z</updated>
+    <updated>2016-06-28T11:20:18.676Z</updated>
     
     <content type="html">&lt;p&gt;&lt;code&gt;SAE&lt;/code&gt; &lt;code&gt;服务器&lt;/code&gt; &lt;code&gt;微信&lt;/code&gt;&lt;br&gt;最近心血来潮，就去注册了一个SAE，打算用作微信开发的服务器。结果配置接口的时候一直提示“配置失败”，查找资料终于解决这个坑。&lt;/p&gt;
 &lt;p&gt;配置原理微信官方文档已经写得很清楚了，这里不再赘述。但是我输出几个变量的值进行比较，发现没有任何问题，代码可以执行到返回&lt;code&gt;$echoStr&lt;/code&gt;变量。于是我就郁闷了，代码执行得很乖啊~完全按照微信官方文档要求的步骤在跑啊~后来想了一下，代码在我服务器上跑得很好，但我无法知道微信后台接收到的数据到底是什么啊，所以我不能确定&lt;code&gt;$echoStr&lt;/code&gt;变量返回的数据是否正确。&lt;/p&gt;
@@ -505,7 +528,7 @@
     
     </summary>
     
-      <category term="服务器" scheme="http://wangjiajing.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <category term="Server" scheme="http://wangjiajing.com/categories/Server/"/>
     
     
       <category term="SAE 服务器 微信" scheme="http://wangjiajing.com/tags/SAE-%E6%9C%8D%E5%8A%A1%E5%99%A8-%E5%BE%AE%E4%BF%A1/"/>
@@ -636,45 +659,6 @@
     
     
       <category term="网络爬虫" scheme="http://wangjiajing.com/tags/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>uri与url</title>
-    <link href="http://wangjiajing.com/2016/03/17/uri%E4%B8%8Eurl/"/>
-    <id>http://wangjiajing.com/2016/03/17/uri与url/</id>
-    <published>2016-03-17T08:49:48.000Z</published>
-    <updated>2016-03-17T16:33:05.666Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;code&gt;http&lt;/code&gt; &lt;code&gt;uri&lt;/code&gt; &lt;code&gt;url&lt;/code&gt;&lt;br&gt;URI和URL只差一个字母，很多时候都发现用URI的地方貌似也可以用URL= =，所以以前一直都很困惑他两有啥区别，现在有空就记录下来啦~&lt;/p&gt;
-&lt;h2 id=&quot;URI&quot;&gt;&lt;a href=&quot;#URI&quot; class=&quot;headerlink&quot; title=&quot;URI&quot;&gt;&lt;/a&gt;&lt;strong&gt;URI&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;&lt;br&gt;&lt;code&gt;URI&lt;/code&gt;，Uniform Resource Identifier，翻译成中文是&lt;code&gt;统一资源标识符&lt;/code&gt;，用于标识某一互联网资源名称的字符串，该种标识允许用户对网络中（一般指万维网）的资源通过特定的协议进行交互操作。&lt;br&gt;讲人话呢，其实就是每个Web服务器资源都有一个名字，这样客户端就可以准确找到它们了，而uri就是这些名字。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;类型&lt;/strong&gt;&lt;br&gt;URI包括&lt;code&gt;URL&lt;/code&gt;和&lt;code&gt;URN&lt;/code&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;URL&quot;&gt;&lt;a href=&quot;#URL&quot; class=&quot;headerlink&quot; title=&quot;URL&quot;&gt;&lt;/a&gt;&lt;strong&gt;URL&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;&lt;br&gt;URL，Uniform Resource Locator，翻译成中文是&lt;code&gt;统一资源定位符&lt;/code&gt;，是URI最常见的形式。URL 描述了一台特定服务器上某资源的特定位置，它们可以明确说明如何从一个精确、固定的位置获取资源。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;语法&lt;/strong&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;scheme&amp;gt;://&amp;lt;user&amp;gt;:&amp;lt;password&amp;gt;@&amp;lt;host&amp;gt;:&amp;lt;port&amp;gt;/&amp;lt;path&amp;gt;;&amp;lt;params&amp;gt;?&amp;lt;query&amp;gt;#&amp;lt;frag&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;其中：&lt;br&gt;&lt;code&gt;scheme&lt;/code&gt;：&lt;code&gt;方案&lt;/code&gt;，一般指协议，有http、https、ftp、mailto、telnet等等。&lt;br&gt;&lt;code&gt;user&lt;/code&gt;、&lt;code&gt;password&lt;/code&gt;：&lt;code&gt;用户名&lt;/code&gt;、&lt;code&gt;密码&lt;/code&gt;，一些服务器需要用户输入用户名和密码才允许访问。如ftp协议。&lt;br&gt;&lt;code&gt;host&lt;/code&gt;、&lt;code&gt;port&lt;/code&gt;：&lt;code&gt;主机&lt;/code&gt;、&lt;code&gt;端口&lt;/code&gt;，主机标识了因特网上能够访问资源的宿主机器，可用主机名（域名）或IP地址表示；端口标识了服务器正在监听的网络端口。&lt;br&gt;&lt;code&gt;path&lt;/code&gt;：&lt;code&gt;路径&lt;/code&gt;，说明了资源位于服务器的什么地方，通常像一个分级的文件系统路径。&lt;br&gt;&lt;code&gt;params&lt;/code&gt;：&lt;code&gt;参数&lt;/code&gt;，向应用程序提供它们所需的输入参数，以便正确地与服务器进行交互，形式为key-value键值对，由“;”将其与URL其余部分分隔开来。例子：ftp://prep.ai.mit.edu/pub/gnu;graphics=true&lt;br&gt;&lt;code&gt;query&lt;/code&gt;：&lt;code&gt;查询字符串&lt;/code&gt;，可以通过查询字符串来缩小所请求资源的范围，形式同样为key-value对，之间用字符“&amp;amp;”分隔，由“?”将其与URL其余部分分隔开来。例子：&lt;a href=&quot;http://localhost/test?id=123&amp;amp;show=false&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost/test?id=123&amp;amp;show=false&lt;/a&gt;&lt;br&gt;&lt;code&gt;frag&lt;/code&gt;：&lt;code&gt;片段&lt;/code&gt;，表示一个资源内部的片段，通常用于在页面中设置“书签”并实现页内跳转。片段出现在URL的最右边，前面有一个字符“#”。注意客户端不会将片段发送到服务器，浏览器从服务器获得整个资源后，会根据片段在页内跳转到指定的位置。&lt;/p&gt;
-&lt;h2 id=&quot;URN&quot;&gt;&lt;a href=&quot;#URN&quot; class=&quot;headerlink&quot; title=&quot;URN&quot;&gt;&lt;/a&gt;&lt;strong&gt;URN&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;&lt;br&gt;&lt;code&gt;统一资源名&lt;/code&gt;，作为特定内容的唯一名称使用，与目前的资源所在地无关。使用这些与位置无关的URN，就可以将资源四处搬移。通过URN，还可以用同一个名字通过多种网络访问协议来访问资源。为了更有效地工作， URN 需要一个支撑架构来解析资源的位置，而此类架构的缺乏也延缓了其被采用的进度。所以URN仍然处于试验阶段，还未大范围使用。 &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;&lt;br&gt;可以&lt;code&gt;urn:ietf:rfc:2141&lt;/code&gt;来命名因特网标准文档RFC2141，无论它位于何处。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;欢迎您的指导！&lt;/p&gt;
-&lt;p&gt;参考资料：&lt;br&gt;《HTTP权威指南》&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      本文主要介绍uri和url的区别。
-    
-    </summary>
-    
-      <category term="Web" scheme="http://wangjiajing.com/categories/Web/"/>
-    
-    
-      <category term="http url uri" scheme="http://wangjiajing.com/tags/http-url-uri/"/>
     
   </entry>
   
