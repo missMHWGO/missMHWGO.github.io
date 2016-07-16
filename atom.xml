@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangjiajing.com/"/>
-  <updated>2016-06-28T15:03:46.051Z</updated>
+  <updated>2016-07-16T18:27:41.462Z</updated>
   <id>http://wangjiajing.com/</id>
   
   <author>
@@ -14,6 +14,62 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我的发邮件之路(五)——正则匹配</title>
+    <link href="http://wangjiajing.com/2016/07/17/%E6%88%91%E6%88%91%E7%9A%84%E5%8F%91%E9%82%AE%E4%BB%B6%E4%B9%8B%E8%B7%AF-%E4%BA%94-%E2%80%94%E2%80%94%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D/"/>
+    <id>http://wangjiajing.com/2016/07/17/我我的发邮件之路-五-——正则匹配/</id>
+    <published>2016-07-16T18:18:46.000Z</published>
+    <updated>2016-07-16T18:27:41.462Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;发邮件&lt;/code&gt; &lt;code&gt;正则&lt;/code&gt; &lt;code&gt;VBScript&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;优化了一下脚本，用正则匹配邮箱，不是邮箱的东东就跳过，干掉了一旦遇到不是邮箱的东东就跪的问题。&lt;/p&gt;
+&lt;figure class=&quot;highlight vbscript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&#39;正则匹配邮箱&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;Dim&lt;/span&gt; re&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;Set&lt;/span&gt; re = &lt;span class=&quot;keyword&quot;&gt;New&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;RegExp&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;re.Pattern = &lt;span class=&quot;string&quot;&gt;&quot;^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;re.Global = &lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;re.IgnoreCase = &lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;If&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;not&lt;/span&gt; re.Test(strCurAddr) &lt;span class=&quot;keyword&quot;&gt;Then&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;Else&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           strSendAddr = strSendAddr &amp;amp; strCurAddr &amp;amp; &lt;span class=&quot;string&quot;&gt;&quot;,&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           uiCntAddr = uiCntAddr + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;keyword&quot;&gt;End&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;If&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;欢迎您的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      发邮件 正则 VBScript
+    
+    </summary>
+    
+      <category term="others" scheme="http://wangjiajing.com/categories/others/"/>
+    
+    
+      <category term="发邮件 正则 VBScript" scheme="http://wangjiajing.com/tags/%E5%8F%91%E9%82%AE%E4%BB%B6-%E6%AD%A3%E5%88%99-VBScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的发邮件之路(四)——gmail&amp;163</title>
+    <link href="http://wangjiajing.com/2016/07/17/%E6%88%91%E7%9A%84%E5%8F%91%E9%82%AE%E4%BB%B6%E4%B9%8B%E8%B7%AF-%E5%9B%9B-%E2%80%94%E2%80%94gmail-163/"/>
+    <id>http://wangjiajing.com/2016/07/17/我的发邮件之路-四-——gmail-163/</id>
+    <published>2016-07-16T17:27:20.000Z</published>
+    <updated>2016-07-16T18:20:28.822Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;code&gt;发邮件&lt;/code&gt; &lt;code&gt;gmail&lt;/code&gt; &lt;code&gt;163&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;最近发现了一个很诡异的问题：&lt;br&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/9%5D2%7B5VE%7B7%7DGYD~4$_XNSL%5DW.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xqw4a.com1.z0.glb.clouddn.com/%5DT%5DPTEE2XZ9W~~WINWM@FXG.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;点开详情：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;rcpt handle timeout,last handle info: domain gmail.com MX query return retry.&lt;br&gt;我们可以查找MX记录：&lt;br&gt;&lt;strong&gt;nslookup -qt=MX qq.com&lt;/strong&gt;&lt;br&gt;可以看见很多ip地址，我们用talnet随便访问其中一个的25端口：&lt;br&gt;可以看见相应信息 = =&lt;br&gt;我决定换成其他邮箱试试。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;gmail&quot;&gt;&lt;a href=&quot;#gmail&quot; class=&quot;headerlink&quot; title=&quot;gmail&quot;&gt;&lt;/a&gt;&lt;strong&gt;gmail&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;服务器：smtp.gmail.com&lt;br&gt;端口：465&lt;br&gt;测试结果：&lt;br&gt;报错：smtp not available(大概是酱)&lt;br&gt;与此同时，我的辅助邮箱还收到了谷歌义正言辞地说它拒绝了我的访问= =&lt;br&gt;解决办法：登录&lt;a href=&quot;https://www.google.com/settings/security/lesssecureapps，选择“启用”&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.google.com/settings/security/lesssecureapps，选择“启用”&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;163&quot;&gt;&lt;a href=&quot;#163&quot; class=&quot;headerlink&quot; title=&quot;163&quot;&gt;&lt;/a&gt;&lt;strong&gt;163&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;服务器：smtp.163.com&lt;br&gt;端口：25&lt;br&gt;测试结果：&lt;br&gt;报错：smtp not available = =&lt;br&gt;解决办法：密码不是登录邮箱的密码，而是开启smtp的授权码&lt;br&gt;报错：553 mail from must equel authorized user&lt;br&gt;解决办法：发送邮件的人必须和认证的邮箱一致，确保自己正在用本邮箱发送&lt;/p&gt;
+&lt;p&gt;欢迎您的指导！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      发邮件 gmail 163
+    
+    </summary>
+    
+      <category term="others" scheme="http://wangjiajing.com/categories/others/"/>
+    
+    
+      <category term="发邮件 gmail 163" scheme="http://wangjiajing.com/tags/%E5%8F%91%E9%82%AE%E4%BB%B6-gmail-163/"/>
+    
+  </entry>
   
   <entry>
     <title>我的发邮件之路路(三)——VBScript</title>
@@ -552,66 +608,6 @@
     
     
       <category term="putty ssh 远程主机 密钥 ppk" scheme="http://wangjiajing.com/tags/putty-ssh-%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA-%E5%AF%86%E9%92%A5-ppk/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决浏览器访问不了云服务器外网的问题</title>
-    <link href="http://wangjiajing.com/2016/04/10/%E8%A7%A3%E5%86%B3%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%96%E7%BD%91%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>http://wangjiajing.com/2016/04/10/解决浏览器访问不了云服务器外网的问题/</id>
-    <published>2016-04-10T10:55:11.000Z</published>
-    <updated>2016-06-28T11:21:28.076Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;code&gt;nginx&lt;/code&gt; &lt;code&gt;云服务器&lt;/code&gt; &lt;code&gt;安全组&lt;/code&gt;&lt;br&gt;听说最近腾讯云推出了1块钱买服务器，域名免费的活动，真是心动不已啊~为了鼓励这样的良心商家，我也决定去买一个~=。=~&lt;br&gt;买完下了nginx，但是在服务器访问不了= =&lt;/p&gt;
-&lt;h3 id=&quot;探索过程&quot;&gt;&lt;a href=&quot;#探索过程&quot; class=&quot;headerlink&quot; title=&quot;探索过程&quot;&gt;&lt;/a&gt;&lt;strong&gt;探索过程&lt;/strong&gt;&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;用&lt;code&gt;# nginx -t&lt;/code&gt;测试一下，成功（说明nginx配置成功）&lt;/li&gt;
-&lt;li&gt;用&lt;code&gt;# wget http://127.0.0.1&lt;/code&gt;，成功（说明nginx正常工作）&lt;/li&gt;
-&lt;li&gt;ping服务器外网，成功（本机可以正常上网，并且是可以连接到服务器的）&lt;/li&gt;
-&lt;li&gt;用ssh连接，成功 = = （简直是在逗我，怎样都是可以连接的嘛。。。为啥偏偏浏览器访问不了，讲道理的话80端也没有被占用啊。。。）&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;&lt;strong&gt;解决办法&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;到&lt;code&gt;安全组&lt;/code&gt;里把服务器加入&lt;code&gt;默认安全组放通全部端口&lt;/code&gt;就行了（买的时候随手的惩罚），当然这样存在安全隐患，我现在只知道设个强大点的密码，文件系统的命名尽量不要用默认名酱紫的机制，你造的话要悄悄告诉我哦~&lt;/p&gt;
-&lt;h3 id=&quot;思考解决原理&quot;&gt;&lt;a href=&quot;#思考解决原理&quot; class=&quot;headerlink&quot; title=&quot;思考解决原理&quot;&gt;&lt;/a&gt;&lt;strong&gt;思考解决原理&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;其实服务器是配置好了的，但由于我在买服务器的时候选的是&lt;code&gt;Linux安全组放通22端口&lt;/code&gt;，所以服务器就只有22端口开放了，其他的端口都不监听了（我是酱紫理解的），所以我用ssh是可以连接的，用浏览器就跪了，因为80端口不干活啦~&lt;/p&gt;
-&lt;p&gt;果然读书少就自己把自己坑了。。。= =&lt;/p&gt;
-&lt;p&gt;欢迎你的指导！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      本文讲述因为安全组使得浏览器访问不了服务器。
-    
-    </summary>
-    
-      <category term="Server" scheme="http://wangjiajing.com/categories/Server/"/>
-    
-    
-      <category term="nginx 腾讯云 云服务器 安全组 ssh 浏览器" scheme="http://wangjiajing.com/tags/nginx-%E8%85%BE%E8%AE%AF%E4%BA%91-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E5%AE%89%E5%85%A8%E7%BB%84-ssh-%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决使用SAE配置微信接口失败问题</title>
-    <link href="http://wangjiajing.com/2016/04/10/%E8%A7%A3%E5%86%B3%E4%BD%BF%E7%94%A8SAE%E9%85%8D%E7%BD%AE%E5%BE%AE%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/"/>
-    <id>http://wangjiajing.com/2016/04/10/解决使用SAE配置微信接口失败问题/</id>
-    <published>2016-04-10T10:23:36.000Z</published>
-    <updated>2016-06-28T11:20:18.676Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;code&gt;SAE&lt;/code&gt; &lt;code&gt;服务器&lt;/code&gt; &lt;code&gt;微信&lt;/code&gt;&lt;br&gt;最近心血来潮，就去注册了一个SAE，打算用作微信开发的服务器。结果配置接口的时候一直提示“配置失败”，查找资料终于解决这个坑。&lt;/p&gt;
-&lt;p&gt;配置原理微信官方文档已经写得很清楚了，这里不再赘述。但是我输出几个变量的值进行比较，发现没有任何问题，代码可以执行到返回&lt;code&gt;$echoStr&lt;/code&gt;变量。于是我就郁闷了，代码执行得很乖啊~完全按照微信官方文档要求的步骤在跑啊~后来想了一下，代码在我服务器上跑得很好，但我无法知道微信后台接收到的数据到底是什么啊，所以我不能确定&lt;code&gt;$echoStr&lt;/code&gt;变量返回的数据是否正确。&lt;/p&gt;
-&lt;h3 id=&quot;解决方法&quot;&gt;&lt;a href=&quot;#解决方法&quot; class=&quot;headerlink&quot; title=&quot;解决方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;解决方法&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;在返回&lt;code&gt;$echoStr&lt;/code&gt;前加上&lt;code&gt;header(&amp;#39;content-type:text&amp;#39;);&lt;/code&gt;就好啦~&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;if($this-&amp;gt;checkSignature())&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            header(&amp;apos;content-type:text&amp;apos;);//加上这句&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        	echo $echoStr;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        	exit;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;思考原理：&lt;br&gt;&lt;code&gt;header(&amp;#39;content-type:text&amp;#39;);&lt;/code&gt;这句话的意思是在&lt;code&gt;http&lt;/code&gt;的&lt;code&gt;header&lt;/code&gt;上加上引号里的内容，也就是说让http请求返回的数据是text文本类型的。所以我认为可能返回的数据并不是以文本类型返回的（小小的推测）。&lt;/p&gt;
-&lt;p&gt;这个问题我真的不是很清楚，所以十分欢迎您的指导！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      记录使用SAE配置微信接口遇到的坑。
-    
-    </summary>
-    
-      <category term="Server" scheme="http://wangjiajing.com/categories/Server/"/>
-    
-    
-      <category term="SAE 服务器 微信" scheme="http://wangjiajing.com/tags/SAE-%E6%9C%8D%E5%8A%A1%E5%99%A8-%E5%BE%AE%E4%BF%A1/"/>
     
   </entry>
   
