@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/warn.html"><![endif]-->
 
-<title>hexo</title>
+<title>juicer的if判断</title>
 <meta name="author" content="wangjiajing">
 
-<meta name="keywords" content="hexo deploy ssh">
+<meta name="keywords" content="juicer if javaScript模板引擎">
 
-<meta name="description " content="本文主要介绍使用hexo搭建个人博客时遇到的问题及解决过程。">
+<meta name="description " content="juicer if javaScript模板引擎">
 
 <link rel="icon" href="/images/favicon.png">
 
@@ -212,40 +212,11 @@
     <div id="post">
       <div id="pjax">
         <article id="post__content">
-  <h1 id="post__title" data-identifier="2016-03-05">hexo</h1>
-  <p><code>hexo</code> <code>deploy</code> <code>ssh</code></p>
-<p>hexo这种博客神器，不用简直对不起我强烈的<strong>装逼</strong>欲望=。=</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>已经有前辈的blog将hexo的安装配置过程写得很详细了,我也是站在巨人的肩膀上享受着他人辛勤劳动的成果，十分<strong>感谢</strong>^_^</p>
-<blockquote>
-<ul>
-<li><a href="http://augustus.wang/2016/02/28/hexo-experience/#more" target="_blank" rel="external">http://augustus.wang/2016/02/28/hexo-experience/#more</a></li>
-<li><a href="http://www.isetsuna.com/categories/Hexo/" target="_blank" rel="external">http://www.isetsuna.com/categories/Hexo/</a></li>
-<li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">http://ibruce.info/2013/11/22/hexo-your-blog/</a></li>
-</ul>
-</blockquote>
-<p>如果以上资料还不能解决问题的话，请移步<a href="http://hexo.io/" target="_blank" rel="external">hexo官方文档</a>。</p>
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>之前的安装一路都是顺风顺水,可是部署到GitHub上时出bug了= =<br>我输完<code>hexo d</code>后，弹出了一个错误框：</p>
-<p><img src="http://7xqw4a.com1.z0.glb.clouddn.com/RT3I7(14V8T5(4I%24L%7DS_YIR.png" alt="错误框"></p>
-<p>看上面的提示信息我以为是公钥出了问题，用<code>ssh -T git@github.com</code>命令测试提示：<br><strong><em>Hi username! You’ve successfully authenticated, but GitHub does not provide shell access Connection to github.com closed.</em></strong></p>
-<p>到github上看，发现公钥是使用过的（钥匙图标左边有一个小绿点，如下图~）</p>
-<p><img src="http://7xqw4a.com1.z0.glb.clouddn.com/N98%40504Y8%25%7D~S~KQ6~\" alt="公钥">)M6T.png)</p>
-<p>查找资料后，万能的网友说可能是ssh密钥的问题，解决方法是：</p>
-<blockquote>
-<p><strong>鼠标右键 &gt; Set TortoiseGit &gt; Settings &gt; Network &gt; SSH Client 改为 C:\Program Files (x86)\Git\bin\ssh.exe</strong></p>
-</blockquote>
-<p>或(主要看你的git装在哪个目录下)</p>
-<blockquote>
-<p><strong>鼠标右键 &gt; Set TortoiseGit &gt; Settings &gt; Network &gt; SSH Client 改为 C:\Program Files\Git\usr\bin\ssh.exe</strong></p>
-</blockquote>
-<p>即：将</p>
-<p><img src="http://7xqw4a.com1.z0.glb.clouddn.com/%7BHL7492S5VNK9%60%24L%60Z97%40LJ.png" alt="修改前"></p>
-<p>修改成：</p>
-<p><img src="http://7xqw4a.com1.z0.glb.clouddn.com/%60NR7BBJ32%24XS1RM30%7DKVWLF.png" alt="修改后"></p>
-<p>但是修改后依旧报错= =</p>
-<p>这时候万能的网友又说啦：可能是环境变量<code>GIT_SSH</code>的问题，可以通过设置环境变量<code>GIT_SSH</code>使得git找到你的ssh client，具体做法为：<br>在根目录<code>C:\Users\[user]</code>下创建一个文件<code>.profile</code>（有人的是<code>.bash_profile</code>，因机器而异= =），里面写一句话：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GIT_SSH=&quot;/usr/bin/ssh.exe&quot;</span><br></pre></td></tr></table></figure></p>
-<p>保存后重新执行<code>hexo d</code>命令部署，好，下面就是见证奇迹的时刻，你会发现不报错啦~=。=~</p>
+  <h1 id="post__title" data-identifier="2016-07-17">juicer的if判断</h1>
+  <p><code>juicer</code> <code>if</code> <code>javaScript模板引擎</code></p>
+<p>{@if 直接的表达式}<br>    html代码<br>{@else}<br>    html代码<br>{@/if}</p>
+<p>如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;@if it.remark != ""&#125;</span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>$&#123;it.remark&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">&#123;@else&#125;</span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>人生因装逼而精彩！<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">&#123;@/if&#125;</span><br></pre></td></tr></table></figure></p>
 <p>欢迎您的指导！</p>
-<p>参考资料：<br><a href="http://stackoverflow.com/questions/3431314/github-no-supported-authentication-methods-available" target="_blank" rel="external">github: No supported authentication methods available</a></p>
 
 </article>
 <button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
@@ -263,7 +234,7 @@
 
 
 <!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="null" data-title="hexo" data-url="http://wangjiajing.com/2016/03/05/hexo/"></div>
+<div class="ds-thread" data-thread-key="null" data-title="juicer的if判断" data-url="http://wangjiajing.com/2016/07/17/juicer的if判断/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
